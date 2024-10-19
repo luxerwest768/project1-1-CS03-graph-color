@@ -152,5 +152,7 @@ public class ReadGraph{
             }
             System.out.println("");
         }
+        int chromaticNumber = CountChromaticNum.graphColoring(graph);
+        System.out.println("Chromatic Number: " + chromaticNumber);
     }
 }
