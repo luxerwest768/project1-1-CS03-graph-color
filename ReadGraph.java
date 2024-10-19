@@ -128,17 +128,29 @@ public class ReadGraph{
 
         // Creates the vertices and adds the edges to them
         for(int i=0; i <= (n-1); i++) {
+            // Establishes a new vertice
             v[i] = new ColVertices();
+
+            // Loops through all edges and checks whether the 
             for(int t=0; t <= (m-1); t++) {
                 if(e[t].u == (i+1) || e[t].v == (i+1)) {
                     (v[i].edges).add(e[t]); 
                 }
             }
             // Prints out the each edge connected to each vertice (Just to show it works)
-            System.err.println("Vertice " + (i+1) + " has these edges:");
+            System.out.println("Vertice " + (i+1) + " has these edges:");
             for(ColEdge edge : v[i].edges) {
-                System.err.println(edge.u + " " + edge.v);
+                System.out.println(edge.u + " " + edge.v);
             }
+        }
+
+        // Test for the graph variable
+        int[][] graph = textTranslation.graph(n, v);
+        for(int[] i : graph) {
+            for(int j : i) {
+                System.out.print(j + ", ");
+            }
+            System.out.println("");
         }
     }
 }
