@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CountChromaticNum {
     // checking if is there any vertices next to have a same color
@@ -15,22 +16,19 @@ public class CountChromaticNum {
     
     
     // color every vertices
-    static boolean graphColorUntil (int vertex, int[][] graph, int[] colorSet){
+    static boolean graphColorUntil (int vertex, int[][] graph, int[] colorSet, int numColor){
         if (vertex == graph.length+1){ // every vertices have been colored
             return true; 
         }
-        int colorRange = 3;
-        for (int color = 0; color < colorRange+1; color++){
+        for (int color = 0; color < numColor; color++){
             if (isSafe(vertex, graph, color, colorSet)){
                 colorSet[vertex-1] = color; // assign the color to uncolored vertex
-                if (graphColorUntil(vertex+1, graph, colorSet)){ // move to the next vertex
+                if (graphColorUntil(vertex+1, graph, colorSet,numColor)){ // move to the next vertex
                     return true;
                 }
 
                 // backtracking, if the color does not lead to solution
                 colorSet[vertex-1] = -1;
-            } else if (color == colorRange){
-                colorRange++;
             }
 
         }
@@ -39,23 +37,15 @@ public class CountChromaticNum {
 
     // main method for graph coloring
     static int graphColoring (int[][] graph){
-        int chromaticNumber = 0;
         int[] colorSet = new int[graph.length];
-        for (int i=0 ; i<colorSet.length ;i++){ // assign every vertices to uncolored
-            colorSet[i] = -1;
-        }
-        if (!graphColorUntil(1, graph, colorSet)){
-            System.out.println("Solution does not exist");
-            return 0;
-        }
-        ArrayList<Integer> uniqueColor = new ArrayList<Integer>(); // checking the number of color has assigned
-        for (int color : colorSet){
-            if (uniqueColor.indexOf(color) == -1){
-                uniqueColor.add(color);
+        for (int numColor=1; numColor<graph.length+1; numColor++){
+            Arrays.fill(colorSet, -1);
+            if (graphColorUntil(1, graph, colorSet,numColor)){
+                return numColor;
             }
         }
-        chromaticNumber = uniqueColor.size();
-        return chromaticNumber;
+        System.out.println("Solution does not exist");
+        return graph.length;
 
     }
 
