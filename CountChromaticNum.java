@@ -39,13 +39,13 @@ public class CountChromaticNum {
     static int graphColoring (int[][] graph){
         int[] colorSet = new int[graph.length];
         for (int numColor=1; numColor<graph.length+1; numColor++){
-            Arrays.fill(colorSet, -1);
+            Arrays.fill(colorSet, -1); // reset every vertices to uncolored
             if (graphColorUntil(1, graph, colorSet,numColor)){
                 return numColor;
             }
         }
         System.out.println("Solution does not exist");
-        return graph.length;
+        return graph.length; // return the worst case when all vertices colored with different color
 
     }
 
@@ -74,6 +74,6 @@ public class CountChromaticNum {
         };
 
         int chromaticNumber = graphColoring(graph);
-        System.out.println(chromaticNumber); // the result should be 3 but it's actually 4-
+        System.out.println("Chromatic Number: "+chromaticNumber); // the result should be 3
     }
 }
