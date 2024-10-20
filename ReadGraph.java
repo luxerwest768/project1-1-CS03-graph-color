@@ -10,10 +10,13 @@ class ColEdge {
 
 class ColVertices { 
     List<ColEdge> edges;
+    int degree;
+    int colour;
     boolean printed;
 
     public ColVertices() {
         this.edges = new ArrayList<>();
+        this.colour = 0; 
         this.printed = false;
     }
 }
@@ -131,26 +134,21 @@ public class ReadGraph{
             // Establishes a new vertice
             v[i] = new ColVertices();
 
-            // Loops through all edges and checks whether the 
+            // Loops through all edges and checks whether they are connected to the vertex
             for(int t=0; t <= (m-1); t++) {
                 if(e[t].u == (i+1) || e[t].v == (i+1)) {
                     (v[i].edges).add(e[t]); 
                 }
             }
-            // Prints out the each edge connected to each vertice (Just to show it works)
+
+            // Adds the degree of each vertex
+            v[i].degree = (v[i].edges).size();
+
+            // Prints out the each edge connected to each vertex (Just to show it works)
             System.out.println("Vertice " + (i+1) + " has these edges:");
             for(ColEdge edge : v[i].edges) {
                 System.out.println(edge.u + " " + edge.v);
             }
-        }
-
-        // Test for the graph variable
-        int[][] graph = textTranslation.graph(n, v);
-        for(int[] i : graph) {
-            for(int j : i) {
-                System.out.print(j + ", ");
-            }
-            System.out.println("");
         }
     }
 }
