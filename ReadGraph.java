@@ -1,5 +1,4 @@
 import java.io.*;
-import java.text.ListFormat.Style;
 import java.util.*;
 
 class ColEdge {
@@ -150,5 +149,16 @@ public class ReadGraph{
                 System.out.println(edge.u + " " + edge.v);
             }
         }
+
+        // Test for the graph variable
+        int[][] graph = textTranslation.graph(n, v);
+        for(int[] i : graph) {
+            for(int j : i) {
+                System.out.print(j + ", ");
+            }
+            System.out.println("");
+        }
+        int chromaticNumber = CountChromaticNum.graphColoring(graph);
+        System.out.println("Chromatic Number: " + chromaticNumber);
     }
 }
