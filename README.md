@@ -10,6 +10,7 @@ The chromatic number of a graph G, denoted as χ(G), is the minimum number of co
 
 ## Examples:
 graph:
+```
         (1)----(2)
         / \     / \
       (3)  (4)-(5)-(6)
@@ -17,6 +18,7 @@ graph:
       (7)(10)-(9)
        |    
       (8)
+```
 This is the adjacency matrix representing the graph:
 
 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
@@ -46,10 +48,10 @@ This is the adjacency matrix representing the graph:
     4.3. If recursive function false, assign the current vertex with different colour and recursively call the function again.
 
 ### Examples:
-![Graph Example](./images/Screenshot 2024-10-21 172130.png)
-![Graph Example](./images/Screenshot 2024-10-21 172646.png)
-![Graph Example](./images/Screenshot 2024-10-21 172656.png)
-![Graph Example](./images/Screenshot 2024-10-21 173552.png)
+![alt text](./img/Screenshot 2024-10-21 172130.png)
+![alt text](./img/Screenshot 2024-10-21 172646.png)
+![alt text](./img/Screenshot 2024-10-21 172656.png)
+![alt text](./img/Screenshot 2024-10-21 173552.png)
 
 
 
