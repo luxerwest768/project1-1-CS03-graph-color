@@ -181,7 +181,7 @@ public class ReadGraph{
         System.out.println("The Estimated Chromatic Number: " + predicted);
 
         // Gets the chromatic number via the backtracking algorithm
-        int chromaticNumber = CountChromaticNum.graphColoring(graph);
+        int chromaticNumber = BackTracking.graphColoring(graph);
         // Prints out the chromatic number
         System.out.println("Chromatic Number: " + chromaticNumber);    
     }
