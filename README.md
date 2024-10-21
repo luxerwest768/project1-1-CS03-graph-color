@@ -43,9 +43,9 @@ This is the adjacency matrix representing the graph:
 2. Create a recursive function that takes graph, current vertex, colour set and current color.
 3. If the current vertex is last vertex of the graph, print the chromatic number of the graph.
 4. Assign a color to a vertex from range 1 to n.
-    4.1. For every assigned color, check the configuration is safe (there is no neighbor vertices that have the same colour) and recursively call the function with the next vertex and the graph.
-    4.2. If any recursive function return true then break the loop and return true.
-    4.3. If recursive function false, assign the current vertex with different colour and recursively call the function again.
+    - For every assigned color, check the configuration is safe (there is no neighbor vertices that have the same colour) and recursively call the function with the next vertex and the graph.
+    - If any recursive function return true then break the loop and return true.
+    - If recursive function false, assign the current vertex with different colour and recursively call the function again.
 
 ### Examples:
 ![alt text](img/img1.png)
