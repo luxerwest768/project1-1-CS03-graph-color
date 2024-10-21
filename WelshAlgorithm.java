@@ -46,11 +46,15 @@ public class WelshAlgorithm {
                 }
             }
 
+            // Go to the next colour 
+            colour += 1;    
+
             // Checks whether each vertex has been coloured
             finished = done(v, nOfVertices);
         }
 
-        return colour;
+        // Returns the colour - 1 because it starts at 1, so the chromatic number is colour - 1
+        return (colour - 1);
     }
 
     public static boolean canColour(ColVertices[] v,ColVertices vertex, int colour) {
