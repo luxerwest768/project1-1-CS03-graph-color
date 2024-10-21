@@ -8,15 +8,20 @@ class ColEdge {
 }
 
 class ColVertices { 
+    // List of each edge connected to the vertex
     List<ColEdge> edges;
+    // The degree of the vertex (the amount of other vertices they are connected to)
     int degree;
+    // The colour of the vertex
     int colour;
-    boolean printed;
+    // The vertex's id 
+    int id;
 
     public ColVertices() {
+        // Makes each edges variable a list 
         this.edges = new ArrayList<>();
+        // Sets the colour automatically to 0, which represents "not coloured"
         this.colour = 0; 
-        this.printed = false;
     }
 }
 
@@ -143,22 +148,34 @@ public class ReadGraph{
             // Adds the degree of each vertex
             v[i].degree = (v[i].edges).size();
 
-            // Prints out the each edge connected to each vertex (Just to show it works)
+            // Adds an id to each vertex
+            v[i].id = i + 1;
+
+            // TEST FOR VERTEX CLASS Prints out the each edge connected to each vertex 
+            /* 
             System.out.println("Vertice " + (i+1) + " has these edges:");
             for(ColEdge edge : v[i].edges) {
                 System.out.println(edge.u + " " + edge.v);
             }
+            */
         }
 
-        // Test for the graph variable
+        // Converts the graph to a matrix
         int[][] graph = textTranslation.graph(n, v);
+
+        // TEST FOR GRAPH MATRIX Prints out the graph matrix
+        /* 
         for(int[] i : graph) {
             for(int j : i) {
                 System.out.print(j + ", ");
             }
             System.out.println("");
         }
+        */
+
+        // Gets the chromatic number via the backtracking algorithm
         int chromaticNumber = CountChromaticNum.graphColoring(graph);
+        // Prints out the chromatic number
         System.out.println("Chromatic Number: " + chromaticNumber);
     }
 }
