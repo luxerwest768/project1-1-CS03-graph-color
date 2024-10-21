@@ -53,6 +53,33 @@ This is the adjacency matrix representing the graph:
 ![alt text](img/img3.png)
 ![alt text](img/img4.png)
 
-
+# How to run the code?
+Run these lines in the command prompt
+```
+javac ReadGraph.java
+java ReadGraph "filename that contains graph"
+```
+## Example:
+```
+>> javac ReadGraph.java
+>> java ReadGraph graph.txt
+// Number of vertices = 6
+// Expected number of edges = 7
+// Reading edge 1
+// Edge: 1 2
+// Reading edge 2
+// Edge: 2 3
+// Reading edge 3
+// Edge: 3 1
+// Reading edge 4
+// Edge: 1 4
+// Reading edge 5
+// Edge: 4 5
+// Reading edge 6
+// Edge: 5 6
+// Reading edge 7
+// Edge: 6 4
+Chromatic Number: 3
+```
 
 
