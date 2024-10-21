@@ -48,10 +48,10 @@ This is the adjacency matrix representing the graph:
     4.3. If recursive function false, assign the current vertex with different colour and recursively call the function again.
 
 ### Examples:
-![alt text](./img/Screenshot 2024-10-21 172130.png)
-![alt text](./img/Screenshot 2024-10-21 172646.png)
-![alt text](./img/Screenshot 2024-10-21 172656.png)
-![alt text](./img/Screenshot 2024-10-21 173552.png)
+![alt text](img/img1.png)
+![alt text](img/img2.png)
+![alt text](img/img3.png)
+![alt text](img/img3.png)
 
 
 
