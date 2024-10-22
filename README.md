@@ -52,7 +52,7 @@ This is the adjacency matrix representing the graph:
 ![alt text](img/img2.png)
 ![alt text](img/img3.png)
 ![alt text](img/img4.png)
-# 2. Using Welsh-Powell Algorithm
+# 2. Using Welsh-Powell Algorithm (Estimation)
 ### Follow the given steps
 
 1. Convert the graph.txt into a vertices and edges class.
@@ -61,8 +61,39 @@ This is the adjacency matrix representing the graph:
 4. Colour the vertex at the top of the list with colour 1
 5. Continue down the list, colouring each vertex that is not connected to any other vertex with that colour
 6. Redo step 5 but with the next colour, do this until each vertex is coloured
-7. Once each vertex is coloured, the estimated chromatic number will be the colour variable minus 1
+7. Once each vertex is coloured, the estimated chromatic number will be the colour variable
+This algorithm returns a rough estimation of the chromatic number, not the exact.
 
+### Examples:
+The Degree array of the graph:
+| Vertex | Degree |
+|---|---|
+| 4 | 4 |
+| 5 | 4 |
+| 9 | 4 |
+| 1 | 3 |
+| 2 | 3 |
+| 6 | 3 |
+| 3 | 2 |
+| 7 | 2 |
+| 10 | 2 |
+| 8 | 1 |
+
+After the Welsh-Powell Algorithm:
+| Vertex | Degree | Colour |
+|---|---|---|
+| 4 | 4 | 1 | 
+| 5 | 4 | 2 |
+| 9 | 4 | 3 | 
+| 1 | 3 | 2 | 
+| 2 | 3 | 1 |
+| 6 | 3 | 4 |
+| 3 | 2 | 1 |
+| 7 | 2 | 2 |
+| 10 | 2 | 2 |
+| 8 | 1 | 1 |
+
+How the graph gets coloured:
 # How to run the code?
 Run these lines in the command prompt
 ```
