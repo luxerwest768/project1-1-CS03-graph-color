@@ -52,6 +52,16 @@ This is the adjacency matrix representing the graph:
 ![alt text](img/img2.png)
 ![alt text](img/img3.png)
 ![alt text](img/img4.png)
+# 2. Using Welsh-Powell Algorithm
+### Follow the given steps
+
+1. Convert the graph.txt into a vertices and edges class.
+2. Find the degree of each vertex
+3. List the vertices in the ascending order of their degrees
+4. Colour the vertex at the top of the list with colour 1
+5. Continue down the list, colouring each vertex that is not connected to any other vertex with that colour
+6. Redo step 5 but with the next colour, do this until each vertex is coloured
+7. Once each vertex is coloured, the estimated chromatic number will be the colour variable minus 1
 
 # How to run the code?
 Run these lines in the command prompt
