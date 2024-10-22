@@ -160,29 +160,35 @@ public class ReadGraph{
             */
         }
 
-        // Converts the graph to a matrix
-        int[][] graph = textTranslation.graph(n, v);
 
-        // TEST FOR GRAPH MATRIX Prints out the graph matrix
-        /* 
-        for(int[] i : graph) {
-            for(int j : i) {
-                System.out.print(j + ", ");
+        int chromaticNumber;
+
+        // using the backtracking algorithm in small graph (number of vertices is less than or equal to 100)
+        if (n <= 1000){
+            // Converts the graph to a matrix
+            int[][] graph = textTranslation.graph(n, v);
+            // TEST FOR GRAPH MATRIX Prints out the graph matrix
+
+            /* 
+            for(int[] i : graph) {
+                for(int j : i) {
+                    System.out.print(j + ", ");
+                }
+                System.out.println("");
             }
-            System.out.println("");
-        }
-        */
+            */
 
-        // Creates an array where the degree of each vertex is listed in ascending order
-        int[][] degreelist = WelshAlgorithm.degreeList(n, v);
-        // Finds the predicted chromatic number using the Welsh-Powell Algorith
-        int predicted = WelshAlgorithm.chromaticNumber(degreelist, v, n);
-        // Prints the estimated chromatic number 
-        System.out.println("The Estimated Chromatic Number: " + predicted);
+            // Gets the chromatic number via the backtracking algorithm
+            chromaticNumber = BackTracking.graphColoring(graph);
+            System.out.println("The Exact Chromatic Number: " + chromaticNumber);
 
-        // Gets the chromatic number via the backtracking algorithm
-        int chromaticNumber = BackTracking.graphColoring(graph);
-        // Prints out the chromatic number
-        System.out.println("Chromatic Number: " + chromaticNumber);    
+        // using the Welsh-Powell algorithm in large graph (number of vertices is greater than 100)
+        } else {
+            // Creates an array where the degree of each vertex is listed in ascending order
+            int[][] degreeList = WelshAlgorithm.degreeList(n, v);
+            // Finds the predicted chromatic number using the Welsh-Powell Algorithm
+            chromaticNumber = WelshAlgorithm.chromaticNumber(degreeList, v, n);
+            System.out.println("The Estimated Chromatic Number: " + chromaticNumber);
+        }    
     }
 }
