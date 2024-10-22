@@ -92,8 +92,14 @@ After the Welsh-Powell Algorithm:
 | 7 | 2 | 2 |
 | 10 | 2 | 2 |
 | 8 | 1 | 1 |
+As seen in the table, this is not the exact minimum amount of colours needed to colour the graph. If the degree list is ordered slightly differently, it returns different results. 
 
-How the graph gets coloured:
+How the graph gets coloured: 
+![alt text](img/img5.png)
+![alt text](img/img6.png)
+![alt text](img/img7.png)
+![alt text](img/img8.png)
+
 # How to run the code?
 Run these lines in the command prompt
 ```
