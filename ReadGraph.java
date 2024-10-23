@@ -164,7 +164,7 @@ public class ReadGraph{
         int chromaticNumber;
 
         // using the backtracking algorithm in small graph (number of vertices is less than or equal to 100)
-        if (n <= 100 || m < 500){
+        if (n < 35 && m < 200){
             // Converts the graph to a matrix
             int[][] graph = textTranslation.graph(n, v);
             // TEST FOR GRAPH MATRIX Prints out the graph matrix
