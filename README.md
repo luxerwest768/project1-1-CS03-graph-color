@@ -68,38 +68,37 @@ This algorithm returns a rough estimation of the chromatic number, not the exact
 The Degree array of the graph:
 | Vertex | Degree |
 |---|---|
-| 4 | 4 |
+| 9 | 4 | 
 | 5 | 4 |
-| 9 | 4 |
-| 1 | 3 |
+| 4 | 4 | 
+| 6 | 3 | 
 | 2 | 3 |
-| 6 | 3 |
-| 3 | 2 |
-| 7 | 2 |
+| 1 | 3 |
 | 10 | 2 |
+| 7 | 2 |
+| 3 | 2 |
 | 8 | 1 |
 
 After the Welsh-Powell Algorithm:
 | Vertex | Degree | Colour |
 |---|---|---|
-| 4 | 4 | 1 | 
+| 9 | 4 | 1 | 
 | 5 | 4 | 2 |
-| 9 | 4 | 3 | 
-| 1 | 3 | 2 | 
+| 4 | 4 | 3 | 
+| 6 | 3 | 3 | 
 | 2 | 3 | 1 |
-| 6 | 3 | 4 |
-| 3 | 2 | 1 |
-| 7 | 2 | 2 |
+| 1 | 3 | 2 |
 | 10 | 2 | 2 |
-| 8 | 1 | 1 |
+| 7 | 2 | 1 |
+| 3 | 2 | 3 |
+| 8 | 1 | 2 |
 
-As seen in the table, this is not the exact minimum amount of colours needed to colour the graph. If the degree list is ordered slightly differently, it returns different results. 
+This algorithm does not always return the exact result. If the degree list is ordered slightly differently, it can return different results. 
 
 How the graph gets coloured: 
 ![alt text](img/img5.png)
 ![alt text](img/img6.png)
 ![alt text](img/img7.png)
-![alt text](img/img8.png)
 
 # How to run the code?
 Run these lines in the command prompt
