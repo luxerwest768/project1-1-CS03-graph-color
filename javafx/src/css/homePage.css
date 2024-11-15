@@ -1,6 +1,7 @@
 .play-button {
     -fx-font-size: 40pt;
     -fx-margin: 10px;
+    -fx-pref-width: 600px;
     -fx-translate-y: 100px;
 }
 
