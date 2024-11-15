@@ -8,6 +8,7 @@ public class App extends Application {
     private static Stage primaryStage;
     private static Scene mainScene = mainPage.mainScene();
     private static Scene menuScene = menu.menuPage();
+    private static Scene selectGamScene = selectGame.selectGameScene();
 
     @Override
     public void start(Stage primaryStage){
@@ -23,6 +24,10 @@ public class App extends Application {
 
     public static void changeMenuScene(){
         primaryStage.setScene(menuScene);
+    }
+
+    public static void changeSelectGameScene(){
+        primaryStage.setScene(selectGamScene);
     }
 
     public static void main(String[] args) {

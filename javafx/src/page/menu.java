@@ -19,11 +19,8 @@ public class menu {
         txt.getStyleClass().add("txt");
 
         playBtn.setText("Play");
-        playBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event){
-                System.out.println("Let Play");
-            }
+        playBtn.setOnAction(e -> {
+            App.changeSelectGameScene();
         });
 
         leadBoardBtn.setText("LeaderBoards");

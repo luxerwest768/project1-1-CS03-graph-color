@@ -1,0 +1,34 @@
+.to-the-bitter-end {
+    -fx-font-size: 40pt;
+    -fx-margin: 10px;
+    -fx-pref-width: 600px;
+    -fx-translate-y: -50px;
+}
+
+.random-color {
+    -fx-font-size: 40pt;
+    -fx-margin: 10px;
+    -fx-pref-width: 600px;
+    -fx-translate-y: 100px;
+}
+
+.i-change-my-mind {
+    -fx-font-size: 40pt;
+    -fx-margin: 10px;
+    -fx-pref-width: 600px;
+    -fx-translate-y: 250px;
+}
+
+.back-button {
+    -fx-font-size: 30px;
+    -fx-translate-y: 400px;
+    -fx-translate-x: -500px;
+}
+
+.txt {
+    -fx-font-size: 60px;
+    -fx-margin: 10px;
+    -fx-translate-y: -300px;
+    -fx-alignment: center;
+
+}
