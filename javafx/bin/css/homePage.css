@@ -1,0 +1,13 @@
+.play-button {
+    -fx-font-size: 40pt;
+    -fx-margin: 10px;
+    -fx-translate-y: 100px;
+}
+
+.txt {
+    -fx-font-size: 60px;
+    -fx-margin: 10px;
+    -fx-translate-y: -200px;
+    -fx-alignment: center;
+
+}

@@ -14,7 +14,7 @@
             "type": "java",
             "name": "App",
             "request": "launch",
-            "vmArgs": "--module-path /D:/Commands/Java Lib/javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml",
+            "vmArgs": "--module-path D:/Commands/JavaLib/javafx-sdk-23.0.1/lib --add-modules=javafx.controls",
             "mainClass": "App",
             "projectName": "javafx_97750631"
         }
