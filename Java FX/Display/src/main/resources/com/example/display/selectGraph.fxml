@@ -17,7 +17,7 @@
             <Font name="BM DoHyeon OTF" size="21.0" />
          </font>
       </Button>
-      <Button layoutX="224.0" layoutY="211.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" text="Create a graph" textAlignment="CENTER">
+      <Button layoutX="224.0" layoutY="211.0" mnemonicParsing="false" onAction="#createGraphMenu" prefHeight="50.0" prefWidth="153.0" text="Create a graph" textAlignment="CENTER">
          <font>
             <Font name="BM DoHyeon OTF" size="16.0" />
          </font>
