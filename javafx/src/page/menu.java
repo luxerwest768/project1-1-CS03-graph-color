@@ -32,7 +32,7 @@ public class menu {
 
         StackPane root = new StackPane();
         root.getChildren().addAll(txt,playBtn,leadBoardBtn,moveBack);
-        Scene scene = new Scene(root,1300,1000);
+        Scene scene = new Scene(root,900,700);
         scene.getStylesheets().addAll("./css/menuPage.css");
 
         return scene;

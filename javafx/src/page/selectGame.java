@@ -32,7 +32,7 @@ public class selectGame {
 
         StackPane root = new StackPane();
         root.getChildren().addAll(txt,moveBack,toTheBitterEnd,randomColor,iChangeMyMind);
-        Scene scene = new Scene(root,1300,1000);
+        Scene scene = new Scene(root,900,700);
         scene.getStylesheets().addAll("./css/selectGame.css");
 
         return scene;

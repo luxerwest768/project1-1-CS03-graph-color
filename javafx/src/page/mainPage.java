@@ -21,7 +21,7 @@ public class mainPage  {
 
         StackPane root = new StackPane();
         root.getChildren().addAll(txt,btn);
-        Scene scene = new Scene(root,1300,1000);
+        Scene scene = new Scene(root,900,700);
         scene.getStylesheets().addAll("./css/homePage.css");
 
         return scene;
