@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "page.App",
+            "projectName": "javafx_c2a827b5"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -14,7 +21,7 @@
             "type": "java",
             "name": "page.App",
             "request": "launch",
-            "vmArgs": "--module-path /Users/javierrueda/Downloads/javafx-sdk-23.0.1/lib --add-modules=javafx.controls",
+            "vmArgs": "--module-path C:/Users/njoya/Desktop/project1-1/javafx-sdk-23.0.1/lib --add-modules=javafx.controls",
             "mainClass": "page.App",
             "projectName": "javafx_8035ef73"
         }
