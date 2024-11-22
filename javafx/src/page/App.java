@@ -9,6 +9,7 @@ public class App extends Application {
     private static Scene mainScene = mainPage.mainScene();
     private static Scene menuScene = menu.menuPage();
     private static Scene selectGamScene = selectGame.selectGameScene();
+    private static Scene uploadGraphScene = uploadGraph.uploadGraphScene();
 
     @Override
     public void start(Stage primaryStage){
@@ -28,6 +29,10 @@ public class App extends Application {
 
     public static void changeSelectGameScene(){
         primaryStage.setScene(selectGamScene);
+    }
+
+    public static void changeUploadGraphScene(){
+        primaryStage.setScene(uploadGraphScene);
     }
 
     public static void main(String[] args) {

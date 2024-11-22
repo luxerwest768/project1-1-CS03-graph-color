@@ -9,8 +9,11 @@ import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 
+import components.convertTextGraph.ReadGraph;
+
 
 import java.io.*;
+
 
 
 public class uploadGraph {
@@ -34,13 +37,16 @@ public class uploadGraph {
 
         EventHandler<ActionEvent> eventImport = new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e){
-                    File txtFile = graphImport.showOpenDialog(primaryStage);
+                    File file = graphImport.showOpenDialog(primaryStage);
 
-                    if (txtFile != null){
-                        label.setText(txtFile.getAbsolutePath()+" selected");
+                    if (file != null){
+                        int[][] graph = ReadGraph.convertTextGraph(file);
+                        label.setText(file.getAbsolutePath()+" selected");
                     }
                 }
         };
+
+        
 
         btnImportGraph.setOnAction(eventImport);
 
@@ -48,6 +54,7 @@ public class uploadGraph {
 
         Scene testScene = new Scene(root,900,700);
         testScene.getStylesheets().add("./css/uploadGraph.css");
+
         return testScene;
 
     }
