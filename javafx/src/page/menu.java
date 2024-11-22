@@ -12,7 +12,7 @@ public class menu {
         Button playBtn = new Button();
         Button leadBoardBtn = new Button();
         Button moveBack = new Button();
-        Text txt = new Text("                        Welcome to \n Three Musketeers - Graph Coloring Game");
+        Text txt = new Text("                        Welcome to \n Two-Three Musketeers - Graph Coloring Game");
         playBtn.getStyleClass().add("play-button");
         leadBoardBtn.getStyleClass().add("leaderBoard-button");
         moveBack.getStyleClass().add("back-button");
