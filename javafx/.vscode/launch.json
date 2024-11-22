@@ -4,8 +4,15 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-    
 
+
+        {
+            "type": "java",
+            "name": "ReadGraph",
+            "request": "launch",
+            "mainClass": "components.convertTextGraph.ReadGraph",
+            "projectName": "javafx_c2a827b5"
+        },
         {
             "type": "java",
             "name": "Current File",
@@ -16,9 +23,9 @@
             "type": "java",
             "name": "page.App",
             "request": "launch",
-            "vmArgs": "--module-path D:/Commands/JavaLib/javafx-sdk-23.0.1/lib --add-modules=javafx.controls",
+            "vmArgs": "--module-path C:/Users/njoya/Desktop/project1-1/javafx-sdk-23.0.1/lib --add-modules=javafx.controls",
             "mainClass": "page.App",
-            "projectName": "javafx_97750631"
+            "projectName": "javafx_c2a827b5"
         }
     ]
 }
