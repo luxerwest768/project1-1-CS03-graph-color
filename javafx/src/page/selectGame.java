@@ -23,15 +23,15 @@ public class selectGame {
         
        randomColor.setText("Random Color");
        randomColor.getStyleClass().add("random-color");
-       /*randomColor.setOnAction(e -> {
+       randomColor.setOnAction(e -> {
             App.changeUploadGraphScene();
-        }); */
+        }); 
 
        iChangeMyMind.setText("I Change My Mind");
        iChangeMyMind.getStyleClass().add("i-change-my-mind");
-       /*iChangeMyMind.setOnAction(e -> {
+       iChangeMyMind.setOnAction(e -> {
             App.changeUploadGraphScene();
-        }); */
+        });
 
         moveBack.setText("Back");
         moveBack.getStyleClass().add("back-button");
