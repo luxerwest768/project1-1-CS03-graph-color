@@ -6,17 +6,24 @@
     "configurations": [
         {
             "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "page.App",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
         },
         {
             "type": "java",
-            "name": "page.App",
+            "name": "Main",
             "request": "launch",
-            "vmArgs": "--module-path C:/Users/njoya/Desktop/project1-1/javafx-sdk-23.0.1/lib --add-modules=javafx.controls",
-            "mainClass": "page.App",
-            "projectName": "javafx_c2a827b5"
+            "vmArgs": "--module-path C:/Users/njoya/Desktop/project1-1/javafx-sdk-23.0.1/lib--add-modules=javafx.controls",
+            "mainClass": "com.example.display/com.example.display.Main",
+            "projectName": ""
         }
     ]
 }
