@@ -1,2 +1,6 @@
 # ignore class files
 *.class
+
+launch.json
+
+settings.json

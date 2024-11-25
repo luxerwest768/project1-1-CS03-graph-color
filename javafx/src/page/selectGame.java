@@ -17,12 +17,21 @@ public class selectGame {
 
        toTheBitterEnd.setText("To the Bitter End");
        toTheBitterEnd.getStyleClass().add("to-the-bitter-end");
+       toTheBitterEnd.setOnAction(e -> {
+            App.changeUploadGraphScene();
+       });
         
        randomColor.setText("Random Color");
        randomColor.getStyleClass().add("random-color");
+       randomColor.setOnAction(e -> {
+            App.changeUploadGraphScene();
+        }); 
 
        iChangeMyMind.setText("I Change My Mind");
        iChangeMyMind.getStyleClass().add("i-change-my-mind");
+       iChangeMyMind.setOnAction(e -> {
+            App.changeUploadGraphScene();
+        });
 
         moveBack.setText("Back");
         moveBack.getStyleClass().add("back-button");
@@ -32,7 +41,7 @@ public class selectGame {
 
         StackPane root = new StackPane();
         root.getChildren().addAll(txt,moveBack,toTheBitterEnd,randomColor,iChangeMyMind);
-        Scene scene = new Scene(root,1300,1000);
+        Scene scene = new Scene(root,900,700);
         scene.getStylesheets().addAll("./css/selectGame.css");
 
         return scene;

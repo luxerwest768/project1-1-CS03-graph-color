@@ -2,8 +2,6 @@ package page;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.text.Text;
 
 public class mainPage  {
@@ -21,7 +19,7 @@ public class mainPage  {
 
         StackPane root = new StackPane();
         root.getChildren().addAll(txt,btn);
-        Scene scene = new Scene(root,1300,1000);
+        Scene scene = new Scene(root,900,700);
         scene.getStylesheets().addAll("./css/homePage.css");
 
         return scene;

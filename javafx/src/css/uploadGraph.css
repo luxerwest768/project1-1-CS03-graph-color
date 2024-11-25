@@ -1,0 +1,19 @@
+.label-status{
+    -fx-translate-y: -100px;
+    -fx-font-size: 40px
+}
+
+.btn-import{
+    -fx-font-size: 30px;
+}
+
+.btn-play{
+    -fx-font-size: 30px;
+    -fx-translate-y: 100px;
+}
+
+.back-button {
+    -fx-font-size: 20px;
+    -fx-translate-y: 300px;
+    -fx-translate-x: -400px;
+}
