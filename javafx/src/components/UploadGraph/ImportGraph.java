@@ -5,9 +5,9 @@ public class ImportGraph {
 
     public ImportGraph(){}
 
-   public void setGraph(int[][] graph){
+    public void setGraph(int[][] graph){
         this.myGraph = graph;
-   }
+    }
 
     public int[][] getGraph(){
         return this.myGraph;
