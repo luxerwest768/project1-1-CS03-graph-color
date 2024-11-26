@@ -31,10 +31,10 @@ public class uploadGraph {
         FileChooser graphImport = new FileChooser();
         Label label = new Label("no files selected");
 
-        label.getStyleClass().add("label-status");
-        btnImportGraph.getStyleClass().add("btn-import");
-        btnPlay.getStyleClass().add("btn-play");
-        backButton.getStyleClass().add("back-button");
+        label.getStyleClass().add("button, label-status");
+        btnImportGraph.getStyleClass().add("button, btn-import");
+        btnPlay.getStyleClass().add("button, btn-play");
+        backButton.getStyleClass().add("button, back-button");
 
 
         backButton.setOnAction(e -> {

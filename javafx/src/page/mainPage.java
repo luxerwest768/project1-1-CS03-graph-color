@@ -9,7 +9,7 @@ public class mainPage  {
     static Scene mainScene(){
         Button btn = new Button();
         Text txt = new Text("                        Welcome to \n Two-Three Musketeers - Graph Coloring Game");
-        btn.getStyleClass().add("play-button");
+        btn.getStyleClass().add("button, play-button");
         txt.getStyleClass().add("txt");
         btn.setText("Play");
 
