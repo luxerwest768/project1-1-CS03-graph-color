@@ -6,13 +6,6 @@
     "configurations": [
         {
             "type": "java",
-            "name": "App",
-            "request": "launch",
-            "mainClass": "page.App",
-            "projectName": "javafx_8035ef73"
-        },
-        {
-            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

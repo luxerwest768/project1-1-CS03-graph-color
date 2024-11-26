@@ -1,6 +1,0 @@
-# ignore class files
-*.class
-
-/javafx/.vscode/launch.json
-
-/javafx/.vscode/settings.json
