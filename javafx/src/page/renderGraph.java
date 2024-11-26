@@ -89,7 +89,7 @@ public class renderGraph {
             }
         }
 
-        Scene scene = new Scene(pane, 1200, 900);
+        Scene scene = new Scene(pane, 1000, 700);
         scene.getStylesheets().add("./css/renderGraph.css");
 
         return scene;
