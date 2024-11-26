@@ -11,9 +11,9 @@ public class menu {
         Button leadBoardBtn = new Button("LeaderBoards");
         Button moveBack = new Button("Back");
         Text txt = new Text("                        Welcome to \n Two-Three Musketeers - Graph Coloring Game");
-        playBtn.getStyleClass().add("play-button");
-        leadBoardBtn.getStyleClass().add("leaderBoard-button");
-        moveBack.getStyleClass().add("back-button");
+        playBtn.getStyleClass().add("button, play-button");
+        leadBoardBtn.getStyleClass().add("button, leaderBoard-button");
+        moveBack.getStyleClass().add("button, back-button");
         txt.getStyleClass().add("txt");
 
         playBtn.setOnAction(e -> {

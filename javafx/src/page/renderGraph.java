@@ -20,15 +20,15 @@ public class renderGraph {
     
 
     public static Scene renderGraphScene(int[][] graph){
-        Edges edgeSet = new Edges(graph);
         Pane pane = new Pane();
         Vertices nodeSet = new Vertices();
+        Edges edgesSet = new Edges(graph);
         int numVertices = graph.length;
 
         Button renderButton = new Button("Render");
-        renderButton.getStyleClass().add("render-button");
+        renderButton.getStyleClass().add("button, render-button");
         Button backButton = new Button("Back");
-        backButton.getStyleClass().add("back-button");
+        backButton.getStyleClass().add("button, back-button");
         backButton.setOnAction((ActionEvent e) -> {
             App.changeSelectGameScene();
         });
@@ -39,23 +39,23 @@ public class renderGraph {
         // make an event to reload edge's location whenever change node's location
         EventHandler<ActionEvent> render = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                for (int i = 0; i < edgeSet.getNumEdges(); i++) {
-                    pane.getChildren().remove(edgeSet.getEdge(i));
+                for (int i = 0; i < edgesSet.getNumEdges(); i++) {
+                    pane.getChildren().remove(edgesSet.getEdge(i));
                 }
-                edgeSet.removeAllEdges();
+                edgesSet.removeAllEdges();
                 for (int i=0 ; i<numVertices ; i++){
                     Vertex node = nodeSet.getVertex(i);
-                    edgeSet.setLocationX(i,node.getX());
-                    edgeSet.setLocationY(i,node.getY());
+                    edgesSet.setLocationX(i,node.getX());
+                    edgesSet.setLocationY(i,node.getY());
                 }
                 for (int i = 0; i < numVertices; i++) {
                     for (int j = 0; j < numVertices; j++) {
                         if (graph[i][j] == 1) {
                             Line edge = new Line(
-                                    edgeSet.getLocationX(i), edgeSet.getLocationY(i),
-                                    edgeSet.getLocationX(j), edgeSet.getLocationY(j)
+                                    edgesSet.getLocationX(i), edgesSet.getLocationY(i),
+                                    edgesSet.getLocationX(j), edgesSet.getLocationY(j)
                             );
-                            edgeSet.addEdge(edge);
+                            edgesSet.addEdge(edge);
                             edge.setStroke(Color.BLACK);
                             pane.getChildren().add(edge);
                         }
@@ -63,13 +63,13 @@ public class renderGraph {
                 }
             }
         };
-        renderButton.setOnAction(render);
+        renderButton.setOnAction(render); 
 
         // render nodes
         for (int i = 0; i < numVertices; i++) {
             Vertex node = new Vertex();
             nodeSet.addVertex(node);
-            node.setPosition(edgeSet.getLocationX(i), edgeSet.getLocationY(i));
+            node.setPosition(edgesSet.getLocationX(i), edgesSet.getLocationY(i));
             node.drag(); // make node can be mouseDrag
             pane.getChildren().add(node.getCircle());
         }
@@ -79,10 +79,10 @@ public class renderGraph {
             for (int j = 0; j < numVertices; j++) {
                 if (graph[i][j] == 1) {
                     Line edge = new Line(
-                            edgeSet.getLocationX(i), edgeSet.getLocationY(i),
-                            edgeSet.getLocationX(j), edgeSet.getLocationY(j)
+                            edgesSet.getLocationX(i), edgesSet.getLocationY(i),
+                            edgesSet.getLocationX(j), edgesSet.getLocationY(j)
                     );
-                    edgeSet.addEdge(edge);
+                    edgesSet.addEdge(edge);
                     edge.setStroke(Color.BLACK);
                     pane.getChildren().add(edge);
                 }
