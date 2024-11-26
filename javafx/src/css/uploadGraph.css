@@ -4,11 +4,9 @@
 }
 
 .button {
-    -fx-pref-width: 200px;
     -fx-padding: 10px;
     -fx-border-color: gray;
     -fx-background-color: white;
-    -fx-translate-y: 20px;
 }
 
 .button:hover {
@@ -17,11 +15,13 @@
 
 .btn-import{
     -fx-font-size: 30px;
+    -fx-pref-width: 300;
 }
 
 .btn-play{
     -fx-font-size: 30px;
     -fx-translate-y: 100px;
+    -fx-pref-width: 300;
 }
 
 .back-button {
