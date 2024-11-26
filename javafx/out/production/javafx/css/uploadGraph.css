@@ -3,13 +3,25 @@
     -fx-font-size: 40px
 }
 
+.button {
+    -fx-padding: 10px;
+    -fx-border-color: gray;
+    -fx-background-color: white;
+}
+
+.button:hover {
+    -fx-background-color: #f0f0f0;
+}
+
 .btn-import{
     -fx-font-size: 30px;
+    -fx-pref-width: 300;
 }
 
 .btn-play{
     -fx-font-size: 30px;
     -fx-translate-y: 100px;
+    -fx-pref-width: 300;
 }
 
 .back-button {

@@ -1,3 +1,13 @@
+.button {
+    -fx-padding: 10px;
+    -fx-border-color: gray;
+    -fx-background-color: white;
+}
+
+.button:hover {
+    -fx-background-color: #f0f0f0;
+}
+
 .to-the-bitter-end {
     -fx-font-size: 30pt;
     -fx-margin: 10px;

@@ -4,6 +4,15 @@
     -fx-pref-width: 600px;
     -fx-translate-y: 100px;
 }
+.button {
+    -fx-padding: 10px;
+    -fx-border-color: gray;
+    -fx-background-color: white;
+}
+
+.button:hover {
+    -fx-background-color: #f0f0f0;
+}
 
 .txt {
     -fx-font-size: 40px;
