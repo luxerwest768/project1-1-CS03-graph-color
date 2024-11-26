@@ -34,7 +34,7 @@ public class Edges {
 
     public void setGraphPosition(){
         int numVertices = this.graph.length;
-        double centerX = 1000/2; // ensure that the first position is in the center
+        double centerX = 900/2; // ensure that the first position is in the center
         double centerY = 700/2; // ensure that the first position is in the center
         double radius = Math.min(centerX, centerY);
         for (int i = 0; i < numVertices; i++) {
