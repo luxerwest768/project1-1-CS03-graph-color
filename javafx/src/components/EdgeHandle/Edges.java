@@ -16,6 +16,12 @@ public class Edges {
         setGraphPosition();
     }
 
+    public void setEdge(int[][] graph){
+        this.graph = graph;
+        this.positions = new double[graph.length][2];
+        setGraphPosition();
+    }
+
     public void  addEdge(Line line){
         this.edgeSet.add(line);
     }
