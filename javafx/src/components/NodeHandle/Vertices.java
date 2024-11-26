@@ -5,19 +5,10 @@ import components.EdgeHandle.Edges;
 import java.util.ArrayList;
 
 public class Vertices {
-    private ArrayList<Vertex> verticesSet = new ArrayList<>();
-    private Edges edgesSet = new Edges();
+    private ArrayList<Vertex> verticesSet = new ArrayList<>();;
 
     public int getNumberVertices(){
         return verticesSet.size();
-    }
-
-    public Edges getEdgesSet(){
-        return edgesSet;
-    }
-
-    public void setEdgesSet(int[][] graph){
-        this.edgesSet.setEdge(graph);
     }
 
     public void addVertex(Vertex vertex){
