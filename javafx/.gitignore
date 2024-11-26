@@ -1,5 +1,5 @@
-.class
+*.class
 
-.vscode
+.vscode/
 
 .idea
