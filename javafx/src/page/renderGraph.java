@@ -26,9 +26,9 @@ public class renderGraph {
         int numVertices = graph.length;
 
         Button renderButton = new Button("Render");
-        renderButton.getStyleClass().add("render-button");
+        renderButton.getStyleClass().add("button, render-button");
         Button backButton = new Button("Back");
-        backButton.getStyleClass().add("back-button");
+        backButton.getStyleClass().add("button, back-button");
         backButton.setOnAction((ActionEvent e) -> {
             App.changeSelectGameScene();
         });

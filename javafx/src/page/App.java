@@ -34,6 +34,11 @@ public class App extends Application {
         primaryStage.setScene(renderGraph.renderGraphScene(graph));
     }
 
+    public static void endScreenScene(){
+        primaryStage.setScene(endScreen.endScreenScene());
+    }
+
+
     public static void main(String[] args) {
         launch(args);
     }
