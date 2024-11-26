@@ -5,7 +5,8 @@ import javafx.application.Application;
 
 
 public class App extends Application {
-    private static Stage primaryStage;
+    private static Stage primaryStage = new Stage();
+    private static Stage secondaryStage = new Stage();
 
     @Override
     public void start(Stage primaryStage){
@@ -32,7 +33,8 @@ public class App extends Application {
     }
 
     public static void changeRenderGraphScene(int[][] graph){
-        primaryStage.setScene(renderGraph.renderGraphScene(graph));
+        secondaryStage.setScene(renderGraph.renderGraphScene(graph));
+        secondaryStage.show();
     }
 
     public static void endScreenScene(){

@@ -22,17 +22,14 @@ public class renderGraph {
     public static Scene renderGraphScene(int[][] graph){
         Pane pane = new Pane();
         Vertices nodeSet = new Vertices();
-        Edges edgesSet = new Edges(graph);
+        Edges edgesSet = new Edges();
+        edgesSet.setEdge(graph);
         int numVertices = graph.length;
 
         Button renderButton = new Button("Render");
-        renderButton.getStyleClass().add("button, render-button");
-        Button backButton = new Button("Back");
-        backButton.getStyleClass().add("button, back-button");
-        backButton.setOnAction((ActionEvent e) -> {
-            App.changeSelectGameScene();
-        });
-        pane.getChildren().addAll(renderButton,backButton);
+        renderButton.getStyleClass().add("render-button");
+
+        pane.getChildren().addAll(renderButton);
 
 
 
