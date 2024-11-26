@@ -10,7 +10,11 @@ public class Edges {
     private ArrayList<Line> edgeSet = new ArrayList<>();
 
 
-    public Edges(int[][] graph){
+    public Edges(){
+
+    }
+
+    public  void setEdge(int[][] graph){
         this.graph = graph;
         this.positions = new double[graph.length][2];
         setGraphPosition();

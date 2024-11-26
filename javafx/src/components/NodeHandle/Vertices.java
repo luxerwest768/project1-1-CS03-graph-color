@@ -1,12 +1,23 @@
 package components.NodeHandle;
 
+import components.EdgeHandle.Edges;
+
 import java.util.ArrayList;
 
 public class Vertices {
-    private static ArrayList<Vertex> verticesSet = new ArrayList<>();
+    private ArrayList<Vertex> verticesSet = new ArrayList<>();
+    private Edges edgesSet = new Edges();
 
     public int getNumberVertices(){
         return verticesSet.size();
+    }
+
+    public Edges getEdgesSet(){
+        return edgesSet;
+    }
+
+    public void setEdgesSet(int[][] graph){
+        this.edgesSet.setEdge(graph);
     }
 
     public void addVertex(Vertex vertex){

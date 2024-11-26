@@ -20,9 +20,9 @@ public class renderGraph {
     
 
     public static Scene renderGraphScene(int[][] graph){
-        Edges edgeSet = new Edges(graph);
         Pane pane = new Pane();
         Vertices nodeSet = new Vertices();
+        nodeSet.setEdgesSet(graph);
         int numVertices = graph.length;
 
         Button renderButton = new Button("Render");
@@ -39,23 +39,23 @@ public class renderGraph {
         // make an event to reload edge's location whenever change node's location
         EventHandler<ActionEvent> render = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                for (int i = 0; i < edgeSet.getNumEdges(); i++) {
-                    pane.getChildren().remove(edgeSet.getEdge(i));
+                for (int i = 0; i < nodeSet.getEdgesSet().getNumEdges(); i++) {
+                    pane.getChildren().remove(nodeSet.getEdgesSet().getEdge(i));
                 }
-                edgeSet.removeAllEdges();
+                nodeSet.getEdgesSet().removeAllEdges();
                 for (int i=0 ; i<numVertices ; i++){
                     Vertex node = nodeSet.getVertex(i);
-                    edgeSet.setLocationX(i,node.getX());
-                    edgeSet.setLocationY(i,node.getY());
+                    nodeSet.getEdgesSet().setLocationX(i,node.getX());
+                    nodeSet.getEdgesSet().setLocationY(i,node.getY());
                 }
                 for (int i = 0; i < numVertices; i++) {
                     for (int j = 0; j < numVertices; j++) {
                         if (graph[i][j] == 1) {
                             Line edge = new Line(
-                                    edgeSet.getLocationX(i), edgeSet.getLocationY(i),
-                                    edgeSet.getLocationX(j), edgeSet.getLocationY(j)
+                                    nodeSet.getEdgesSet().getLocationX(i), nodeSet.getEdgesSet().getLocationY(i),
+                                    nodeSet.getEdgesSet().getLocationX(j), nodeSet.getEdgesSet().getLocationY(j)
                             );
-                            edgeSet.addEdge(edge);
+                            nodeSet.getEdgesSet().addEdge(edge);
                             edge.setStroke(Color.BLACK);
                             pane.getChildren().add(edge);
                         }
@@ -69,7 +69,7 @@ public class renderGraph {
         for (int i = 0; i < numVertices; i++) {
             Vertex node = new Vertex();
             nodeSet.addVertex(node);
-            node.setPosition(edgeSet.getLocationX(i), edgeSet.getLocationY(i));
+            node.setPosition(nodeSet.getEdgesSet().getLocationX(i), nodeSet.getEdgesSet().getLocationY(i));
             node.drag(); // make node can be mouseDrag
             pane.getChildren().add(node.getCircle());
         }
@@ -79,10 +79,10 @@ public class renderGraph {
             for (int j = 0; j < numVertices; j++) {
                 if (graph[i][j] == 1) {
                     Line edge = new Line(
-                            edgeSet.getLocationX(i), edgeSet.getLocationY(i),
-                            edgeSet.getLocationX(j), edgeSet.getLocationY(j)
+                            nodeSet.getEdgesSet().getLocationX(i), nodeSet.getEdgesSet().getLocationY(i),
+                            nodeSet.getEdgesSet().getLocationX(j), nodeSet.getEdgesSet().getLocationY(j)
                     );
-                    edgeSet.addEdge(edge);
+                    nodeSet.getEdgesSet().addEdge(edge);
                     edge.setStroke(Color.BLACK);
                     pane.getChildren().add(edge);
                 }
