@@ -9,7 +9,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage){
         App.primaryStage = primaryStage;
-        primaryStage.setTitle("Three Musketeers - Graph Coloring Game");
+        primaryStage.setTitle("Two(Three) Musketeers - Graph Coloring Game");
         primaryStage.setScene(mainPage.mainScene());
         primaryStage.show();
     }
