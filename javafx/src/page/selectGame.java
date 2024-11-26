@@ -16,25 +16,25 @@ public class selectGame {
         txt.getStyleClass().add("txt");
 
        toTheBitterEnd.setText("To the Bitter End");
-       toTheBitterEnd.getStyleClass().add("button, to-the-bitter-end");
+       toTheBitterEnd.getStyleClass().add("to-the-bitter-end");
        toTheBitterEnd.setOnAction(e -> {
             App.changeUploadGraphScene();
        });
         
        randomColor.setText("Random Color");
-       randomColor.getStyleClass().add("button, random-color");
+       randomColor.getStyleClass().add("random-color");
        randomColor.setOnAction(e -> {
             App.changeUploadGraphScene();
         }); 
 
        iChangeMyMind.setText("I Change My Mind");
-       iChangeMyMind.getStyleClass().add("button, i-change-my-mind");
+       iChangeMyMind.getStyleClass().add("i-change-my-mind");
        iChangeMyMind.setOnAction(e -> {
             App.changeUploadGraphScene();
         });
 
         moveBack.setText("Back");
-        moveBack.getStyleClass().add("button, back-button");
+        moveBack.getStyleClass().add("back-button");
         moveBack.setOnAction(e -> {
             App.changeMenuScene();
         });

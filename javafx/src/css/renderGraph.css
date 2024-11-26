@@ -1,18 +1,11 @@
 .render-button {
     -fx-font-size: 16pt;
-    -fx-translate-x: 800px;
 }
 
-.back-button {
-    -fx-font-size: 16pt;
-    -fx-translate-x: 20px;
-}
 .button {
-    -fx-pref-width: 200px;
     -fx-padding: 10px;
     -fx-border-color: gray;
     -fx-background-color: white;
-    -fx-translate-y: 20px;
 }
 
 .button:hover {
