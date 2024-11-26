@@ -3,6 +3,7 @@ package page;
 import javafx.stage.Stage;
 import javafx.application.Application;
 
+
 public class App extends Application {
     private static Stage primaryStage;
 
