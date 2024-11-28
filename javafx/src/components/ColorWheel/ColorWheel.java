@@ -21,7 +21,7 @@ public class ColorWheel {
                 int red = (int) (color.getRed() * 255);
                 int blue  = (int) (color.getBlue() * 255);
                 int green = (int) (color.getGreen() * 255);
-                System.out.println(red + " " + green + " " + blue);
+                //System.out.println(red + " " + green + " " + blue);
                 this.currentColor = Color.rgb(red,green,blue);
             }
         });

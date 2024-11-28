@@ -1,30 +1,19 @@
 package components.EdgeHandle;
 
-import javafx.scene.shape.Line;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Edges {
     private int[][] graph;
     private ArrayList<Edge> edgeSet = new ArrayList<>();
-    private HashMap<String,Edge> edgesPositions = new HashMap<>();
 
 
     public Edges(){
     }
 
-    public void setUpPosition(){
-        for (int i = 0; i < edgeSet.size(); i++){
-            StringBuilder key = new StringBuilder();
-            Edge edge = edgeSet.get(i);
-            key.append(edge.getStartPosition());
-            key.append(":");
-            key.append(edge.getEndPosition());
-            edgesPositions.put(key.toString(),edgeSet.get(i));
-        }
+    public int size(){
+        return edgeSet.size();
     }
-
 
     public void  addEdge(Edge line){
         this.edgeSet.add(line);
@@ -41,7 +30,5 @@ public class Edges {
     public void removeAllEdges(){
         this.edgeSet.clear();
     }
-
-
 
 }

@@ -1,6 +1,5 @@
 package components.NodeHandle;
 
-import components.EdgeHandle.Edges;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
@@ -42,9 +41,26 @@ public class Vertices {
     }
 
 
-    public Color getColorIndex(int index){
-        return this.colorSet[index];
+    public boolean checkValidColor(int index, Color c){
+        for (int i = 0; i < this.graph[index].length; i++) {
+            if (graph[index][i] == 1 && colorSet[i] != null){
+                double red1 = c.getRed();
+                double green1 = c.getGreen();
+                double blue1 = c.getBlue();
+                double red2 = colorSet[i].getRed();
+                double green2 = colorSet[i].getGreen();
+                double blue2 = colorSet[i].getBlue();
+
+                double distance = Math.sqrt(Math.pow(red2 - red1, 2) + Math.pow(green2-green1,2) + Math.pow(blue2 - blue1, 2));
+
+                if (distance < 0.3){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
+
 
     public void addVertex(Vertex vertex){
         verticesSet.add(vertex);
@@ -73,4 +89,6 @@ public class Vertices {
     public Vertex getVertex(int index){
         return this.verticesSet.get(index);
     }
+
+    
 }

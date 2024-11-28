@@ -3,7 +3,6 @@ package components.EdgeHandle;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
-import components.NodeHandle.Vertex;
 
 public class Edge {
     private Line line;
@@ -12,6 +11,8 @@ public class Edge {
 
     public Edge(double x1,double y1,double x2,double y2) {
         this.line = new Line(x1,y1,x2,y2);
+        getStartPosition();
+        getEndPosition();
     }
 
     public Line getLine() {
@@ -36,20 +37,6 @@ public class Edge {
         return endKey.toString();
     }
 
-    public void drag(Vertex node){
-        node.getCircle().setOnMouseDragged(event -> {
-            double x = node.getX();
-            double y = node.getY();
-            StringBuilder key = new StringBuilder(x+","+y);
-            if (key.equals(this.startKey)) {
-                this.line.setStartX(event.getX());
-                this.line.setStartY(event.getY());
-            } else if (key.equals(this.endKey)) {
-                this.line.setEndX(event.getX());
-                this.line.setEndY(event.getY());
-            }
-        });
-    }
 
     public void setStroke(Color color) {
         this.line.setStroke(color);
