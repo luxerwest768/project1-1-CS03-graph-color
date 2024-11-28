@@ -11,3 +11,12 @@
 .button:hover {
     -fx-background-color: #f0f0f0;
 }
+
+.color-wheel {
+    -fx-translate-x: 800;
+}
+
+.current-color {
+    -fx-translate-y: 200;
+    -fx-translate-x: 950;
+}

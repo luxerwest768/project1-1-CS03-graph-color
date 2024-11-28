@@ -5,7 +5,9 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -32,6 +34,15 @@ public class uploadGraph {
         FileChooser graphImport = new FileChooser();
         Label label = new Label("no files selected");
 
+        Text txtNumEdges = new Text("number of edges selected:");
+        txtNumEdges.getStyleClass().add("txt-edges");
+        Spinner<Integer> numEdges = new Spinner(1,20,1);
+        numEdges.getStyleClass().add("num-edges");
+        Text txtNumNodes = new Text("number of nodes selected:");
+        txtNumNodes.getStyleClass().add("txt-nodes");
+        Spinner<Integer> numNodes = new Spinner(1,20,1);
+        numNodes.getStyleClass().add("num-nodes");
+
         label.getStyleClass().add("label-status");
         btnImportGraph.getStyleClass().add("btn-import");
         btnPlay.getStyleClass().add("btn-play");
@@ -57,6 +68,7 @@ public class uploadGraph {
         EventHandler<ActionEvent> changeScene = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e){
                 int[][] graph = getGraph.getGraph();
+
                 try {
                     if (graph != null){
                         App.changeRenderGraphScene(graph);
@@ -64,7 +76,7 @@ public class uploadGraph {
                         label.setText("You need to import file!");
                     }
                 } catch (NullPointerException error){
-                    System.out.println("Invalid file"+error);
+                    System.out.println("Invalid file "+error);
                 }
                 
             }
@@ -75,7 +87,11 @@ public class uploadGraph {
         
 
 
-        root.getChildren().addAll(btnImportGraph,label,backButton,btnPlay);
+        root.getChildren().addAll(
+                btnImportGraph,label,backButton,btnPlay,numNodes,numEdges,
+                txtNumEdges,txtNumNodes
+        );
+
 
         Scene uploadGraphScene = new Scene(root,900,700);
         uploadGraphScene.getStylesheets().add("./css/uploadGraph.css");
