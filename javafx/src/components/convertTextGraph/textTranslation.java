@@ -4,7 +4,7 @@ public class textTranslation {
     public static int[][] graph(int nOfVertices, ColVertices[] v) {
         // Initializes the graph
         int[][] graph = new int[nOfVertices][nOfVertices];
-        
+
         // Loops through the vertices
         for(int i = 0; i < nOfVertices; i++) {
             // Loopes through each edge the vertice is connected to
@@ -21,7 +21,7 @@ public class textTranslation {
                 }
             }
         }
-        
+
         return graph;
     }
 }
