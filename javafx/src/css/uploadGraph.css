@@ -1,5 +1,5 @@
 .label-status{
-    -fx-translate-y: -100px;
+    -fx-translate-y: -200px;
     -fx-font-size: 40px
 }
 
@@ -13,14 +13,31 @@
     -fx-background-color: #f0f0f0;
 }
 
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color: white;
+    -fx-border-color: gray;
+}
+
+.spinner .increment-arrow-button:pressed,
+.spinner .decrement-arrow-button:pressed {
+    -fx-background-color: gray;
+}
+
+.spinner {
+    -fx-border-color: gray;
+    -fx-background-color: white;
+}
+
 .btn-import{
     -fx-font-size: 30px;
     -fx-pref-width: 300;
+    -fx-translate-y: 100px;
 }
 
 .btn-play{
     -fx-font-size: 30px;
-    -fx-translate-y: 100px;
+    -fx-translate-y: 200px;
     -fx-pref-width: 300;
 }
 
@@ -28,4 +45,10 @@
     -fx-font-size: 20px;
     -fx-translate-y: 300px;
     -fx-translate-x: -400px;
+}
+
+.create-button {
+    -fx-font-size: 30px;
+    -fx-pref-width: 300;
+    -fx-translate-y: -10px;
 }

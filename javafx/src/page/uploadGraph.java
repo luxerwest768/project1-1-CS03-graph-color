@@ -31,11 +31,18 @@ public class uploadGraph {
         Button backButton = new Button("Back");
         FileChooser graphImport = new FileChooser();
         Label label = new Label("no files selected");
+        Button createGraphBtn = new Button("Create graph");
+
 
         label.getStyleClass().add("label-status");
         btnImportGraph.getStyleClass().add("btn-import");
         btnPlay.getStyleClass().add("btn-play");
         backButton.getStyleClass().add("back-button");
+        createGraphBtn.getStyleClass().add("create-button");
+
+        createGraphBtn.setOnAction(e -> {
+            App.changeCreateGraphScene();
+        });
 
 
         backButton.setOnAction(e -> {
@@ -57,6 +64,7 @@ public class uploadGraph {
         EventHandler<ActionEvent> changeScene = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e){
                 int[][] graph = getGraph.getGraph();
+
                 try {
                     if (graph != null){
                         App.changeRenderGraphScene(graph);
@@ -64,7 +72,7 @@ public class uploadGraph {
                         label.setText("You need to import file!");
                     }
                 } catch (NullPointerException error){
-                    System.out.println("Invalid file"+error);
+                    System.out.println("Invalid file "+error);
                 }
                 
             }
@@ -75,7 +83,10 @@ public class uploadGraph {
         
 
 
-        root.getChildren().addAll(btnImportGraph,label,backButton,btnPlay);
+        root.getChildren().addAll(
+                btnImportGraph,label,backButton,btnPlay,createGraphBtn
+        );
+
 
         Scene uploadGraphScene = new Scene(root,900,700);
         uploadGraphScene.getStylesheets().add("./css/uploadGraph.css");

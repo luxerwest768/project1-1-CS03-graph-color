@@ -3,14 +3,17 @@ package components.NodeHandle;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-public class Vertex {
+import components.ColorWheel.ColorWheel;
+
+public class Vertex{
     private Circle circle = new Circle(0,0,20,Color.WHITE);
-    private static int index = -1;
+    private int index;
+    private static int count = -1;
 
     public Vertex(){
-        this.index++;
+        this.count++;
+        this.index = this.count;
         this.circle.setStroke(Color.BLACK);
-
     }
 
     public void setPosition(double x, double y){
@@ -20,6 +23,7 @@ public class Vertex {
 
     public void drag(){
         this.circle.setOnMouseDragged(event -> {
+            this.circle.toFront();
             this.circle.setCenterX(event.getSceneX());
             this.circle.setCenterY(event.getSceneY());
         });
@@ -41,15 +45,23 @@ public class Vertex {
         return this.circle.getCenterY();
     }
 
-    public void setColor(Color color){
-        this.circle.setFill(color);
+    public void setColor(ColorWheel colorWheel, Vertices nodeSet){
+        this.circle.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2){
+                if (nodeSet.checkValidColor(index, colorWheel.getColor())){
+                    this.circle.setFill(colorWheel.getColor());
+                    nodeSet.setColorIndex(index, colorWheel.getColor());
+                } else {
+                    System.out.println("Invalid color");
+                }
+
+            }
+        });
     }
 
-    public int getIndex(){
-        return index;
-    }
 
     public Circle getCircle(){
         return this.circle;
     }
+
 }

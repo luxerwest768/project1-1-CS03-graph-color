@@ -25,6 +25,8 @@ public class CreateGraphPage {
         
         // Declares the container and items within for the input of the vertices
         HBox verticescon = new HBox();
+        verticescon.setMaxWidth(800);
+        verticescon.setMaxHeight(50);
         Label verticetxt = new Label("Number of vertices");
         TextField verticeinput = new TextField();
         verticeinput.setText("Type Here");
@@ -32,11 +34,13 @@ public class CreateGraphPage {
         randbtn1.setText("Randomize");
         verticescon.getChildren().addAll(verticetxt, verticeinput, randbtn1);
         verticescon.setSpacing(10);
-        
+
         verticescon.getStyleClass().add("containerV");
 
         // Declares the container and items within for the input of the edges
         HBox edgescon = new HBox();
+        edgescon.setMaxWidth(800);
+        edgescon.setMaxHeight(50);
         Label edgestxt = new Label("Number of Edges");
         TextField edgesinput = new TextField();
         edgesinput.setText("Type Here");
@@ -88,7 +92,7 @@ public class CreateGraphPage {
         // Sets the text and the function of the back button
         backbtn.setText("Back");
         backbtn.setOnAction(e -> {
-            App.changeSelectGameScene();
+            App.changeUploadGraphScene();
         });
 
         StackPane root = new StackPane();
