@@ -159,5 +159,41 @@ public class ReadGraph{
 
         return graph;
     };
+
+    public static int[][] createGraph(int vertices, int edges) {
+        // Creates array of each edge
+        ColEdge[] e = new ColEdge[edges];
+
+        // Randomizes the vertices connected to each edge
+        Random rand = new Random();
+        for (int i = 0; i < edges; i++) {
+            e[i] = new ColEdge();
+            e[i].u = rand.nextInt(vertices) + 1;
+            e[i].v = rand.nextInt(vertices) + 1;
+        }
+
+        ColVertices[] v = new ColVertices[vertices];
+        // Creates the vertices and adds the edges to them
+        for(int i=0; i <= (vertices-1); i++) {
+            // Establishes a new vertice
+            v[i] = new ColVertices();
+
+            // Loops through all edges and checks whether they are connected to the vertex
+            for(int t=0; t <= (edges-1); t++) {
+                if(e[t].u == (i+1) || e[t].v == (i+1)) {
+                    (v[i].edges).add(e[t]); 
+                }
+            }
+
+            // Adds the degree of each vertex
+            v[i].degree = (v[i].edges).size();
+
+            // Adds an id to each vertex
+            v[i].id = i + 1;
+        }
+
+        int[][] graph = textTranslation.graph(vertices, v);
+        return graph;
+    }
 }
 

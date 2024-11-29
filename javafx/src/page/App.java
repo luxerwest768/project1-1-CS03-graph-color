@@ -28,6 +28,10 @@ public class App extends Application {
         primaryStage.setScene(selectGame.selectGameScene());
     }
 
+    public static void changeCreateGraphScene(){
+        primaryStage.setScene(CreateGraphPage.CreateGraph());
+    }
+
     public static void changeUploadGraphScene(){
         primaryStage.setScene(uploadGraph.uploadGraphScene());
     }
