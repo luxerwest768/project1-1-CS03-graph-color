@@ -5,9 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Spinner;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -33,20 +31,18 @@ public class uploadGraph {
         Button backButton = new Button("Back");
         FileChooser graphImport = new FileChooser();
         Label label = new Label("no files selected");
+        Button createGraphBtn = new Button("Create graph");
 
-        Text txtNumEdges = new Text("number of edges selected:");
-        txtNumEdges.getStyleClass().add("txt-edges");
-        Spinner<Integer> numEdges = new Spinner(1,20,1);
-        numEdges.getStyleClass().add("num-edges");
-        Text txtNumNodes = new Text("number of nodes selected:");
-        txtNumNodes.getStyleClass().add("txt-nodes");
-        Spinner<Integer> numNodes = new Spinner(1,20,1);
-        numNodes.getStyleClass().add("num-nodes");
 
         label.getStyleClass().add("label-status");
         btnImportGraph.getStyleClass().add("btn-import");
         btnPlay.getStyleClass().add("btn-play");
         backButton.getStyleClass().add("back-button");
+        createGraphBtn.getStyleClass().add("create-button");
+
+        createGraphBtn.setOnAction(e -> {
+            App.changeCreateGraphScene();
+        });
 
 
         backButton.setOnAction(e -> {
@@ -88,8 +84,7 @@ public class uploadGraph {
 
 
         root.getChildren().addAll(
-                btnImportGraph,label,backButton,btnPlay,numNodes,numEdges,
-                txtNumEdges,txtNumNodes
+                btnImportGraph,label,backButton,btnPlay,createGraphBtn
         );
 
 

@@ -47,24 +47,8 @@
     -fx-translate-x: -400px;
 }
 
-.num-edges {
-    -fx-font-size: 16;
-    -fx-translate-x: 150;
-}
-
-.num-nodes {
-    -fx-font-size: 16;
-    -fx-translate-y: -50;
-    -fx-translate-x: 150;
-}
-
-.txt-edges {
-    -fx-font-size: 30;
-    -fx-translate-x: -150;
-}
-
-.txt-nodes {
-    -fx-font-size: 30;
-    -fx-translate-y: -50;
-    -fx-translate-x: -150;
+.create-button {
+    -fx-font-size: 30px;
+    -fx-pref-width: 300;
+    -fx-translate-y: -10px;
 }
