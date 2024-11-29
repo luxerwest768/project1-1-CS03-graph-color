@@ -54,9 +54,13 @@ public class uploadGraph {
                     File file = graphImport.showOpenDialog(primaryStage);
 
                     if (file != null){
-                        int[][] graph = ReadGraph.convertTextGraph(file);
-                        getGraph.setGraph(graph);
-                        label.setText(file.getAbsolutePath()+" selected");
+                        try {
+                            int[][] graph = ReadGraph.convertTextGraph(file);
+                            getGraph.setGraph(graph);
+                            label.setText(file.getAbsolutePath()+" selected");
+                        } catch (NegativeArraySizeException erro){
+                            label.setText("Invalid file");
+                        }
                     }
                 }
         };

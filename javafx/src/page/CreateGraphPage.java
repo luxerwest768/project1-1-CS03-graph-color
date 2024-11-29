@@ -71,15 +71,17 @@ public class CreateGraphPage {
 
         EventHandler<ActionEvent> changeScene = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e){
-                int[][] graph = ReadGraph.createGraph(Integer.valueOf(verticeinput.getText()), Integer.valueOf(edgesinput.getText()));
                 try {
+                    int[][] graph = ReadGraph.createGraph(Integer.valueOf(verticeinput.getText()), Integer.valueOf(edgesinput.getText()));
                     if (graph != null){
                         App.changeRenderGraphScene(graph);
                     } else {
-                        subheader.setText("Invalid Input");
+                        subheader.setText("Invalid Input!");
                     }
-                } catch (NullPointerException error){
-                    System.out.println("Invalid file"+error);
+                } catch (NumberFormatException error){
+                    subheader.setText("Invalid Input!");
+                } catch (IllegalArgumentException error){
+                    subheader.setText("There has to be at least 1 vertex!");
                 }
                 
             }
