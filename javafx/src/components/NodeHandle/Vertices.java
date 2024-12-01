@@ -3,6 +3,7 @@ package components.NodeHandle;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Vertices {
     private ArrayList<Vertex> verticesSet = new ArrayList<>();
@@ -13,12 +14,12 @@ public class Vertices {
     public Vertices() {
     }
 
-    public void  setGraph(int[][] graph, int width, int height) {
+    public Vertices(int[][] graph,int width, int height) {
         this.graph = graph;
         this.colorSet = new Color[graph.length];
         this.positions = new double[graph.length][2];
-        setGraphPosition(width, height);
     }
+
 
     public int getNumberVertices(){
         return this.verticesSet.size();
@@ -67,6 +68,10 @@ public class Vertices {
     }
 
     public double[][] getPositions(){
+        for (double[] position : this.positions){
+            System.out.println(Arrays.toString(position));
+        }
+        System.out.println("end");
         return this.positions;
     }
 
@@ -90,5 +95,7 @@ public class Vertices {
         return this.verticesSet.get(index);
     }
 
-    
+    public Vertex[] getAll(){
+        return this.verticesSet.toArray(new Vertex[this.verticesSet.size()]);
+    }
 }

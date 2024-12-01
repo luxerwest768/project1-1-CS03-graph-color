@@ -14,7 +14,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 
 
 public class renderGraph {
@@ -28,9 +27,9 @@ public class renderGraph {
         int height = 700;
 
         Pane pane = new Pane();
-        Vertices nodeSet = new Vertices();
+        Vertices nodeSet = new Vertices(graph,width,height);
         Edges edgesSet = new Edges();
-        nodeSet.setGraph(graph,width,height);
+        nodeSet.setGraphPosition(width,height);
         int numVertices = graph.length;
 
         ColorWheel colorWheel = new ColorWheel(90);
@@ -90,13 +89,15 @@ public class renderGraph {
         // render nodes
         for (int i = 0; i < numVertices; i++) {
             Vertex node = new Vertex();
-            node.setPosition(nodeSet.getLocationX(i), nodeSet.getLocationY(i));
+            double x = nodeSet.getLocationX(i);
+            double y = nodeSet.getLocationY(i);
+            node.setPosition(x, y);
             nodeSet.addVertex(node);
             nodeSet.getVertex(i).drag(); // make node can be mouseDrag
             nodeSet.getVertex(i).setColor(colorWheel,nodeSet);
             pane.getChildren().add(nodeSet.getVertex(i).getCircle());
-
         }
+
 
         // render edges
         for (int i = 0; i < numVertices; i++) {

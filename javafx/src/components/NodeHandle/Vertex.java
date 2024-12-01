@@ -9,6 +9,7 @@ public class Vertex{
     private Circle circle = new Circle(0,0,20,Color.WHITE);
     private int index;
     private static int count = -1;
+    private double fx, fy;
 
     public Vertex(){
         this.count++;
