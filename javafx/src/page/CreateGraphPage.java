@@ -72,10 +72,12 @@ public class CreateGraphPage {
         EventHandler<ActionEvent> changeScene = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e){
                 try {
-                    int[][] graph = ReadGraph.createGraph(Integer.valueOf(verticeinput.getText()), Integer.valueOf(edgesinput.getText()));
+                    ReadGraph readGraph = new ReadGraph();
+                    int[][] graph = readGraph.createGraph(Integer.valueOf(verticeinput.getText()), Integer.valueOf(edgesinput.getText()));
+                    int CN = readGraph.getCN();
                     if (graph != null){
                         switch (gamemode) {
-                            case 1: App.changeToTheBitterEndScene(graph); break;
+                            case 1: App.changeToTheBitterEndScene(graph,CN); break;
                         }
                     } else {
                         subheader.setText("Invalid Input!");

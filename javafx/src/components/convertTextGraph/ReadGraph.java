@@ -32,6 +32,8 @@ public class ReadGraph{
     public final static boolean DEBUG = true;
     
     public final static String COMMENT = "//";
+
+    private static chromaticNumber CN = new chromaticNumber();
     
     public static void main( String args[] ) {
         
@@ -157,8 +159,18 @@ public class ReadGraph{
 
         int[][] graph = textTranslation.graph(n, v);
 
+        if (n < 35 && m < 200){
+            CN.useBackTracking(graph);
+        } else {
+            CN.useWelshAlgorithm(n,v);
+        }
+
         return graph;
     };
+
+    public int getCN(){
+        return CN.getChromaticNumber();
+    }
 
     public static int[][] createGraph(int vertices, int edges) {
         // Creates array of each edge

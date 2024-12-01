@@ -5,6 +5,7 @@
 .button {
     -fx-padding: 10px;
     -fx-border-color: gray;
+    -fx-pref-width: 150;
     -fx-background-color: white;
 }
 
@@ -26,5 +27,20 @@
     -fx-font-weight: bold;
     -fx-text-fill: red;
     -fx-translate-x: 450;
+}
+
+.get-result-button {
+    -fx-translate-y: 60;
+    -fx-font-size: 16pt;
+}
+
+.cn-text {
+    -fx-translate-y: 120;
+    -fx-font-size: 16;
+}
+
+.unique-color-text {
+    -fx-translate-y: 140;
+    -fx-font-size: 16;
 }
 

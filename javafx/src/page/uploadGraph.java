@@ -55,7 +55,9 @@ public class uploadGraph {
 
                     if (file != null){
                         try {
-                            int[][] graph = ReadGraph.convertTextGraph(file);
+                            ReadGraph readGraph = new ReadGraph();
+                            int[][] graph = readGraph.convertTextGraph(file);
+                            getGraph.setChromaticNum(readGraph.getCN());
                             getGraph.setGraph(graph);
                             label.setText(file.getAbsolutePath()+" selected");
                         } catch (NegativeArraySizeException erro){
@@ -68,11 +70,11 @@ public class uploadGraph {
         EventHandler<ActionEvent> changeScene = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e){
                 int[][] graph = getGraph.getGraph();
-
+                int CN = getGraph.getChromaticNum();
                 try {
                     if (graph != null){
                         switch (gamemode) {
-                            case 1: App.changeToTheBitterEndScene(graph); break;
+                            case 1: App.changeToTheBitterEndScene(graph,CN); break;
                         }
                     } else {
                         label.setText("You need to import file!");

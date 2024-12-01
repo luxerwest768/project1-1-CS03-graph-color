@@ -41,8 +41,8 @@ public class App extends Application {
         secondaryStage.show();
     }
 
-    public static void changeToTheBitterEndScene(int[][] graph){
-        secondaryStage.setScene(ToTheBitterEnd.toTheBitterEndScene(graph));
+    public static void changeToTheBitterEndScene(int[][] graph, int CN){
+        secondaryStage.setScene(ToTheBitterEnd.toTheBitterEndScene(graph,CN));
         secondaryStage.show();
     }
 

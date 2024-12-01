@@ -15,7 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class ToTheBitterEnd {
-    public static Scene toTheBitterEndScene(int[][] graph){
+    public static Scene toTheBitterEndScene(int[][] graph, int CN){
         int width = 1000;
         int height = 700;
 
@@ -42,7 +42,6 @@ public class ToTheBitterEnd {
         renderButton.getStyleClass().add("render-button");
 
         pane.getChildren().addAll(renderButton,colorWheel.getCanvas(),currentColor);
-
 
 
         // make an event to reload edge's location whenever change node's location
@@ -78,6 +77,30 @@ public class ToTheBitterEnd {
             }
         };
         renderButton.setOnAction(render);
+
+        Label CNText = new Label("Chromatic Numbers: "+CN);
+        CNText.getStyleClass().add("cn-text");
+        Label uniqueColorText = new Label();
+        uniqueColorText.getStyleClass().add("unique-color-text");
+        Button getResultButton = new Button("Get Result");
+        getResultButton.getStyleClass().add("get-result-button");
+        pane.getChildren().addAll(CNText,uniqueColorText,getResultButton);
+        EventHandler<ActionEvent> compareCN = new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                try {
+                    nodeSet.checkUniqueColor();
+                    uniqueColorText.setText("Colors Used: "+nodeSet.getUniqueColors());
+                    if (nodeSet.getUniqueColors() != CN){
+                        App.endScreenScene();
+                    }
+                } catch (NullPointerException e) {
+                    System.out.println("There are no colored node!");
+                }
+            }
+        };
+        getResultButton.setOnAction(compareCN);
+
+
 
         Label colorStatus = new Label("");
         colorStatus.getStyleClass().add("color-status");
