@@ -24,7 +24,7 @@ public class uploadGraph {
 
 
 
-    public static Scene uploadGraphScene(){
+    public static Scene uploadGraphScene(int gamemode){
         StackPane root = new StackPane();
         Button btnImportGraph = new Button("Import graph");
         Button btnPlay = new Button("Generate");
@@ -41,7 +41,7 @@ public class uploadGraph {
         createGraphBtn.getStyleClass().add("create-button");
 
         createGraphBtn.setOnAction(e -> {
-            App.changeCreateGraphScene();
+            App.changeCreateGraphScene(gamemode);
         });
 
 
@@ -71,7 +71,9 @@ public class uploadGraph {
 
                 try {
                     if (graph != null){
-                        App.changeRenderGraphScene(graph);
+                        switch (gamemode) {
+                            case 1: App.changeToTheBitterEndScene(graph); break;
+                        }
                     } else {
                         label.setText("You need to import file!");
                     }

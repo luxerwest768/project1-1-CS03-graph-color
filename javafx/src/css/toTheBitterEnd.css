@@ -1,0 +1,30 @@
+.render-button {
+    -fx-font-size: 16pt;
+}
+
+.button {
+    -fx-padding: 10px;
+    -fx-border-color: gray;
+    -fx-background-color: white;
+}
+
+.button:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+.color-wheel {
+    -fx-translate-x: 800;
+}
+
+.current-color {
+    -fx-translate-y: 90;
+    -fx-translate-x: 890;
+}
+
+.color-status {
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-text-fill: red;
+    -fx-translate-x: 450;
+}
+

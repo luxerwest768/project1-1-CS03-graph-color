@@ -18,19 +18,19 @@ public class selectGame {
        toTheBitterEnd.setText("To the Bitter End");
        toTheBitterEnd.getStyleClass().add("to-the-bitter-end");
        toTheBitterEnd.setOnAction(e -> {
-            App.changeUploadGraphScene();
+            App.changeUploadGraphScene(1);
        });
         
        randomColor.setText("Random Color");
        randomColor.getStyleClass().add("random-color");
        randomColor.setOnAction(e -> {
-            App.changeUploadGraphScene();
+            App.changeUploadGraphScene(2);
         }); 
 
        iChangeMyMind.setText("I Change My Mind");
        iChangeMyMind.getStyleClass().add("i-change-my-mind");
        iChangeMyMind.setOnAction(e -> {
-            App.changeUploadGraphScene();
+            App.changeUploadGraphScene(3);
         });
 
         moveBack.setText("Back");

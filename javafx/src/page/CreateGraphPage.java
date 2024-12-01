@@ -15,7 +15,7 @@ import components.convertTextGraph.ReadGraph;
 
 public class CreateGraphPage {
     
-    static Scene CreateGraph() {
+    static Scene CreateGraph(int gamemode) {
         // Declares the headers 
         Text header = new Text("Create Graph");
         Text subheader = new Text("Specify the graph details");
@@ -74,7 +74,9 @@ public class CreateGraphPage {
                 try {
                     int[][] graph = ReadGraph.createGraph(Integer.valueOf(verticeinput.getText()), Integer.valueOf(edgesinput.getText()));
                     if (graph != null){
-                        App.changeRenderGraphScene(graph);
+                        switch (gamemode) {
+                            case 1: App.changeToTheBitterEndScene(graph); break;
+                        }
                     } else {
                         subheader.setText("Invalid Input!");
                     }
@@ -94,7 +96,7 @@ public class CreateGraphPage {
         // Sets the text and the function of the back button
         backbtn.setText("Back");
         backbtn.setOnAction(e -> {
-            App.changeUploadGraphScene();
+            App.changeUploadGraphScene(gamemode);
         });
 
         StackPane root = new StackPane();
