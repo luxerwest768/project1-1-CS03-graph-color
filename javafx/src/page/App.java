@@ -28,12 +28,12 @@ public class App extends Application {
         primaryStage.setScene(selectGame.selectGameScene());
     }
 
-    public static void changeCreateGraphScene(){
-        primaryStage.setScene(CreateGraphPage.CreateGraph());
+    public static void changeCreateGraphScene(int gamemode){
+        primaryStage.setScene(CreateGraphPage.CreateGraph(gamemode));
     }
 
-    public static void changeUploadGraphScene(){
-        primaryStage.setScene(uploadGraph.uploadGraphScene());
+    public static void changeUploadGraphScene(int gamemode){
+        primaryStage.setScene(uploadGraph.uploadGraphScene(gamemode));
     }
 
     public static void changeRenderGraphScene(int[][] graph){
@@ -41,9 +41,16 @@ public class App extends Application {
         secondaryStage.show();
     }
 
+    public static void changeToTheBitterEndScene(int[][] graph, int CN){
+        secondaryStage.setScene(ToTheBitterEnd.toTheBitterEndScene(graph,CN));
+        secondaryStage.show();
+    }
+
     public static void endScreenScene(){
         primaryStage.setScene(endScreen.endScreenScene());
     }
+
+
 
 
     public static void main(String[] args) {

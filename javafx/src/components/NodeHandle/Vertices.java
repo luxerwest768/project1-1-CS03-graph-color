@@ -3,22 +3,26 @@ package components.NodeHandle;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Vertices {
     private ArrayList<Vertex> verticesSet = new ArrayList<>();
     private Color[] colorSet;
     private double[][] positions;
     private int[][] graph;
+    private ArrayList<Color> uniqueColor = new ArrayList<>();
 
     public Vertices() {
     }
 
-    public void  setGraph(int[][] graph, int width, int height) {
+    public Vertices(int[][] graph,int width, int height) {
         this.graph = graph;
         this.colorSet = new Color[graph.length];
         this.positions = new double[graph.length][2];
-        setGraphPosition(width, height);
     }
+
 
     public int getNumberVertices(){
         return this.verticesSet.size();
@@ -38,6 +42,39 @@ public class Vertices {
 
     public void setColorIndex(int index,Color c){
         this.colorSet[index] = c;
+    }
+
+    public void checkUniqueColor(){
+        Set<Integer> sameColor = new HashSet<>();
+        for (int i=0; i < colorSet.length; i++){
+            if (sameColor.contains(i)){
+                continue;
+            }
+            Color c1 = colorSet[i];
+            uniqueColor.add(c1);
+            for (int j=0; j < colorSet.length; j++){
+               if (i != j){
+                   Color c2 = colorSet[j];
+                   double red1 = c1.getRed();
+                   double green1 = c1.getGreen();
+                   double blue1 = c1.getBlue();
+                   double red2 = c2.getRed();
+                   double green2 = c2.getGreen();
+                   double blue2 = c2.getBlue();
+                   double distance = Math.sqrt(Math.pow(red2 - red1, 2) + Math.pow(green2-green1,2) + Math.pow(blue2 - blue1, 2));
+
+                   if (distance < 0.3){
+                       sameColor.add(j);
+                   }
+               }
+            }
+        }
+    }
+
+    public int getUniqueColors(){
+        int numUniqueColors = uniqueColor.size();
+        uniqueColor.clear();
+        return numUniqueColors;
     }
 
 
@@ -67,6 +104,10 @@ public class Vertices {
     }
 
     public double[][] getPositions(){
+        for (double[] position : this.positions){
+            System.out.println(Arrays.toString(position));
+        }
+        System.out.println("end");
         return this.positions;
     }
 
@@ -90,5 +131,7 @@ public class Vertices {
         return this.verticesSet.get(index);
     }
 
-    
+    public Vertex[] getAll(){
+        return this.verticesSet.toArray(new Vertex[this.verticesSet.size()]);
+    }
 }

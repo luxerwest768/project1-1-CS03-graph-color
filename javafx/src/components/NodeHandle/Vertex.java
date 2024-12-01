@@ -1,5 +1,6 @@
 package components.NodeHandle;
 
+import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
@@ -45,14 +46,16 @@ public class Vertex{
         return this.circle.getCenterY();
     }
 
-    public void setColor(ColorWheel colorWheel, Vertices nodeSet){
+    public void setColor(ColorWheel colorWheel, Vertices nodeSet, Label status){
         this.circle.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2){
                 if (nodeSet.checkValidColor(index, colorWheel.getColor())){
                     this.circle.setFill(colorWheel.getColor());
                     nodeSet.setColorIndex(index, colorWheel.getColor());
+                    status.setText("");
                 } else {
                     System.out.println("Invalid color");
+                    status.setText("Invalid color!");
                 }
 
             }

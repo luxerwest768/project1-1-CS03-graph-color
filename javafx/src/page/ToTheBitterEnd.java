@@ -1,14 +1,12 @@
 package page;
 
+import components.ColorWheel.ColorWheel;
 import components.EdgeHandle.Edge;
 import components.EdgeHandle.Edges;
 import components.NodeHandle.Vertex;
 import components.NodeHandle.Vertices;
-import components.ColorWheel.ColorWheel;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,14 +14,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-
-public class renderGraph {
-
-
-    private renderGraph(){}
-    
-
-    public static Scene renderGraphScene(int[][] graph){
+public class ToTheBitterEnd {
+    public static Scene toTheBitterEndScene(int[][] graph, int CN){
         int width = 1000;
         int height = 700;
 
@@ -50,7 +42,6 @@ public class renderGraph {
         renderButton.getStyleClass().add("render-button");
 
         pane.getChildren().addAll(renderButton,colorWheel.getCanvas(),currentColor);
-
 
 
         // make an event to reload edge's location whenever change node's location
@@ -87,7 +78,33 @@ public class renderGraph {
         };
         renderButton.setOnAction(render);
 
-        Label test = new Label("Test");
+        Label CNText = new Label("Chromatic Numbers: "+CN);
+        CNText.getStyleClass().add("cn-text");
+        Label uniqueColorText = new Label();
+        uniqueColorText.getStyleClass().add("unique-color-text");
+        Button getResultButton = new Button("Get Result");
+        getResultButton.getStyleClass().add("get-result-button");
+        pane.getChildren().addAll(CNText,uniqueColorText,getResultButton);
+        EventHandler<ActionEvent> compareCN = new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                try {
+                    nodeSet.checkUniqueColor();
+                    uniqueColorText.setText("Colors Used: "+nodeSet.getUniqueColors());
+                    if (nodeSet.getUniqueColors() != CN){
+                        App.endScreenScene();
+                    }
+                } catch (NullPointerException e) {
+                    System.out.println("There are no colored node!");
+                }
+            }
+        };
+        getResultButton.setOnAction(compareCN);
+
+
+
+        Label colorStatus = new Label("");
+        colorStatus.getStyleClass().add("color-status");
+        pane.getChildren().add(colorStatus);
         // render nodes
         for (int i = 0; i < numVertices; i++) {
             Vertex node = new Vertex();
@@ -96,7 +113,7 @@ public class renderGraph {
             node.setPosition(x, y);
             nodeSet.addVertex(node);
             nodeSet.getVertex(i).drag(); // make node can be mouseDrag
-            nodeSet.getVertex(i).setColor(colorWheel,nodeSet,test);
+            nodeSet.getVertex(i).setColor(colorWheel,nodeSet,colorStatus);
             pane.getChildren().add(nodeSet.getVertex(i).getCircle());
         }
 
@@ -117,8 +134,9 @@ public class renderGraph {
         }
 
         Scene scene = new Scene(pane, width, height);
-        scene.getStylesheets().add("./css/renderGraph.css");
+        scene.getStylesheets().add("./css/toTheBitterEnd.css");
 
         return scene;
     }
+
 }
