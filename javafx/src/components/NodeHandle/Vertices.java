@@ -2,10 +2,7 @@ package components.NodeHandle;
 
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Vertices {
     private ArrayList<Vertex> verticesSet = new ArrayList<>();
@@ -13,6 +10,8 @@ public class Vertices {
     private double[][] positions;
     private int[][] graph;
     private ArrayList<Color> uniqueColor = new ArrayList<>();
+    private ArrayList<Integer> orderPick = new ArrayList<>();
+    private int randomPick;
 
     public Vertices() {
     }
@@ -21,6 +20,9 @@ public class Vertices {
         this.graph = graph;
         this.colorSet = new Color[graph.length];
         this.positions = new double[graph.length][2];
+        for (int i=0;i<graph.length;i++){
+            this.orderPick.add(i);
+        }
     }
 
 
@@ -42,6 +44,10 @@ public class Vertices {
 
     public void setColorIndex(int index,Color c){
         this.colorSet[index] = c;
+    }
+
+    public Color getColorIndex(int index){
+        return this.colorSet[index];
     }
 
     public void checkUniqueColor(){
@@ -72,8 +78,7 @@ public class Vertices {
     }
 
     public int getUniqueColors(){
-        int numUniqueColors = uniqueColor.size();
-        uniqueColor.clear();
+        int numUniqueColors = this.uniqueColor.size();
         return numUniqueColors;
     }
 
@@ -111,6 +116,16 @@ public class Vertices {
         return this.positions;
     }
 
+    public void randomOrder(){
+        Random rand = new Random();
+        Collections.shuffle(this.orderPick);
+        int randomIndex = rand.nextInt(this.orderPick.size());
+        getVertex(this.orderPick.get(randomIndex)).getCircle().setStrokeWidth(5);
+        setRandomPick(this.orderPick.get(randomIndex));
+        this.orderPick.remove(randomIndex);
+    }
+
+
     public void setLocationX(int i, double x){
         this.positions[i][0] = x;
     }
@@ -129,6 +144,18 @@ public class Vertices {
 
     public Vertex getVertex(int index){
         return this.verticesSet.get(index);
+    }
+
+    public void setRandomPick(int index){
+        this.randomPick = index;
+    }
+
+    public int getRandomPick(){
+        return this.randomPick;
+    }
+
+    public int getOrderPick(){
+        return this.orderPick.size();
     }
 
     public Vertex[] getAll(){
