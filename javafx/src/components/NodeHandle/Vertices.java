@@ -10,8 +10,9 @@ public class Vertices {
     private double[][] positions;
     private int[][] graph;
     private ArrayList<Color> uniqueColor = new ArrayList<>();
-    private ArrayList<Integer> orderPick = new ArrayList<>();
+    private ArrayList<Integer> orderPick = new ArrayList<Integer>();
     private int randomPick;
+    private ArrayList<Integer[]> historyOrderPick = new ArrayList<>();
 
     public Vertices() {
     }
@@ -22,7 +23,9 @@ public class Vertices {
         this.positions = new double[graph.length][2];
         for (int i=0;i<graph.length;i++){
             this.orderPick.add(i);
+            colorSet[i] = Color.WHITE;
         }
+        Collections.shuffle(this.orderPick);
     }
 
 
@@ -117,12 +120,12 @@ public class Vertices {
     }
 
     public void randomOrder(){
-        Random rand = new Random();
-        Collections.shuffle(this.orderPick);
-        int randomIndex = rand.nextInt(this.orderPick.size());
-        getVertex(this.orderPick.get(randomIndex)).getCircle().setStrokeWidth(5);
-        setRandomPick(this.orderPick.get(randomIndex));
-        this.orderPick.remove(randomIndex);
+        getVertex(this.orderPick.get(0)).getCircle().setStrokeWidth(5);
+        setRandomPick(this.orderPick.get(0));
+        Integer[] order = new Integer[this.orderPick.size()];
+        order = this.orderPick.toArray(order);
+        this.historyOrderPick.add(order);
+        this.orderPick.remove(0);
     }
 
 
@@ -157,6 +160,32 @@ public class Vertices {
     public int getOrderPick(){
         return this.orderPick.size();
     }
+
+
+    public void reloadColor() {
+        if (historyOrderPick.size() == 1) {
+            System.out.println("No more steps to undo.");
+            return;  // Prevent undo when there's no history to go back to
+        }
+
+        historyOrderPick.remove(getLatestPickOrder());
+
+        // load the previous order set
+        this.orderPick = new ArrayList<>(Arrays.asList(getLatestPickOrder()));
+
+        getVertex(orderPick.get(1)).getCircle().setStrokeWidth(1);  // Unhighlight previous
+        getVertex(orderPick.get(0)).getCircle().setStrokeWidth(5);  // Highlight current
+        getVertex(orderPick.get(0)).getCircle().setFill(Color.WHITE);
+        setColorIndex(orderPick.get(0), Color.WHITE);
+
+        // Ensure the application reflects the new pick
+        setRandomPick(orderPick.get(0));
+        this.orderPick.remove(0);
+    }
+
+    public Integer[] getLatestPickOrder(){
+      return this.historyOrderPick.get(this.historyOrderPick.size()-1);
+    };
 
     public Vertex[] getAll(){
         return this.verticesSet.toArray(new Vertex[this.verticesSet.size()]);

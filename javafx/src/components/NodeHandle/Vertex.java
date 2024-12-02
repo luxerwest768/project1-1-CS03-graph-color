@@ -69,7 +69,7 @@ public class Vertex{
                     if (nodeSet.checkValidColor(index, colorWheel.getColor())){
                         this.circle.setFill(colorWheel.getColor());
                         nodeSet.setColorIndex(index, colorWheel.getColor());
-                        this.circle.setStrokeWidth(2);
+                        this.circle.setStrokeWidth(1);
                         if (nodeSet.getOrderPick() != 0){
                             nodeSet.randomOrder();
                         }
@@ -88,6 +88,9 @@ public class Vertex{
         this.count = -1;
     }
 
+    public void setFill(Color c){
+        this.circle.setFill(c);
+    }
 
     public Circle getCircle(){
         return this.circle;

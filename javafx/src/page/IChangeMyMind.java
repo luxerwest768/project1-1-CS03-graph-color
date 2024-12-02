@@ -14,8 +14,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-public class RandomOrder {
-    public static Scene randomOrderScene(int[][] graph, int CN){
+public class IChangeMyMind {
+    public static Scene iChangeMyMindScene(int[][] graph, int CN){
         int width = 1000;
         int height = 700;
 
@@ -106,7 +106,12 @@ public class RandomOrder {
         };
         getResultButton.setOnAction(compareCN);
 
-
+        Button redoBtn = new Button("Undo");
+        redoBtn.getStyleClass().add("redo-button");
+        pane.getChildren().addAll(redoBtn);
+        redoBtn.setOnAction(event -> {
+            nodeSet.reloadColor();
+        });
 
         Label colorStatus = new Label("");
         colorStatus.getStyleClass().add("color-status");
@@ -141,7 +146,7 @@ public class RandomOrder {
         }
 
         Scene scene = new Scene(pane, width, height);
-        scene.getStylesheets().add("./css/randomOrder.css");
+        scene.getStylesheets().add("./css/iChangeMyMind.css");
 
         return scene;
     }

@@ -51,6 +51,11 @@ public class App extends Application {
         secondaryStage.show();
     }
 
+    public static void changeIChangeMyMindScene(int[][] graph, int CN){
+        secondaryStage.setScene(IChangeMyMind.iChangeMyMindScene(graph,CN));
+        secondaryStage.show();
+    }
+
     public static void endScreenScene(){
         primaryStage.setScene(endScreen.endScreenScene());
     }

@@ -6,6 +6,8 @@ import components.convertTextGraph.welshAlgorithm;
 public class chromaticNumber {
     private int chromaticNumber;
 
+    public chromaticNumber() {}
+
     public void useBackTracking(int[][] graph) {
         this.chromaticNumber = backTracking.graphColoring(graph);
     }
