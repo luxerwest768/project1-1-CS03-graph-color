@@ -57,9 +57,35 @@ public class Vertex{
                     System.out.println("Invalid color");
                     status.setText("Invalid color!");
                 }
+            }
+        });
+    }
+
+    public void setColorForRandom(ColorWheel colorWheel, Vertices nodeSet, Label status){
+        this.circle.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2){
+                int randomIndex = nodeSet.getRandomPick();
+                if (randomIndex == this.index){
+                    if (nodeSet.checkValidColor(index, colorWheel.getColor())){
+                        this.circle.setFill(colorWheel.getColor());
+                        nodeSet.setColorIndex(index, colorWheel.getColor());
+                        this.circle.setStrokeWidth(2);
+                        if (nodeSet.getOrderPick() != 0){
+                            nodeSet.randomOrder();
+                        }
+                        status.setText("");
+                    } else {
+                        System.out.println("Invalid color");
+                        status.setText("Invalid color!");
+                    }
+                }
 
             }
         });
+    }
+
+    public void setCount(){
+        this.count = -1;
     }
 
 

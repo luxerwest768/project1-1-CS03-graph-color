@@ -14,8 +14,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-public class ToTheBitterEnd {
-    public static Scene toTheBitterEndScene(int[][] graph, int CN){
+public class RandomOrder {
+    public static Scene randomOrderScene(int[][] graph, int CN){
         int width = 1000;
         int height = 700;
 
@@ -95,6 +95,7 @@ public class ToTheBitterEnd {
                     nodeSet.checkUniqueColor();
                     CNText.setText("Chromatic Numbers: "+CN);
                     uniqueColorText.setText("Colors Used: "+nodeSet.getUniqueColors());
+                    System.out.println(nodeSet.getUniqueColors());
                     if (nodeSet.getUniqueColors() != CN){
                         App.endScreenScene();
                     }
@@ -118,9 +119,10 @@ public class ToTheBitterEnd {
             node.setPosition(x, y);
             nodeSet.addVertex(node);
             nodeSet.getVertex(i).drag(); // make node can be mouseDrag
-            nodeSet.getVertex(i).setColor(colorWheel,nodeSet,colorStatus);
+            nodeSet.getVertex(i).setColorForRandom(colorWheel,nodeSet,colorStatus);
             pane.getChildren().add(nodeSet.getVertex(i).getCircle());
         }
+        nodeSet.randomOrder();
 
 
         // render edges
@@ -143,5 +145,4 @@ public class ToTheBitterEnd {
 
         return scene;
     }
-
 }

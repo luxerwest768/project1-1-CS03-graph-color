@@ -46,6 +46,11 @@ public class App extends Application {
         secondaryStage.show();
     }
 
+    public static void changeRandomOrderScene(int[][] graph,int CN){
+        secondaryStage.setScene(RandomOrder.randomOrderScene(graph,CN));
+        secondaryStage.show();
+    }
+
     public static void endScreenScene(){
         primaryStage.setScene(endScreen.endScreenScene());
     }
