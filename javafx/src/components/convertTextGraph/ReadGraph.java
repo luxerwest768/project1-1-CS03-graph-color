@@ -1,5 +1,6 @@
 package components.convertTextGraph;
 
+import components.convertTextGraph.welshAlgorithm;
 import java.io.*;
 import java.util.*;
 
@@ -210,7 +211,6 @@ public class ReadGraph{
             else {
                 i = i - 1;
             }
-            System.out.println(u + " " +  v);
         }
 
         ColVertices[] v = new ColVertices[vertices];
@@ -235,15 +235,57 @@ public class ReadGraph{
         
         // Checks whether there has to be isolated vertices
         if (vertices  <= (2 * edges)) { 
+            int[][] degreelist = welshAlgorithm.degreeList(vertices, v);
+            int[][] editablevertices = editableVertices(degreelist);
             
-            for (ColVertices vertex : v) {
+            for (int[] vertex : degreelist) {
+                // If there is a vertex with zero connected edges
+                if (vertex[1] == 0) {
+                    if(v[editablevertices[0][0]].edges.get(0).u == editablevertices[0][0]) {
+                        v[editablevertices[0][0]].edges.get(0).u = vertex[0] + 1;
+                    }
+                    if(v[editablevertices[0][0]].edges.get(0).v == editablevertices[0][0]) {
+                        v[editablevertices[0][0]].edges.get(0).v = vertex[0] + 1;
+                    }
 
+                    // Adds and removes the edge from the respective vertices
+                    v[vertex[0]].edges.add(v[editablevertices[0][0]].edges.get(0));
+                    v[editablevertices[0][0]].edges.remove(0);
+                    
+
+                    // Resets the degreelist as the edges have been changed
+                    for (ColVertices vertice : v) {
+                        vertice.degree = (vertice.edges).size();
+                    }
+
+                    degreelist = welshAlgorithm.degreeList(vertices, v);
+                    editablevertices = editableVertices(degreelist);
+                }
             }
         }
 
-        System.out.println("\n");
         int[][] graph = textTranslation.graph(vertices, v);
+
         return graph;
     }
+
+    public static int[][] editableVertices(int[][] degreelist) {
+        // Finds the am
+        int length = 0;
+        for (int[] vertex : degreelist) {
+            if (vertex[1] >= 2) {
+                length += 1;
+            }
+        }
+
+        int[][] editablevertices = new int[length][2];
+
+        for (int i = 0; i < length; i++) {
+            editablevertices[i][0] = degreelist[i][0];
+            editablevertices[i][1] = degreelist[i][1];
+        }
+        return editablevertices;
+    }
+
 }
 
