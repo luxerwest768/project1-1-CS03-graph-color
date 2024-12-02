@@ -5,6 +5,8 @@ import components.EdgeHandle.Edge;
 import components.EdgeHandle.Edges;
 import components.NodeHandle.Vertex;
 import components.NodeHandle.Vertices;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -13,11 +15,20 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
+import javafx.scene.layout.HBox;
+import java.lang.System;
+import java.lang.Math;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 
 public class ToTheBitterEnd {
     public static Scene toTheBitterEndScene(int[][] graph, int CN){
         int width = 1000;
         int height = 700;
+
+        long start = System.nanoTime();
 
         // reset the index of vertex to 0
         Vertex testNode = new Vertex();
@@ -45,8 +56,25 @@ public class ToTheBitterEnd {
         Button renderButton = new Button("Render");
         renderButton.getStyleClass().add("render-button");
 
-        pane.getChildren().addAll(renderButton,colorWheel.getCanvas(),currentColor);
+        HBox timecon = new HBox();
+        Text stopwatch = new Text("00:00");
 
+        timecon.getStyleClass().add("timecon");
+        timecon.getChildren().addAll(stopwatch);
+
+        pane.getChildren().addAll(renderButton,colorWheel.getCanvas(),currentColor, timecon);
+
+        Timeline timeline = new Timeline(
+            new KeyFrame(Duration.millis(100), event -> {
+                long current = System.nanoTime();
+                double time = (current - start) * 1e-9; // Convert nanoseconds to seconds
+                int minutes = (int) (time / 60);
+                int seconds = (int) (time % 60);
+                stopwatch.setText(String.format("%02d:%02d", minutes, seconds));
+            })
+        );
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
 
         // make an event to reload edge's location whenever change node's location
         EventHandler<ActionEvent> render = new EventHandler<ActionEvent>() {
@@ -93,7 +121,7 @@ public class ToTheBitterEnd {
             public void handle(ActionEvent event) {
                 try {
                     nodeSet.checkUniqueColor();
-                    CNText.setText("Chromatic Numbers: "+CN);
+                    CNText.setText("Chromatic Numbers: "+CN); 
                     uniqueColorText.setText("Colors Used: "+nodeSet.getUniqueColors());
                     if (nodeSet.getUniqueColors() != CN){
                         App.endScreenScene();
@@ -143,5 +171,4 @@ public class ToTheBitterEnd {
 
         return scene;
     }
-
 }
