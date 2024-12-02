@@ -76,6 +76,7 @@ public class uploadGraph {
                         switch (gamemode) {
                             case 1: App.changeToTheBitterEndScene(graph,CN); break;
                             case 2: App.changeRandomOrderScene(graph,CN); break;
+                            case 3: App.changeIChangeMyMindScene(graph,CN); break;
                         }
                     } else {
                         label.setText("You need to import file!");

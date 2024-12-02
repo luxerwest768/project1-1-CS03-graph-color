@@ -78,6 +78,8 @@ public class CreateGraphPage {
                     if (graph != null){
                         switch (gamemode) {
                             case 1: App.changeToTheBitterEndScene(graph,CN); break;
+                            case 2: App.changeRandomOrderScene(graph,CN); break;
+                            case 3: App.changeIChangeMyMindScene(graph,CN); break;
                         }
                     } else {
                         subheader.setText("Invalid Input!");
