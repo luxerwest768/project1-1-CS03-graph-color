@@ -129,4 +129,33 @@ java ReadGraph "filename that contains graph"
 Chromatic Number: 3
 ```
 
+# How to run the actual game?
+## Preparation
+In order to run the game itself we need to prepare the IDE for it. No needed to say that we need to have javafx SDK installed in our machine, and the java JDK also downloaded.
+### VS code preparation
+For VS code we need to open the javafx (project) folder and go to the .vscode directory in the folder. There we are going to encounter a file called launch.json which we need to make it look like this:
+![Image 824x181](https://github.com/user-attachments/assets/dee12665-cf6c-450f-9cbf-ec4bd301508f)
+
+Where "D:/Commands/JavaLib/javafx-sdk-23.0.1/lib" is the directory of the folder called "lib" inside our javafx SDK in out machine.
+### IntelliJ IDEA preparation
+For IntelliJ IDEA is a little bit different. First we open our javafx (project) folder, once it's opened we are going to figure the App.java is underlined by a red line. 
+<img width="1381" alt="Screenshot 2024-12-03 at 14 05 22" src="https://github.com/user-attachments/assets/de35d835-2bd9-496f-9837-6fd2e03eecb6">
+
+We open it in our editor and click where says "edit configuration" in the photo above. 
+Then we create a new configuration for the file. 
+<img width="1016" alt="Screenshot 2024-12-03 at 14 06 49" src="https://github.com/user-attachments/assets/df6b0b07-79a0-4844-9cc7-fdf479a79ba5">
+
+We click where it says "Modify options" and we check "Add vm options" is clicked. 
+
+Then under the SDK we choose java 23, under the main class selector we choose "page.app", and finally in the second text field we type the following: 
+```
+--module-path /Users/javierrueda/Downloads/javafx-sdk-23.0.1/lib --add-modules=javafx.controls
+```
+Where again "/Users/javierrueda/Downloads/javafx-sdk-23.0.1/lib" is the directory of the folder called "lib" inside our javafx SDK in out machine.
+
+Once all that is finished it should look like this:
+<img width="795" alt="Screenshot 2024-12-03 at 14 06 55" src="https://github.com/user-attachments/assets/89a74a67-ea38-4a23-b741-63a56fc6e7e9">
+
+Then we apply and save the changes and out code is ready to run.
+
 
