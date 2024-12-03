@@ -56,3 +56,14 @@
     -fx-font-size: 75px;
     -fx-text-alignment: center;
 }
+
+.hint-button {
+    -fx-translate-y: 650;
+    -fx-translate-x: 850;
+    -fx-font-size: 16pt;
+}
+.hint-text {
+    -fx-translate-y: 630;
+    -fx-translate-x: 850;
+    -fx-font-size: 16;
+}

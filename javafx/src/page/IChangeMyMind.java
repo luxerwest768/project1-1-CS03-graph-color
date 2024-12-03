@@ -88,7 +88,16 @@ public class IChangeMyMind {
         uniqueColorText.getStyleClass().add("unique-color-text");
         Button getResultButton = new Button("Get Result");
         getResultButton.getStyleClass().add("get-result-button");
-        pane.getChildren().addAll(CNText,uniqueColorText,getResultButton);
+
+        // HINT BUTTON
+        Button hintButton = new Button("Hint");
+        hintButton.getStyleClass().add("hint-button");
+        Label hintText = new Label();
+        hintText.getStyleClass().add("hint-text");
+        hintButton.setOnAction(event -> {hintText.setText("Color the edges");});
+        // HINT BUTTON (end of the code)
+
+        pane.getChildren().addAll(CNText,hintText,hintButton,uniqueColorText,getResultButton);
         EventHandler<ActionEvent> compareCN = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 try {

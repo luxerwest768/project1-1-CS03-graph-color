@@ -76,6 +76,7 @@ public class ToTheBitterEnd {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
 
+
         // make an event to reload edge's location whenever change node's location
         EventHandler<ActionEvent> render = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
@@ -116,7 +117,16 @@ public class ToTheBitterEnd {
         uniqueColorText.getStyleClass().add("unique-color-text");
         Button getResultButton = new Button("Get Result");
         getResultButton.getStyleClass().add("get-result-button");
-        pane.getChildren().addAll(CNText,uniqueColorText,getResultButton);
+
+        // HINT BUTTON
+        Button hintButton = new Button("Hint");
+        hintButton.getStyleClass().add("hint-button");
+        Label hintText = new Label();
+        hintText.getStyleClass().add("hint-text");
+        hintButton.setOnAction(event -> {hintText.setText("Color the edges");});
+        // HINT BUTTON (end of the code)
+
+        pane.getChildren().addAll(CNText,uniqueColorText,getResultButton,hintText,hintButton);
         EventHandler<ActionEvent> compareCN = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 try {
