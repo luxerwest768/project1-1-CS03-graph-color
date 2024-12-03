@@ -138,7 +138,7 @@ public class ToTheBitterEnd {
                     if (nodeSet.getUniqueColors() != CN){
                         App.endScreenScene();
                     } else {
-                        App.winScreenScene();
+                        App.winScreenScene(0,CN);
                     }
                 } catch (NullPointerException e) {
                     System.out.println("There are no colored node!");

@@ -1,37 +1,60 @@
 package page;
 
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.control.Button;
+import components.convertTextGraph.Score;
 
 public class winScreen {
-    public static Scene winScreenScene() {
-        StackPane root = new StackPane();
 
-        Label title = new Label("You Win!");
-        title.getStyleClass().add("title");
+    public static Scene winScreenScene(int gameMode, int CN) {
 
-        Label message = new Label("Congratulations! You Win! :)");
-        message.getStyleClass().add("win-message");
+        int score = 0;
+        StackPane pane = new StackPane();
+
+
+        String gameModeTitle = "To the Bitter End";
+        switch (gameMode) {
+            case 1:
+                gameModeTitle = "Random Order";
+                break;
+            case 2:
+                gameModeTitle = "I Change My Mind";
+                break;
+        }
+
+        Label gameModeLabel = new Label(gameModeTitle);
+        gameModeLabel.setFont(new Font(30));
+        gameModeLabel.getStyleClass().add("title");
+
+        Label winMessage = new Label("You Win!");
+        winMessage.getStyleClass().add("win-message");
+
+        Label scoreLabel = new Label("Your score is: " + score);
+        scoreLabel.setFont(new Font(20));
+        scoreLabel.setStyle("-fx-translate-y: 50");
+
+        Label chromaticNumberLabel = new Label("Chromatic number: " + CN);
+        chromaticNumberLabel.setFont(new Font(20));
+        chromaticNumberLabel.setLayoutX(350);
+        chromaticNumberLabel.setLayoutY(250);
 
         Button homeButton = new Button("Home");
         homeButton.getStyleClass().add("home-button");
-
-        homeButton.setOnAction(e -> {
+        homeButton.setOnAction(event -> {
             App.changeMainScene();
         });
 
-        VBox container = new VBox();
-        container.getStyleClass().add("container");
-        container.getChildren().addAll(message, homeButton,title);
+        pane.getChildren().addAll(gameModeLabel, scoreLabel, chromaticNumberLabel, homeButton,winMessage);
 
-        root.getChildren().addAll(container);
 
-        Scene endScreenScene = new Scene(root, 900, 700);
-        endScreenScene.getStylesheets().add("./css/winScreen.css");
+        Scene scene = new Scene(pane, 800, 600);
+        scene.getStylesheets().add("./css/winScreen.css");
 
-        return endScreenScene;
+        return scene;
     }
+
 }
