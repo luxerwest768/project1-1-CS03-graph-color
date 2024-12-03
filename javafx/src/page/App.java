@@ -81,8 +81,8 @@ public class App extends Application {
         primaryStage.setScene(endScreen.createEndScreen());
     }
 
-    public static void winScreenScene(){
-        primaryStage.setScene(winScreen.winScreenScene());
+    public static void winScreenScene(int gamemode, int CN){
+        primaryStage.setScene(winScreen.winScreenScene(gamemode,CN));
     }
 
     public static void closeGameScene(){

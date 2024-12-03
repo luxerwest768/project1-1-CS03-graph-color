@@ -110,7 +110,7 @@ public class IChangeMyMind {
                     if (nodeSet.getUniqueColors() != CN){
                         App.endScreenScene("IChangeMyMind");
                     } else {
-                        App.winScreenScene();
+                        App.winScreenScene(2,CN);
                     }
                 } catch (NullPointerException e) {
                     System.out.println("There are no colored node!");

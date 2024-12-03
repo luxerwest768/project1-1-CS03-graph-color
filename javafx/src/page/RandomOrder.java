@@ -110,7 +110,7 @@ public class RandomOrder {
                     if (nodeSet.getUniqueColors() != CN){
                         App.endScreenScene("RandomOrder");
                     } else {
-                        App.winScreenScene();
+                        App.winScreenScene(1,CN);
                     }
                 } catch (NullPointerException e) {
                     System.out.println("There are no colored node!");

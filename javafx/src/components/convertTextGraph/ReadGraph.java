@@ -1,6 +1,5 @@
 package components.convertTextGraph;
 
-import components.convertTextGraph.welshAlgorithm;
 import java.io.*;
 import java.util.*;
 
