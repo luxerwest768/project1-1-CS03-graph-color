@@ -110,8 +110,6 @@ public class Score {
         int m = 0;
         int f = v.getUniqueColors();
         int mis = getMistakes;
-        //int t = time();
-        //int h = hints();
         int vl = v.getNumberVertices();
         int el = e.getNumEdges();
 

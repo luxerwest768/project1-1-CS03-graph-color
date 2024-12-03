@@ -135,12 +135,12 @@ public class ToTheBitterEnd {
                     nodeSet.checkUniqueColor();
                     CNText.setText("Chromatic Numbers: "+CN); 
                     uniqueColorText.setText("Colors Used: "+nodeSet.getUniqueColors());
-                    Score.main(nodeSet,edgesSet,testNode.getMistakes(), 0);
+                    int s =Score.main(nodeSet,edgesSet,testNode.getMistakes(), 0);
                     App.closeGameScene();
                     if (nodeSet.getUniqueColors() != CN){
                         App.endScreenScene("BitterEnd");
                     } else {
-                        App.winScreenScene(0,CN);
+                        App.winScreenScene(0,CN,s);
                     }
                 } catch (NullPointerException e) {
                     System.out.println("There are no colored node!");

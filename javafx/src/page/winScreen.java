@@ -6,13 +6,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.scene.control.Button;
-import components.convertTextGraph.Score;
+
 
 public class winScreen {
 
-    public static Scene winScreenScene(int gameMode, int CN) {
+    public static Scene winScreenScene(int gameMode, int CN, int score) {
 
-        int score = 0;
         StackPane pane = new StackPane();
 
 

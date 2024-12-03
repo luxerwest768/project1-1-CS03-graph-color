@@ -102,7 +102,7 @@ public class RandomOrder {
         EventHandler<ActionEvent> compareCN = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 try {
-                    Score.main(nodeSet,edgesSet,testNode.getMistakes(), 1);
+                    int s = Score.main(nodeSet,edgesSet,testNode.getMistakes(), 1);
                     nodeSet.checkUniqueColor();
                     CNText.setText("Chromatic Numbers: "+CN);
                     uniqueColorText.setText("Colors Used: "+nodeSet.getUniqueColors());
@@ -110,7 +110,7 @@ public class RandomOrder {
                     if (nodeSet.getUniqueColors() != CN){
                         App.endScreenScene("RandomOrder");
                     } else {
-                        App.winScreenScene(1,CN);
+                        App.winScreenScene(1,CN,s);
                     }
                 } catch (NullPointerException e) {
                     System.out.println("There are no colored node!");

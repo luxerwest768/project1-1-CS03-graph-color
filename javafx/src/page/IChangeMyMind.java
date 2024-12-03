@@ -102,7 +102,7 @@ public class IChangeMyMind {
         EventHandler<ActionEvent> compareCN = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 try {
-                    Score.main(nodeSet,edgesSet,testNode.getMistakes(), 2);
+                    int s = Score.main(nodeSet,edgesSet,testNode.getMistakes(), 2);
                     nodeSet.checkUniqueColor();
                     CNText.setText("Chromatic Numbers: "+CN);
                     uniqueColorText.setText("Colors Used: "+nodeSet.getUniqueColors());
@@ -110,7 +110,7 @@ public class IChangeMyMind {
                     if (nodeSet.getUniqueColors() != CN){
                         App.endScreenScene("IChangeMyMind");
                     } else {
-                        App.winScreenScene(2,CN);
+                        App.winScreenScene(2,CN,s);
                     }
                 } catch (NullPointerException e) {
                     System.out.println("There are no colored node!");
