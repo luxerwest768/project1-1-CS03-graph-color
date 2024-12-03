@@ -60,6 +60,14 @@ public class App extends Application {
         primaryStage.setScene(endScreen.endScreenScene());
     }
 
+    public static void winScreenScene(){
+        primaryStage.setScene(winScreen.winScreenScene());
+    }
+
+    public static void closeGameScene(){
+        secondaryStage.close();
+    }
+
 
 
 
