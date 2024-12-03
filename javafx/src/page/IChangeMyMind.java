@@ -106,7 +106,7 @@ public class IChangeMyMind {
                     uniqueColorText.setText("Colors Used: "+nodeSet.getUniqueColors());
                     App.closeGameScene();
                     if (nodeSet.getUniqueColors() != CN){
-                        App.endScreenScene();
+                        App.endScreenScene("IChangeMyMind");
                     } else {
                         App.winScreenScene(2,CN);
                     }

@@ -56,8 +56,29 @@ public class App extends Application {
         secondaryStage.show();
     }
 
-    public static void endScreenScene(){
-        primaryStage.setScene(endScreen.endScreenScene());
+    public static void endScreenScene(String gameMode) {
+        EndScreenBase endScreen;
+
+        switch (gameMode) {
+            case "BitterEnd":
+                endScreen = new BitterEndModeEndScreen();
+                break;
+
+            case "RandomOrder":
+                endScreen = new RandomColorsModeEndScreen();
+                break;
+
+            case "IChangeMyMind":
+                endScreen = new RandomColorsModeEndScreen();
+                break;
+
+            default:
+                endScreen = new EndScreenBase();
+                break;
+        }
+
+
+        primaryStage.setScene(endScreen.createEndScreen());
     }
 
     public static void winScreenScene(int gamemode, int CN){
