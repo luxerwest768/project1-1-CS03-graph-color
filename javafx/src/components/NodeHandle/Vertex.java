@@ -10,6 +10,7 @@ public class Vertex{
     private Circle circle = new Circle(0,0,20,Color.WHITE);
     private int index;
     private static int count = -1;
+    private static int mis = 0;
 
     public Vertex(){
         this.count++;
@@ -46,6 +47,11 @@ public class Vertex{
         return this.circle.getCenterY();
     }
 
+    public int getMistakes()
+    {
+        return mis;
+    }
+
     public void setColor(ColorWheel colorWheel, Vertices nodeSet, Label status){
         this.circle.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2){
@@ -54,6 +60,7 @@ public class Vertex{
                     nodeSet.setColorIndex(index, colorWheel.getColor());
                     status.setText("");
                 } else {
+                    mis++;
                     System.out.println("Invalid color");
                     status.setText("Invalid color!");
                 }
@@ -75,6 +82,7 @@ public class Vertex{
                         }
                         status.setText("");
                     } else {
+                        mis++;
                         System.out.println("Invalid color");
                         status.setText("Invalid color!");
                     }
