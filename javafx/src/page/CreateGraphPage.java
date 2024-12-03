@@ -113,7 +113,7 @@ public class CreateGraphPage {
 
     static int randomNumber() {
         Random rand = new Random();
-        int randnbr = rand.nextInt(100);
+        int randnbr = rand.nextInt(50);
         return randnbr;
     }
 }
