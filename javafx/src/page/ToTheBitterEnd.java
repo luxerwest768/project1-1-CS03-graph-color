@@ -120,11 +120,15 @@ public class ToTheBitterEnd {
         EventHandler<ActionEvent> compareCN = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 try {
+                    timeline.stop();
                     nodeSet.checkUniqueColor();
                     CNText.setText("Chromatic Numbers: "+CN); 
                     uniqueColorText.setText("Colors Used: "+nodeSet.getUniqueColors());
+                    App.closeGameScene();
                     if (nodeSet.getUniqueColors() != CN){
                         App.endScreenScene();
+                    } else {
+                        App.winScreenScene();
                     }
                 } catch (NullPointerException e) {
                     System.out.println("There are no colored node!");
