@@ -32,6 +32,8 @@ public class ReadGraph{
     public final static boolean DEBUG = true;
     
     public final static String COMMENT = "//";
+
+    private static chromaticNumber CN = new chromaticNumber();
     
     public static void main( String args[] ) {
         
@@ -157,8 +159,18 @@ public class ReadGraph{
 
         int[][] graph = textTranslation.graph(n, v);
 
+        if (n < 35 && m < 200){
+            CN.useBackTracking(graph);
+        } else {
+            CN.useWelshAlgorithm(n,v);
+        }
+
         return graph;
     };
+
+    public int getCN(){
+        return CN.getChromaticNumber();
+    }
 
     public static int[][] createGraph(int vertices, int edges) {
         // Creates array of each edge
@@ -168,8 +180,37 @@ public class ReadGraph{
         Random rand = new Random();
         for (int i = 0; i < edges; i++) {
             e[i] = new ColEdge();
-            e[i].u = rand.nextInt(vertices) + 1;
-            e[i].v = rand.nextInt(vertices) + 1;
+            boolean used = false;
+
+            // Random vertice points
+            int u = rand.nextInt(vertices) + 1;
+            int v = rand.nextInt(vertices) + 1;
+
+            // Checks if the edge connects a vertice to itself 
+            if (u == v) {
+                used = true;
+            }
+
+            // Checks whether the edge has been made
+            for (int j = 0; j <= i; j++) {
+                if(
+                    (e[j].u == u && e[j].v == v) 
+                    ||
+                    (e[j].u == v && e[j].u == v)
+                ) {
+                    used = true;
+                }
+            }
+            
+            // If the edge has been used before it restarts
+            if(used == false) {
+                e[i].u = u;
+                e[i].v = v;
+            }
+            else {
+                i = i - 1;
+            }
+            System.out.println(u + " " +  v);
         }
 
         ColVertices[] v = new ColVertices[vertices];
@@ -191,7 +232,16 @@ public class ReadGraph{
             // Adds an id to each vertex
             v[i].id = i + 1;
         }
+        
+        // Checks whether there has to be isolated vertices
+        if (vertices  <= (2 * edges)) { 
+            
+            for (ColVertices vertex : v) {
 
+            }
+        }
+
+        System.out.println("\n");
         int[][] graph = textTranslation.graph(vertices, v);
         return graph;
     }
