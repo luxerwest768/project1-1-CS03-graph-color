@@ -5,6 +5,7 @@ import components.EdgeHandle.Edge;
 import components.EdgeHandle.Edges;
 import components.NodeHandle.Vertex;
 import components.NodeHandle.Vertices;
+import components.convertTextGraph.Score;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -134,6 +135,7 @@ public class ToTheBitterEnd {
                     nodeSet.checkUniqueColor();
                     CNText.setText("Chromatic Numbers: "+CN); 
                     uniqueColorText.setText("Colors Used: "+nodeSet.getUniqueColors());
+                    Score.main(nodeSet,edgesSet,testNode.getMistakes(), 0);
                     App.closeGameScene();
                     if (nodeSet.getUniqueColors() != CN){
                         App.endScreenScene("BitterEnd");

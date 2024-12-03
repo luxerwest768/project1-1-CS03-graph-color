@@ -5,6 +5,7 @@ import components.EdgeHandle.Edge;
 import components.EdgeHandle.Edges;
 import components.NodeHandle.Vertex;
 import components.NodeHandle.Vertices;
+import components.convertTextGraph.Score;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -101,6 +102,7 @@ public class RandomOrder {
         EventHandler<ActionEvent> compareCN = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 try {
+                    Score.main(nodeSet,edgesSet,testNode.getMistakes(), 1);
                     nodeSet.checkUniqueColor();
                     CNText.setText("Chromatic Numbers: "+CN);
                     uniqueColorText.setText("Colors Used: "+nodeSet.getUniqueColors());
