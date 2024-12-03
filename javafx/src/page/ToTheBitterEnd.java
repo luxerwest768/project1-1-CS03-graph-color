@@ -136,7 +136,7 @@ public class ToTheBitterEnd {
                     uniqueColorText.setText("Colors Used: "+nodeSet.getUniqueColors());
                     App.closeGameScene();
                     if (nodeSet.getUniqueColors() != CN){
-                        App.endScreenScene();
+                        App.endScreenScene("BitterEnd");
                     } else {
                         App.winScreenScene();
                     }
