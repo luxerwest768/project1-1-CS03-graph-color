@@ -106,7 +106,7 @@ public class RandomOrder {
                     uniqueColorText.setText("Colors Used: "+nodeSet.getUniqueColors());
                     App.closeGameScene();
                     if (nodeSet.getUniqueColors() != CN){
-                        App.endScreenScene();
+                        App.endScreenScene("RandomOrder");
                     } else {
                         App.winScreenScene();
                     }
