@@ -7,7 +7,7 @@
 
 .end-message {
     -fx-font-size: 24px;
-    -fx-translate-y: -100px;
+    -fx-translate-y: 0px;
     -fx-alignment: center;
 }
 
@@ -24,16 +24,8 @@
     -fx-background-color: #f0f0f0;
 }
 
-.try-again-button {
-    -fx-translate-y: 50px;
-}
-
 .home-button {
     -fx-translate-y: 120px;
-}
-
-.leaderboard-button {
-    -fx-translate-y: 190px;
 }
 
 .container {

@@ -95,9 +95,11 @@ public class IChangeMyMind {
                     nodeSet.checkUniqueColor();
                     CNText.setText("Chromatic Numbers: "+CN);
                     uniqueColorText.setText("Colors Used: "+nodeSet.getUniqueColors());
-                    System.out.println(nodeSet.getUniqueColors());
+                    App.closeGameScene();
                     if (nodeSet.getUniqueColors() != CN){
                         App.endScreenScene();
+                    } else {
+                        App.winScreenScene();
                     }
                 } catch (NullPointerException e) {
                     System.out.println("There are no colored node!");
