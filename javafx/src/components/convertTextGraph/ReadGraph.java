@@ -34,6 +34,8 @@ public class ReadGraph{
     public final static String COMMENT = "//";
 
     private static chromaticNumber CN = new chromaticNumber();
+
+    private int[][] graph;
     
     public static void main( String args[] ) {
         
@@ -264,7 +266,11 @@ public class ReadGraph{
         }
 
         int[][] graph = textTranslation.graph(vertices, v);
-
+        if (vertices < 35 && edges < 200){
+            CN.useBackTracking(graph);
+        } else {
+            CN.useWelshAlgorithm(vertices,v);
+        }
         return graph;
     }
 
