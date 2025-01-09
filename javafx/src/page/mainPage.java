@@ -11,17 +11,17 @@ public class mainPage  {
         Text txt = new Text("                            Welcome to \n Two-Three Musketeers - Graph Coloring Game");
         btn.getStyleClass().add("play-button");
         txt.getStyleClass().add("txt");
-        btn.setText("Play");
+        btn.setText("Phase2");
 
         Button newBtn = new Button();
         newBtn.getStyleClass().add("clickHere-button");
-        newBtn.setText("Click Here!");
+        newBtn.setText("Phase3");
 
         newBtn.setOnAction(e -> {
             App.changeUploadGraphScenePhase3();
         });
         btn.setOnAction(e -> {
-            App.changeMenuScene();
+            App.changeSelectGameScene();
         });
 
         StackPane root = new StackPane();

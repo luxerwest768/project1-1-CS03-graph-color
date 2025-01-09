@@ -20,9 +20,9 @@ public class App extends Application {
         primaryStage.setScene(mainPage.mainScene());
     }
 
-    public static void changeMenuScene(){
-        primaryStage.setScene(menu.menuPage());
-    }
+    // public static void changeMenuScene(){
+    //     primaryStage.setScene(menu.menuPage());
+    // }
 
     public static void changeSelectGameScene(){
         primaryStage.setScene(selectGame.selectGameScene());

@@ -8,11 +8,9 @@ import javafx.scene.text.Text;
 public class menu {
     static Scene menuPage(){
         Button playBtn = new Button("Play");
-        Button leadBoardBtn = new Button("LeaderBoards");
         Button moveBack = new Button("Back");
         Text txt = new Text("                            Welcome to \n Two-Three Musketeers - Graph Coloring Game");
         playBtn.getStyleClass().add("play-button");
-        leadBoardBtn.getStyleClass().add("leaderBoard-button");
         moveBack.getStyleClass().add("back-button");
         txt.getStyleClass().add("txt");
 
@@ -25,7 +23,7 @@ public class menu {
         });
 
         StackPane root = new StackPane();
-        root.getChildren().addAll(txt,playBtn,leadBoardBtn,moveBack);
+        root.getChildren().addAll(txt,playBtn,moveBack);
         Scene scene = new Scene(root,900,700);
         scene.getStylesheets().addAll("./css/menuPage.css");
 

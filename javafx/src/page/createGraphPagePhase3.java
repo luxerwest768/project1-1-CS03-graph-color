@@ -10,7 +10,6 @@ import javafx.scene.control.SplitPane.Divider;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
-import phase3Page.App;
 
 import java.util.Random;
 import components.convertTextGraph.ReadGraph;
