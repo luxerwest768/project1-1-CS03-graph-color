@@ -1,4 +1,4 @@
-package phase3Page;
+package page;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,7 +9,6 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-
 import java.io.File;
 
 import components.UploadGraph.ImportGraph;
@@ -18,13 +17,13 @@ import components.convertTextGraph.ReadGraph;
 
 
 
-public class uploadGraph {
+public class uploadGraphPhase3 {
     private static Stage primaryStage = new Stage();
     private static  ImportGraph getGraph = new ImportGraph();
 
 
 
-    public static Scene uploadGraphScene(){
+    public static Scene uploadGraphScenePhase3(){
         StackPane root = new StackPane();
         Button btnImportGraph = new Button("Import graph");
         Button btnPlay = new Button("Generate");
@@ -41,12 +40,13 @@ public class uploadGraph {
         createGraphBtn.getStyleClass().add("create-button");
 
         createGraphBtn.setOnAction(e -> {
-            App.changeCreateGraphScene();
+            App.changeCreateGraphScenePhase3();
         });
 
 
         backButton.setOnAction(e -> {
             App.changeMainScene();
+            
         });
 
         EventHandler<ActionEvent> eventImport = new EventHandler<ActionEvent>() {
@@ -73,7 +73,7 @@ public class uploadGraph {
                 int CN = getGraph.getChromaticNum();
                 try {
                     if (graph != null){
-                        App.changeRenderGraphScene(graph);
+                        App.changeRenderGraphScenePhase3(graph);
                     } else {
                         label.setText("You need to import file!");
                     }

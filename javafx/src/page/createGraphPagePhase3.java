@@ -1,4 +1,4 @@
-package phase3Page;
+package page;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -10,12 +10,14 @@ import javafx.scene.control.SplitPane.Divider;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import phase3Page.App;
+
 import java.util.Random;
 import components.convertTextGraph.ReadGraph;
 
-public class createGraphPage {
+public class createGraphPagePhase3 {
     
-    static Scene createGraph() {
+    static Scene createGraphPhase3() {
         // Declares the headers 
         Text header = new Text("Create Graph");
         Text subheader = new Text("Specify the graph details");
@@ -77,7 +79,7 @@ public class createGraphPage {
                         int[][] graph = ReadGraph.createGraph(Integer.valueOf(verticeinput.getText()), Integer.valueOf(edgesinput.getText()));
                         int CN = readGraph.getCN();
                         if (graph != null){
-                            App.changeRenderGraphScene(graph);
+                            App.changeRenderGraphScenePhase3(graph);
                         } else {
                             subheader.setText("Invalid Input!");
                         }
@@ -100,7 +102,7 @@ public class createGraphPage {
         // Sets the text and the function of the back button
         backbtn.setText("Back");
         backbtn.setOnAction(e -> {
-            App.changeUploadGraphScene();
+            App.changeUploadGraphScenePhase3();
         });
 
         StackPane root = new StackPane();

@@ -13,12 +13,19 @@ public class mainPage  {
         txt.getStyleClass().add("txt");
         btn.setText("Play");
 
+        Button newBtn = new Button();
+        newBtn.getStyleClass().add("clickHere-button");
+        newBtn.setText("Click Here!");
+
+        newBtn.setOnAction(e -> {
+            App.changeUploadGraphScenePhase3();
+        });
         btn.setOnAction(e -> {
             App.changeMenuScene();
         });
 
         StackPane root = new StackPane();
-        root.getChildren().addAll(txt,btn);
+        root.getChildren().addAll(txt,btn, newBtn);
         Scene scene = new Scene(root,900,700);
         scene.getStylesheets().addAll("./css/homePage.css");
 

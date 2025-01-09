@@ -55,6 +55,19 @@ public class App extends Application {
         secondaryStage.setScene(IChangeMyMind.iChangeMyMindScene(graph,CN));
         secondaryStage.show();
     }
+    public static void changeCreateGraphScenePhase3(){
+        primaryStage.setScene(createGraphPagePhase3.createGraphPhase3());
+    }
+
+    public static void changeUploadGraphScenePhase3(){
+        primaryStage.setScene(uploadGraphPhase3.uploadGraphScenePhase3());
+    }
+  
+    public static void changeRenderGraphScenePhase3(int[][] graph){
+        secondaryStage.setScene(renderGraphPhase3.renderGraphScenePhase3(graph));
+        secondaryStage.show();
+    }
+  
 
     public static void endScreenScene(String gameMode) {
         EndScreenBase endScreen;
