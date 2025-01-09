@@ -30,7 +30,7 @@ public class EndScreenBase {
         //});
 
         homeButton.setOnAction(e -> {
-            App.changeMenuScene();
+            App.changeMainScene();
         });
 
         VBox container = new VBox();
