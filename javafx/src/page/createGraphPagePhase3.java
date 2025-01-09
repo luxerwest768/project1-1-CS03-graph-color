@@ -6,10 +6,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.SplitPane.Divider;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5724b57ce89a1e2cf1d9e987fa1f4d120572ebb2
 
 import java.util.Random;
 import components.convertTextGraph.ReadGraph;

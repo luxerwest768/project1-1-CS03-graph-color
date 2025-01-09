@@ -11,11 +11,19 @@ public class mainPage  {
         Text txt = new Text("                            Welcome to \n Two-Three Musketeers - Graph Coloring Game");
         btn.getStyleClass().add("play-button");
         txt.getStyleClass().add("txt");
+<<<<<<< HEAD
         btn.setText("Phase2");
 
         Button newBtn = new Button();
         newBtn.getStyleClass().add("clickHere-button");
         newBtn.setText("Phase3");
+=======
+        btn.setText("Play Phase 2");
+
+        Button newBtn = new Button();
+        newBtn.getStyleClass().add("clickHere-button");
+        newBtn.setText(" Play Phase 3");
+>>>>>>> 5724b57ce89a1e2cf1d9e987fa1f4d120572ebb2
 
         newBtn.setOnAction(e -> {
             App.changeUploadGraphScenePhase3();
