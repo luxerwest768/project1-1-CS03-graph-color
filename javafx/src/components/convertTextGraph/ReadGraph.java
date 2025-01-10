@@ -35,7 +35,13 @@ public class ReadGraph{
 
     private static chromaticNumber CN = new chromaticNumber();
 
-    private int[][] graph;
+    private static int[][] myGraph;
+
+    private static int numberOfVertices = 0;
+
+    private static int numberOfEdges = 0;
+
+    private static ColVertices verticesSet[] = null;
     
     public static void main( String args[] ) {
         
@@ -160,17 +166,20 @@ public class ReadGraph{
         }
 
         int[][] graph = textTranslation.graph(n, v);
+        myGraph = graph;
 
-        if (n < 35 && m < 200){
-            CN.useBackTracking(graph);
-        } else {
-            CN.useWelshAlgorithm(n,v);
-        }
-
+        numberOfVertices = n;
+        numberOfEdges = m;
+        verticesSet = v;
         return graph;
     };
 
     public int getCN(){
+        if (numberOfVertices < 35 && numberOfEdges < 200){
+            CN.useBackTracking(myGraph);
+        } else {
+            CN.useWelshAlgorithm(numberOfVertices,verticesSet);
+        }
         return CN.getChromaticNumber();
     }
 
@@ -266,11 +275,8 @@ public class ReadGraph{
         }
 
         int[][] graph = textTranslation.graph(vertices, v);
-        if (vertices < 35 && edges < 200){
-            CN.useBackTracking(graph);
-        } else {
-            CN.useWelshAlgorithm(vertices,v);
-        }
+        myGraph = graph;
+
         return graph;
     }
 

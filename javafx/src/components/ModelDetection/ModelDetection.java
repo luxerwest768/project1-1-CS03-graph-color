@@ -4,22 +4,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class modelDetection {
+public class ModelDetection {
     private HashMap<Integer, ArrayList<Integer>> nodeConnections = new HashMap<>();
     private int[][] graph;
     private int largestDegree = 0;
     private int CN = -1;
+    private int model = -1;
     // 0: tree
-    // 1: star
-    // 2: wheel
+    // 1: wheel
+    // 2: complete
 
-    public modelDetection() {}
+    public ModelDetection() {}
 
     public int getCN() {
         return this.CN;
     }
 
-    public int detectModel(int[][] graph){
+    public int getModel() {
+        return this.model;
+    }
+
+    public boolean detectModel(int[][] graph){
         this.graph = graph;
 
         for (int node=0; node<graph.length; node++) {
@@ -34,18 +39,20 @@ public class modelDetection {
         }
 
         if (this.isTree()){
-            System.out.println("this is tree");
             this.CN = 2;
-            System.out.println(this.CN);
-            return 0;
+            this.model = 0;
+            return true;
         } else if (this.isWheel()){
-            System.out.println("this is wheel");
             this.CN = (this.graph.length%2 == 0)? 4 : 3;
-            System.out.println(this.CN);
-            return 1;
+            this.model = 1;
+            return true;
+        } else if (this.isComplete()){
+            this.CN = this.graph.length;
+            this.model = 2;
+            return true;
         }
 
-        return -1;
+        return false;
     };
 
     public boolean isCycle(boolean[] visited, int vertex, int parent){
@@ -96,6 +103,17 @@ public class modelDetection {
         return numberOfCycle == this.graph.length-1;
     }
 
+    public boolean isComplete(){
+        for (int i=0; i<this.nodeConnections.size(); i++){
+            int numberOfConnections = this.nodeConnections.get(i).size();
+            if (numberOfConnections != this.graph.length-1){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
         int[][] graph = {
                 {0,1,1,1,0,0,0,0,0,0},
@@ -135,7 +153,7 @@ public class modelDetection {
         test[1][6000] = 1;
         test[6000][1] = 1;
 
-        modelDetection obj = new modelDetection();
+        ModelDetection obj = new ModelDetection();
 
         System.out.println(obj.detectModel(test));
     }
