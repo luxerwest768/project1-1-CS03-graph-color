@@ -4,6 +4,12 @@
     -fx-pref-width: 600px;
     -fx-translate-y: 100px;
 }
+.clickHere-button {
+    -fx-font-size: 30pt;
+    -fx-margin: 10px;
+    -fx-pref-width: 600px;
+    -fx-translate-y: 250px;
+}
 .button {
     -fx-padding: 10px;
     -fx-border-color: gray;

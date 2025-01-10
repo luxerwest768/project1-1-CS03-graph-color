@@ -1,4 +1,4 @@
-package phase3Page;
+package page;
 
 import components.EdgeHandle.Edge;
 import components.EdgeHandle.Edges;
@@ -17,13 +17,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 
-public class renderGraph {
+public class renderGraphPhase3 {
 
 
-    private renderGraph(){}
+    private renderGraphPhase3(){}
     
 
-    public static Scene renderGraphScene(int[][] graph){
+    public static Scene renderGraphScenePhase3(int[][] graph){
         int width = 1000;
         int height = 700;
 
