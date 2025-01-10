@@ -73,7 +73,9 @@ public class createGraphPagePhase3 {
             public void handle(ActionEvent e){
                 try {
                     ReadGraph readGraph = new ReadGraph();
-                    if (Integer.valueOf(verticeinput.getText()) < 50 && Integer.valueOf(edgesinput.getText()) < 50){
+                    if (Integer.valueOf(verticeinput.getText()) < 0 || Integer.valueOf(edgesinput.getText()) < 0){
+                        subheader.setText("Invalid Input!: edges and vertices cam not be negative");
+                    } else {
                         int[][] graph = ReadGraph.createGraph(Integer.valueOf(verticeinput.getText()), Integer.valueOf(edgesinput.getText()));
                         int CN = readGraph.getCN();
                         if (graph != null){
@@ -81,8 +83,6 @@ public class createGraphPagePhase3 {
                         } else {
                             subheader.setText("Invalid Input!");
                         }
-                    } else {
-                        subheader.setText("Invalid Input!: edges and vertices are over 50");
                     }
                 } catch (NumberFormatException error){
                     subheader.setText("Invalid Input!");

@@ -1,5 +1,6 @@
 package page;
 
+import components.ModelDetection.ModelDetection;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -56,8 +57,13 @@ public class uploadGraph {
                     if (file != null){
                         try {
                             ReadGraph readGraph = new ReadGraph();
+                            ModelDetection modelDetection = new ModelDetection();
                             int[][] graph = readGraph.convertTextGraph(file);
-                            getGraph.setChromaticNum(readGraph.getCN());
+                            if (modelDetection.detectModel(graph)){
+                                getGraph.setChromaticNum(modelDetection.getCN());
+                            } else {
+                                getGraph.setChromaticNum(readGraph.getCN());
+                            }
                             getGraph.setGraph(graph);
                             label.setText(file.getAbsolutePath()+" selected");
                         } catch (NegativeArraySizeException erro){

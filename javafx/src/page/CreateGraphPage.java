@@ -1,5 +1,6 @@
 package page;
 
+import components.ModelDetection.ModelDetection;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -73,9 +74,15 @@ public class CreateGraphPage {
             public void handle(ActionEvent e){
                 try {
                     ReadGraph readGraph = new ReadGraph();
+                    ModelDetection modelDetection = new ModelDetection();
                     if (Integer.valueOf(verticeinput.getText()) < 50 && Integer.valueOf(edgesinput.getText()) < 50){
                         int[][] graph = readGraph.createGraph(Integer.valueOf(verticeinput.getText()), Integer.valueOf(edgesinput.getText()));
-                        int CN = readGraph.getCN();
+                        int CN = 0;
+                        if (modelDetection.detectModel(graph)){
+                            CN = modelDetection.getCN();
+                        } else {
+                            CN = readGraph.getCN();
+                        }
                         if (graph != null){
                             switch (gamemode) {
                                 case 1: App.changeToTheBitterEndScene(graph,CN); break;
