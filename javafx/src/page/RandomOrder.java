@@ -5,6 +5,7 @@ import components.EdgeHandle.Edge;
 import components.EdgeHandle.Edges;
 import components.NodeHandle.Vertex;
 import components.NodeHandle.Vertices;
+import components.convertTextGraph.Score;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -88,16 +89,28 @@ public class RandomOrder {
         uniqueColorText.getStyleClass().add("unique-color-text");
         Button getResultButton = new Button("Get Result");
         getResultButton.getStyleClass().add("get-result-button");
-        pane.getChildren().addAll(CNText,uniqueColorText,getResultButton);
+
+        // HINT BUTTON
+        Button hintButton = new Button("Hint");
+        hintButton.getStyleClass().add("hint-button");
+        Label hintText = new Label();
+        hintText.getStyleClass().add("hint-text");
+        hintButton.setOnAction(event -> {hintText.setText("Color the edges");});
+        // HINT BUTTON (end of the code)
+
+        pane.getChildren().addAll(CNText,hintText,hintButton,uniqueColorText,getResultButton);
         EventHandler<ActionEvent> compareCN = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 try {
+                    int s = Score.main(nodeSet,edgesSet,testNode.getMistakes(), 1);
                     nodeSet.checkUniqueColor();
                     CNText.setText("Chromatic Numbers: "+CN);
                     uniqueColorText.setText("Colors Used: "+nodeSet.getUniqueColors());
-                    System.out.println(nodeSet.getUniqueColors());
+                    App.closeGameScene();
                     if (nodeSet.getUniqueColors() != CN){
-                        App.endScreenScene();
+                        App.endScreenScene("RandomOrder");
+                    } else {
+                        App.winScreenScene(1,CN,s);
                     }
                 } catch (NullPointerException e) {
                     System.out.println("There are no colored node!");

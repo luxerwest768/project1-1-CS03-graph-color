@@ -1,22 +1,21 @@
 package page;
 
-import components.ModelDetection.ModelDetection;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.SplitPane.Divider;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+
 import java.util.Random;
 import components.convertTextGraph.ReadGraph;
 
-public class CreateGraphPage {
+public class createGraphPagePhase3 {
     
-    static Scene CreateGraph(int gamemode) {
+    static Scene createGraphPhase3() {
         // Declares the headers 
         Text header = new Text("Create Graph");
         Text subheader = new Text("Specify the graph details");
@@ -74,26 +73,16 @@ public class CreateGraphPage {
             public void handle(ActionEvent e){
                 try {
                     ReadGraph readGraph = new ReadGraph();
-                    ModelDetection modelDetection = new ModelDetection();
-                    if (Integer.valueOf(verticeinput.getText()) < 50 && Integer.valueOf(edgesinput.getText()) < 50){
-                        int[][] graph = readGraph.createGraph(Integer.valueOf(verticeinput.getText()), Integer.valueOf(edgesinput.getText()));
-                        int CN = 0;
-                        if (modelDetection.detectModel(graph)){
-                            CN = modelDetection.getCN();
-                        } else {
-                            CN = readGraph.getCN();
-                        }
+                    if (Integer.valueOf(verticeinput.getText()) < 0 || Integer.valueOf(edgesinput.getText()) < 0){
+                        subheader.setText("Invalid Input!: edges and vertices cam not be negative");
+                    } else {
+                        int[][] graph = ReadGraph.createGraph(Integer.valueOf(verticeinput.getText()), Integer.valueOf(edgesinput.getText()));
+                        int CN = readGraph.getCN();
                         if (graph != null){
-                            switch (gamemode) {
-                                case 1: App.changeToTheBitterEndScene(graph,CN); break;
-                                case 2: App.changeRandomOrderScene(graph,CN); break;
-                                case 3: App.changeIChangeMyMindScene(graph,CN); break;
-                            }
+                            App.changeRenderGraphScenePhase3(graph);
                         } else {
                             subheader.setText("Invalid Input!");
                         }
-                    } else {
-                        subheader.setText("Invalid Input!: edges and vertices are over 50");
                     }
                 } catch (NumberFormatException error){
                     subheader.setText("Invalid Input!");
@@ -111,7 +100,7 @@ public class CreateGraphPage {
         // Sets the text and the function of the back button
         backbtn.setText("Back");
         backbtn.setOnAction(e -> {
-            App.changeUploadGraphScene(gamemode);
+            App.changeUploadGraphScenePhase3();
         });
 
         StackPane root = new StackPane();

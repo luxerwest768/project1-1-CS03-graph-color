@@ -20,10 +20,6 @@ public class App extends Application {
         primaryStage.setScene(mainPage.mainScene());
     }
 
-    public static void changeMenuScene(){
-        primaryStage.setScene(menu.menuPage());
-    }
-
     public static void changeSelectGameScene(){
         primaryStage.setScene(selectGame.selectGameScene());
     }
@@ -55,9 +51,51 @@ public class App extends Application {
         secondaryStage.setScene(IChangeMyMind.iChangeMyMindScene(graph,CN));
         secondaryStage.show();
     }
+    public static void changeCreateGraphScenePhase3(){
+        primaryStage.setScene(createGraphPagePhase3.createGraphPhase3());
+    }
 
-    public static void endScreenScene(){
-        primaryStage.setScene(endScreen.endScreenScene());
+    public static void changeUploadGraphScenePhase3(){
+        primaryStage.setScene(uploadGraphPhase3.uploadGraphScenePhase3());
+    }
+  
+    public static void changeRenderGraphScenePhase3(int[][] graph){
+        secondaryStage.setScene(renderGraphPhase3.renderGraphScenePhase3(graph));
+        secondaryStage.show();
+    }
+  
+
+    public static void endScreenScene(String gameMode) {
+        EndScreenBase endScreen;
+
+        switch (gameMode) {
+            case "BitterEnd":
+                endScreen = new BitterEndModeEndScreen();
+                break;
+
+            case "RandomOrder":
+                endScreen = new RandomColorsModeEndScreen();
+                break;
+
+            case "IChangeMyMind":
+                endScreen = new RandomColorsModeEndScreen();
+                break;
+
+            default:
+                endScreen = new EndScreenBase();
+                break;
+        }
+
+
+        primaryStage.setScene(endScreen.createEndScreen());
+    }
+
+    public static void winScreenScene(int gamemode, int CN, int score){
+        primaryStage.setScene(winScreen.winScreenScene(gamemode,CN,score));
+    }
+
+    public static void closeGameScene(){
+        secondaryStage.close();
     }
 
 

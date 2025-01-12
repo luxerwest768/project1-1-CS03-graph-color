@@ -44,3 +44,26 @@
     -fx-font-size: 16;
 }
 
+.timecon {
+    -fx-pref-width: 200px;
+    -fx-pref-height: 100px;
+    -fx-border-width: 5px;
+    -fx-border-color: black;
+    -fx-translate-y: 600px;
+}
+
+.timecon > Text {
+    -fx-font-size: 75px;
+    -fx-text-alignment: center;
+}
+
+.hint-button {
+    -fx-translate-y: 650;
+    -fx-translate-x: 850;
+    -fx-font-size: 16pt;
+}
+.hint-text {
+    -fx-translate-y: 630;
+    -fx-translate-x: 850;
+    -fx-font-size: 16;
+}

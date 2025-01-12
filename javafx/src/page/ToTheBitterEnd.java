@@ -5,6 +5,7 @@ import components.EdgeHandle.Edge;
 import components.EdgeHandle.Edges;
 import components.NodeHandle.Vertex;
 import components.NodeHandle.Vertices;
+import components.convertTextGraph.Score;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -76,6 +77,7 @@ public class ToTheBitterEnd {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
 
+
         // make an event to reload edge's location whenever change node's location
         EventHandler<ActionEvent> render = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
@@ -116,15 +118,29 @@ public class ToTheBitterEnd {
         uniqueColorText.getStyleClass().add("unique-color-text");
         Button getResultButton = new Button("Get Result");
         getResultButton.getStyleClass().add("get-result-button");
-        pane.getChildren().addAll(CNText,uniqueColorText,getResultButton);
+
+        // HINT BUTTON
+        Button hintButton = new Button("Hint");
+        hintButton.getStyleClass().add("hint-button");
+        Label hintText = new Label();
+        hintText.getStyleClass().add("hint-text");
+        hintButton.setOnAction(event -> {hintText.setText("Color the edges");});
+        // HINT BUTTON (end of the code)
+
+        pane.getChildren().addAll(CNText,uniqueColorText,getResultButton,hintText,hintButton);
         EventHandler<ActionEvent> compareCN = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 try {
+                    timeline.stop();
                     nodeSet.checkUniqueColor();
                     CNText.setText("Chromatic Numbers: "+CN); 
                     uniqueColorText.setText("Colors Used: "+nodeSet.getUniqueColors());
+                    int s =Score.main(nodeSet,edgesSet,testNode.getMistakes(), 0);
+                    App.closeGameScene();
                     if (nodeSet.getUniqueColors() != CN){
-                        App.endScreenScene();
+                        App.endScreenScene("BitterEnd");
+                    } else {
+                        App.winScreenScene(0,CN,s);
                     }
                 } catch (NullPointerException e) {
                     System.out.println("There are no colored node!");

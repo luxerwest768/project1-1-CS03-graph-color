@@ -10,7 +10,6 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-
 import java.io.File;
 
 import components.UploadGraph.ImportGraph;
@@ -19,13 +18,14 @@ import components.convertTextGraph.ReadGraph;
 
 
 
-public class uploadGraph {
+public class uploadGraphPhase3 {
     private static Stage primaryStage = new Stage();
-    private static  ImportGraph getGraph = new ImportGraph();
+    private static ImportGraph getGraph = new ImportGraph();
+    private static ModelDetection modelDetection = new ModelDetection();
 
 
 
-    public static Scene uploadGraphScene(int gamemode){
+    public static Scene uploadGraphScenePhase3(){
         StackPane root = new StackPane();
         Button btnImportGraph = new Button("Import graph");
         Button btnPlay = new Button("Generate");
@@ -42,12 +42,13 @@ public class uploadGraph {
         createGraphBtn.getStyleClass().add("create-button");
 
         createGraphBtn.setOnAction(e -> {
-            App.changeCreateGraphScene(gamemode);
+            App.changeCreateGraphScenePhase3();
         });
 
 
         backButton.setOnAction(e -> {
-            App.changeSelectGameScene();
+            App.changeMainScene();
+            
         });
 
         EventHandler<ActionEvent> eventImport = new EventHandler<ActionEvent>() {
@@ -57,7 +58,6 @@ public class uploadGraph {
                     if (file != null){
                         try {
                             ReadGraph readGraph = new ReadGraph();
-                            ModelDetection modelDetection = new ModelDetection();
                             int[][] graph = readGraph.convertTextGraph(file);
                             if (modelDetection.detectModel(graph)){
                                 getGraph.setChromaticNum(modelDetection.getCN());
@@ -79,11 +79,7 @@ public class uploadGraph {
                 int CN = getGraph.getChromaticNum();
                 try {
                     if (graph != null){
-                        switch (gamemode) {
-                            case 1: App.changeToTheBitterEndScene(graph,CN); break;
-                            case 2: App.changeRandomOrderScene(graph,CN); break;
-                            case 3: App.changeIChangeMyMindScene(graph,CN); break;
-                        }
+                        App.changeRenderGraphScenePhase3(graph);
                     } else {
                         label.setText("You need to import file!");
                     }

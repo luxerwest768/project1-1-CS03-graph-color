@@ -36,7 +36,7 @@ public class selectGame {
         moveBack.setText("Back");
         moveBack.getStyleClass().add("back-button");
         moveBack.setOnAction(e -> {
-            App.changeMenuScene();
+            App.changeMainScene();
         });
 
         StackPane root = new StackPane();

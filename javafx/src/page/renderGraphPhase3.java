@@ -1,13 +1,14 @@
 package page;
 
-import components.ColorWheel.ColorWheel;
 import components.EdgeHandle.Edge;
 import components.EdgeHandle.Edges;
 import components.NodeHandle.Vertex;
 import components.NodeHandle.Vertices;
-import components.convertTextGraph.Score;
+import components.ColorWheel.ColorWheel;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,14 +16,16 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-public class IChangeMyMind {
-    public static Scene iChangeMyMindScene(int[][] graph, int CN){
+
+public class renderGraphPhase3 {
+
+
+    private renderGraphPhase3(){}
+    
+
+    public static Scene renderGraphScenePhase3(int[][] graph){
         int width = 1000;
         int height = 700;
-
-        // reset the index of vertex to 0
-        Vertex testNode = new Vertex();
-        testNode.setCount();
 
         Pane pane = new Pane();
         Vertices nodeSet = new Vertices(graph,width,height);
@@ -46,7 +49,17 @@ public class IChangeMyMind {
         Button renderButton = new Button("Render");
         renderButton.getStyleClass().add("render-button");
 
-        pane.getChildren().addAll(renderButton,colorWheel.getCanvas(),currentColor);
+        Button solutionButton = new Button("Solve");
+        solutionButton.getStyleClass().add("solution-button");
+
+        pane.getChildren().addAll(renderButton,colorWheel.getCanvas(),currentColor, solutionButton);
+
+        EventHandler<ActionEvent> solve = new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                pane.getChildren().addAll(renderButton,colorWheel.getCanvas(),currentColor);
+            }};
+
+        solutionButton.setOnAction(solve);
 
 
         // make an event to reload edge's location whenever change node's location
@@ -83,52 +96,7 @@ public class IChangeMyMind {
         };
         renderButton.setOnAction(render);
 
-        Label CNText = new Label("");
-        CNText.getStyleClass().add("cn-text");
-        Label uniqueColorText = new Label();
-        uniqueColorText.getStyleClass().add("unique-color-text");
-        Button getResultButton = new Button("Get Result");
-        getResultButton.getStyleClass().add("get-result-button");
-
-        // HINT BUTTON
-        Button hintButton = new Button("Hint");
-        hintButton.getStyleClass().add("hint-button");
-        Label hintText = new Label();
-        hintText.getStyleClass().add("hint-text");
-        hintButton.setOnAction(event -> {hintText.setText("Color the edges");});
-        // HINT BUTTON (end of the code)
-
-        pane.getChildren().addAll(CNText,hintText,hintButton,uniqueColorText,getResultButton);
-        EventHandler<ActionEvent> compareCN = new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                try {
-                    int s = Score.main(nodeSet,edgesSet,testNode.getMistakes(), 2);
-                    nodeSet.checkUniqueColor();
-                    CNText.setText("Chromatic Numbers: "+CN);
-                    uniqueColorText.setText("Colors Used: "+nodeSet.getUniqueColors());
-                    App.closeGameScene();
-                    if (nodeSet.getUniqueColors() != CN){
-                        App.endScreenScene("IChangeMyMind");
-                    } else {
-                        App.winScreenScene(2,CN,s);
-                    }
-                } catch (NullPointerException e) {
-                    System.out.println("There are no colored node!");
-                }
-            }
-        };
-        getResultButton.setOnAction(compareCN);
-
-        Button redoBtn = new Button("Undo");
-        redoBtn.getStyleClass().add("redo-button");
-        pane.getChildren().addAll(redoBtn);
-        redoBtn.setOnAction(event -> {
-            nodeSet.reloadColor();
-        });
-
-        Label colorStatus = new Label("");
-        colorStatus.getStyleClass().add("color-status");
-        pane.getChildren().add(colorStatus);
+        Label test = new Label("Test");
         // render nodes
         for (int i = 0; i < numVertices; i++) {
             Vertex node = new Vertex();
@@ -137,10 +105,9 @@ public class IChangeMyMind {
             node.setPosition(x, y);
             nodeSet.addVertex(node);
             nodeSet.getVertex(i).drag(); // make node can be mouseDrag
-            nodeSet.getVertex(i).setColorForRandom(colorWheel,nodeSet,colorStatus);
+            nodeSet.getVertex(i).setColor(colorWheel,nodeSet,test);
             pane.getChildren().add(nodeSet.getVertex(i).getCircle());
         }
-        nodeSet.randomOrder();
 
 
         // render edges
@@ -159,7 +126,7 @@ public class IChangeMyMind {
         }
 
         Scene scene = new Scene(pane, width, height);
-        scene.getStylesheets().add("./css/iChangeMyMind.css");
+        scene.getStylesheets().add("./css/renderGraph.css");
 
         return scene;
     }

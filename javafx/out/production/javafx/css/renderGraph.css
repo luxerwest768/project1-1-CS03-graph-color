@@ -8,6 +8,11 @@
     -fx-background-color: white;
 }
 
+.solution-button {
+    -fx-font-size: 16pt;
+    -fx-translate-y: 650;
+}
+
 .button:hover {
     -fx-background-color: #f0f0f0;
 }
