@@ -8,6 +8,11 @@
     -fx-background-color: white;
 }
 
+.solution-button {
+    -fx-font-size: 16pt;
+    -fx-translate-y: 650;
+}
+
 .button:hover {
     -fx-background-color: #f0f0f0;
 }
@@ -19,4 +24,13 @@
 .current-color {
     -fx-translate-y: 90;
     -fx-translate-x: 890;
+}
+
+.CN-label {
+    -fx-font-size: 16pt;
+}
+
+.Algorithm-label {
+    -fx-font-size: 16pt;
+    -fx-translate-y: 50;
 }

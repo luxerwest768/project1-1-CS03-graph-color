@@ -37,9 +37,9 @@ public class ReadGraph{
 
     private static int[][] myGraph;
 
-    private static int numberOfVertices = 0;
+    private static int numberOfVertices;
 
-    private static int numberOfEdges = 0;
+    private static int numberOfEdges;
 
     private static ColVertices verticesSet[] = null;
     
@@ -175,12 +175,16 @@ public class ReadGraph{
     };
 
     public int getCN(){
-        if (numberOfVertices < 35 && numberOfEdges < 200){
+        if (numberOfVertices < 500 && numberOfEdges < 200){
             CN.useBackTracking(myGraph);
         } else {
             CN.useWelshAlgorithm(numberOfVertices,verticesSet);
         }
         return CN.getChromaticNumber();
+    }
+
+    public chromaticNumber getChromaticNumber(){
+        return CN;
     }
 
     public static int[][] createGraph(int vertices, int edges) {
@@ -242,7 +246,7 @@ public class ReadGraph{
             // Adds an id to each vertex
             v[i].id = i + 1;
         }
-        
+        welshAlgorithm welshAlgorithm = new welshAlgorithm();
         // Checks whether there has to be isolated vertices
         if (vertices  <= (2 * edges)) { 
             int[][] degreelist = welshAlgorithm.degreeList(vertices, v);
@@ -276,6 +280,8 @@ public class ReadGraph{
 
         int[][] graph = textTranslation.graph(vertices, v);
         myGraph = graph;
+        numberOfVertices = graph.length;
+        verticesSet = v;
 
         return graph;
     }

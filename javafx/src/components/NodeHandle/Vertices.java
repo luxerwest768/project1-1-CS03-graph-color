@@ -37,7 +37,7 @@ public class Vertices {
         int numVertices = this.graph.length;
         double centerX = width/2; // ensure that the first position is in the center
         double centerY = height/2; // ensure that the first position is in the center
-        double radius = Math.min(centerX, centerY);
+        double radius = 300;
         for (int i = 0; i < numVertices; i++) {
             double angle = 2 * Math.PI * i / numVertices;
             this.positions[i][0] = centerX + radius * Math.cos(angle);
