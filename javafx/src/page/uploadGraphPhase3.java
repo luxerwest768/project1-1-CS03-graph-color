@@ -1,6 +1,7 @@
 package page;
 
 import components.ModelDetection.ModelDetection;
+import components.convertTextGraph.chromaticNumber;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -22,7 +23,7 @@ public class uploadGraphPhase3 {
     private static Stage primaryStage = new Stage();
     private static ImportGraph getGraph = new ImportGraph();
     private static ModelDetection modelDetection = new ModelDetection();
-
+    private static chromaticNumber solution = new chromaticNumber();
 
 
     public static Scene uploadGraphScenePhase3(){
@@ -54,11 +55,11 @@ public class uploadGraphPhase3 {
         EventHandler<ActionEvent> eventImport = new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e){
                     File file = graphImport.showOpenDialog(primaryStage);
-
                     if (file != null){
                         try {
                             ReadGraph readGraph = new ReadGraph();
                             int[][] graph = readGraph.convertTextGraph(file);
+                            solution = readGraph.getChromaticNumber();
                             if (modelDetection.detectModel(graph)){
                                 getGraph.setChromaticNum(modelDetection.getCN());
                             } else {
@@ -79,7 +80,7 @@ public class uploadGraphPhase3 {
                 int CN = getGraph.getChromaticNum();
                 try {
                     if (graph != null){
-                        App.changeRenderGraphScenePhase3(graph);
+                        App.changeRenderGraphScenePhase3(graph,solution);
                     } else {
                         label.setText("You need to import file!");
                     }

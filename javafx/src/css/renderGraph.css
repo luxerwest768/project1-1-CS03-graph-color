@@ -25,3 +25,12 @@
     -fx-translate-y: 90;
     -fx-translate-x: 890;
 }
+
+.CN-label {
+    -fx-font-size: 16pt;
+}
+
+.Algorithm-label {
+    -fx-font-size: 16pt;
+    -fx-translate-y: 50;
+}

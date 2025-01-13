@@ -1,5 +1,6 @@
 package page;
 
+import components.convertTextGraph.chromaticNumber;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ import java.util.Random;
 import components.convertTextGraph.ReadGraph;
 
 public class createGraphPagePhase3 {
+    private static chromaticNumber solution = new chromaticNumber();
     
     static Scene createGraphPhase3() {
         // Declares the headers 
@@ -78,8 +80,9 @@ public class createGraphPagePhase3 {
                     } else {
                         int[][] graph = ReadGraph.createGraph(Integer.valueOf(verticeinput.getText()), Integer.valueOf(edgesinput.getText()));
                         int CN = readGraph.getCN();
+                        solution = readGraph.getChromaticNumber();
                         if (graph != null){
-                            App.changeRenderGraphScenePhase3(graph);
+                            App.changeRenderGraphScenePhase3(graph, solution);
                         } else {
                             subheader.setText("Invalid Input!");
                         }

@@ -1,10 +1,22 @@
 package components.convertTextGraph;
 
+import components.NodeHandle.Vertices;
+import javafx.scene.paint.Color;
+
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class welshAlgorithm {
+    private int nOfVertices;
+    private int[] globalColorSet;
+
+    public void setnOfVertices(int nOfVertices) {
+        this.nOfVertices = nOfVertices;
+        this.globalColorSet = new int[nOfVertices];
+    }
+
     // Method that returns an order list of each vertex's degree
-    public static int[][] degreeList(int nOfVertices, ColVertices[] v) {
+    public int[][] degreeList(int nOfVertices, ColVertices[] v) {
         int[][] degreelist = new int[nOfVertices][2];
         int[][] temp = new int[nOfVertices][2];
 
@@ -26,7 +38,8 @@ public class welshAlgorithm {
         return degreelist;
     }
 
-    public static int chromaticNumber(int[][] degreeList, ColVertices[] v, int nOfVertices) {
+    public int chromaticNumber(int[][] degreeList, ColVertices[] v, int nOfVertices) {
+
         // Initializes the colour and finished variable.
         int colour = 1;
         boolean finished = false;
@@ -41,6 +54,7 @@ public class welshAlgorithm {
                     if(canColour(v, v[degreeList[i][0]], colour)) {
                         // Colours the vertex if no neighbour has the same colour
                         v[degreeList[i][0]].colour = colour;
+                        globalColorSet[i] = colour;
                     }
                 }
             }
@@ -56,7 +70,7 @@ public class welshAlgorithm {
         return (colour - 1);
     }
 
-    public static boolean canColour(ColVertices[] v,ColVertices vertex, int colour) {
+    public boolean canColour(ColVertices[] v,ColVertices vertex, int colour) {
         boolean isFine = true;
 
         // Loops through each edge connected to the vertex
@@ -80,7 +94,7 @@ public class welshAlgorithm {
         return isFine;
     }
 
-    public static boolean done(ColVertices[] v, int nOfVertices) {
+    public boolean done(ColVertices[] v, int nOfVertices) {
         boolean done = false;
         // n is the number of coloured vertices
         int n = 0;
@@ -99,5 +113,25 @@ public class welshAlgorithm {
         }
 
         return done;
+    }
+
+    public void solve(Vertices nodeSet){
+        HashMap<Integer, int[]> colorSet = new HashMap<>();
+
+        for(int i = 0; i < nOfVertices; i++){
+            if(colorSet.containsKey(globalColorSet[i])){
+                int[] temp = colorSet.get(globalColorSet[i]);
+                Color colorVar = Color.rgb(temp[0],temp[1],temp[2]);
+                nodeSet.getVertex(i).setFill(colorVar);
+            } else {
+                int[] color = new int[3];
+                color[0] = (int) (Math.random() * 255);
+                color[1] = (int) (Math.random() * 255);
+                color[2] = (int) (Math.random() * 255);
+                colorSet.put(globalColorSet[i], color);
+                Color colorVar = Color.rgb(color[0],color[1],color[2]);
+                nodeSet.getVertex(i).setFill(colorVar);
+            }
+        }
     }
 }

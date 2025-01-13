@@ -1,5 +1,6 @@
 package page;
 
+import components.convertTextGraph.chromaticNumber;
 import javafx.stage.Stage;
 import javafx.application.Application;
 
@@ -7,6 +8,7 @@ import javafx.application.Application;
 public class App extends Application {
     private static Stage primaryStage = new Stage();
     private static Stage secondaryStage = new Stage();
+    private static Stage solutionStage = new Stage();
 
     @Override
     public void start(Stage primaryStage){
@@ -59,9 +61,16 @@ public class App extends Application {
         primaryStage.setScene(uploadGraphPhase3.uploadGraphScenePhase3());
     }
   
-    public static void changeRenderGraphScenePhase3(int[][] graph){
-        secondaryStage.setScene(renderGraphPhase3.renderGraphScenePhase3(graph));
+    public static void changeRenderGraphScenePhase3(int[][] graph, chromaticNumber solution){
+        secondaryStage.close();
+        secondaryStage.setScene(renderGraphPhase3.renderGraphScenePhase3(graph, solution));
         secondaryStage.show();
+        solutionStage.close();
+    }
+
+    public static void changeRenderSolution(int[][] graph, chromaticNumber solution){
+        solutionStage.setScene(Solution.renderSolutionGraph(graph, solution));
+        solutionStage.show();
     }
   
 

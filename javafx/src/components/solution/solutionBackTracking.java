@@ -71,16 +71,18 @@ public class solutionBackTracking {
 
     public void solve(Vertices node){
         HashMap<Integer, int[]> colorSet = new HashMap<>();
-        int[] color = new int[3];
-        color[0] = (int) Math.random() * 255;
-        color[1] = (int) Math.random() * 255;
-        color[2] = (int) Math.random() * 255;
 
         for(int i = 0; i < globalColorSet.length; i++){
             if(colorSet.containsKey(globalColorSet[i])){
                 int[] temp = colorSet.get(globalColorSet[i]);
                 Color colorVar = Color.rgb(temp[0],temp[1],temp[2]);
                 node.getVertex(i).setFill(colorVar);
+            } else {
+                int[] color = new int[3];
+                color[0] = (int) Math.random() * 255;
+                color[1] = (int) Math.random() * 255;
+                color[2] = (int) Math.random() * 255;
+                colorSet.put(globalColorSet[i], color);
             }
         }
     }

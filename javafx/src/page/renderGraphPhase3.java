@@ -6,6 +6,7 @@ import components.NodeHandle.Vertex;
 import components.NodeHandle.Vertices;
 import components.ColorWheel.ColorWheel;
 
+import components.convertTextGraph.chromaticNumber;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -23,7 +24,7 @@ public class renderGraphPhase3 {
     private renderGraphPhase3(){}
     
 
-    public static Scene renderGraphScenePhase3(int[][] graph){
+    public static Scene renderGraphScenePhase3(int[][] graph, chromaticNumber solution){
         int width = 1000;
         int height = 700;
 
@@ -52,14 +53,13 @@ public class renderGraphPhase3 {
         Button solutionButton = new Button("Solve");
         solutionButton.getStyleClass().add("solution-button");
 
-        pane.getChildren().addAll(renderButton,colorWheel.getCanvas(),currentColor, solutionButton);
-
         EventHandler<ActionEvent> solve = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                pane.getChildren().addAll(renderButton,colorWheel.getCanvas(),currentColor);
+                App.changeRenderSolution(graph,solution);
             }};
-
         solutionButton.setOnAction(solve);
+
+        pane.getChildren().addAll(renderButton,colorWheel.getCanvas(),currentColor, solutionButton);
 
 
         // make an event to reload edge's location whenever change node's location
