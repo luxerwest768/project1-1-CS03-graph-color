@@ -55,7 +55,7 @@ public class ToTheBitterEnd {
         });
 
         Button renderButton = new Button("Render");
-        renderButton.getStyleClass().add("button");
+        renderButton.getStyleClass().add("render-button");
 
         HBox timecon = new HBox();
         Text stopwatch = new Text("00:00");
@@ -183,7 +183,7 @@ public class ToTheBitterEnd {
         }
 
         Scene scene = new Scene(pane, width, height);
-        scene.getStylesheets().add("./css/style.css");
+        scene.getStylesheets().add("./css/toTheBitterEnd.css");
 
         return scene;
     }

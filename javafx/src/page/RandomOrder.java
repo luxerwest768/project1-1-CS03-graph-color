@@ -44,7 +44,7 @@ public class RandomOrder {
         });
 
         Button renderButton = new Button("Render");
-        renderButton.getStyleClass().add("button");
+        renderButton.getStyleClass().add("render-button");
 
         pane.getChildren().addAll(renderButton,colorWheel.getCanvas(),currentColor);
 
@@ -154,7 +154,7 @@ public class RandomOrder {
         }
 
         Scene scene = new Scene(pane, width, height);
-        scene.getStylesheets().add("./css/style.css");
+        scene.getStylesheets().add("./css/randomOrder.css");
 
         return scene;
     }

@@ -87,7 +87,7 @@ public class App extends Application {
                 break;
 
             case "IChangeMyMind":
-                endScreen = new IChangedMyMindModeEndScreen();
+                endScreen = new RandomColorsModeEndScreen();
                 break;
 
             default:

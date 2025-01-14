@@ -44,7 +44,7 @@ public class IChangeMyMind {
         });
 
         Button renderButton = new Button("Render");
-        renderButton.getStyleClass().add("button");
+        renderButton.getStyleClass().add("render-button");
 
         pane.getChildren().addAll(renderButton,colorWheel.getCanvas(),currentColor);
 
@@ -159,7 +159,7 @@ public class IChangeMyMind {
         }
 
         Scene scene = new Scene(pane, width, height);
-        scene.getStylesheets().add("./css/style.css");
+        scene.getStylesheets().add("./css/iChangeMyMind.css");
 
         return scene;
     }

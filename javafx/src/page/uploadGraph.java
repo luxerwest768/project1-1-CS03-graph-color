@@ -5,46 +5,46 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 
 import java.io.File;
 
 import components.UploadGraph.ImportGraph;
 import components.convertTextGraph.ReadGraph;
 
+
+
+
 public class uploadGraph {
     private static Stage primaryStage = new Stage();
-    private static ImportGraph getGraph = new ImportGraph();
+    private static  ImportGraph getGraph = new ImportGraph();
 
-    public static Scene uploadGraphScene(int gamemode) {
-        VBox root = new VBox(35); 
-        root.setStyle("-fx-alignment: center;"); 
 
+
+    public static Scene uploadGraphScene(int gamemode){
+        StackPane root = new StackPane();
         Button btnImportGraph = new Button("Import graph");
         Button btnPlay = new Button("Generate");
         Button backButton = new Button("Back");
-        Button createGraphBtn = new Button("Create graph");
-        Text statusText = new Text("No files selected"); 
         FileChooser graphImport = new FileChooser();
+        Label label = new Label("no files selected");
+        Button createGraphBtn = new Button("Create graph");
 
-        statusText.getStyleClass().add("header");
 
-        double buttonWidth = 400;
-        double buttonHeight = 50;
-        Button[] buttons = {btnImportGraph, btnPlay, backButton, createGraphBtn};
-        for (Button button : buttons) {
-            button.getStyleClass().add("button");
-            button.setPrefSize(buttonWidth, buttonHeight); 
-        }
+        label.getStyleClass().add("label-status");
+        btnImportGraph.getStyleClass().add("btn-import");
+        btnPlay.getStyleClass().add("btn-play");
+        backButton.getStyleClass().add("back-button");
+        createGraphBtn.getStyleClass().add("create-button");
 
-        createGraphBtn.setOnAction(e -> App.changeCreateGraphScene(gamemode));
-        backButton.setOnAction(e -> App.changeSelectGameScene());
+        createGraphBtn.setOnAction(e -> {
+            App.changeCreateGraphScene(gamemode);
+        });
 
-        btnImportGraph.setOnAction(e -> {
-            File file = graphImport.showOpenDialog(primaryStage);
 
         backButton.setOnAction(e -> {
             App.changeSelectGameScene();
@@ -78,42 +78,36 @@ public class uploadGraph {
                 int[][] graph = getGraph.getGraph();
                 int CN = getGraph.getChromaticNum();
                 try {
-                    ReadGraph readGraph = new ReadGraph();
-                    int[][] graph = readGraph.convertTextGraph(file);
-                    getGraph.setChromaticNum(readGraph.getCN());
-                    getGraph.setGraph(graph);
-                    statusText.setText(file.getAbsolutePath() + " selected");
-                } catch (NegativeArraySizeException error) {
-                    statusText.setText("Invalid file");
-                }
-            }
-        });
-
-        btnPlay.setOnAction(e -> {
-            int[][] graph = getGraph.getGraph();
-            int CN = getGraph.getChromaticNum();
-
-            try {
-                if (graph != null) {
-                    switch (gamemode) {
-                        case 1 -> App.changeToTheBitterEndScene(graph, CN);
-                        case 2 -> App.changeRandomOrderScene(graph, CN);
-                        case 3 -> App.changeIChangeMyMindScene(graph, CN);
+                    if (graph != null){
+                        switch (gamemode) {
+                            case 1: App.changeToTheBitterEndScene(graph,CN); break;
+                            case 2: App.changeRandomOrderScene(graph,CN); break;
+                            case 3: App.changeIChangeMyMindScene(graph,CN); break;
+                        }
+                    } else {
+                        label.setText("You need to import file!");
                     }
-                } else {
-                    statusText.setText("You need to import a file!");
+                } catch (NullPointerException error){
+                    System.out.println("Invalid file "+error);
                 }
-            } catch (NullPointerException error) {
-                System.out.println("Invalid file " + error);
+                
             }
-        });
+        };
 
-        root.getChildren().addAll(statusText, btnImportGraph, btnPlay, createGraphBtn, backButton);
+        btnImportGraph.setOnAction(eventImport);
+        btnPlay.setOnAction(changeScene);
+        
 
-        Scene uploadGraphScene = new Scene(root, 900, 700);
-        root.getStyleClass().add("scene");
-        uploadGraphScene.getStylesheets().add("./css/style.css");
+
+        root.getChildren().addAll(
+                btnImportGraph,label,backButton,btnPlay,createGraphBtn
+        );
+
+
+        Scene uploadGraphScene = new Scene(root,900,700);
+        uploadGraphScene.getStylesheets().add("./css/uploadGraph.css");
 
         return uploadGraphScene;
     }
+
 }

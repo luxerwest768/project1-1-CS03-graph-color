@@ -2,36 +2,45 @@ package page;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 
 public class EndScreenBase {
     protected String titleText = "You Lost!";
     protected String messageText = "You actually couldn't color some circles..?";
 
     public Scene createEndScreen() {
-        Text header = new Text(titleText);
-        header.setTextAlignment(TextAlignment.CENTER);
-        header.getStyleClass().add("header");
+        StackPane root = new StackPane();
 
-        Text subheader = new Text(messageText);
-        subheader.setTextAlignment(TextAlignment.CENTER);
-        subheader.getStyleClass().add("subheader");
+        Label title = new Label(titleText);
+        title.getStyleClass().add("title");
+
+        Label message = new Label(messageText);
+        message.getStyleClass().add("end-message");
+
+        //Button tryAgainButton = new Button("Try again");
+        //tryAgainButton.getStyleClass().addAll("button", "try-again");
 
         Button homeButton = new Button("Home");
-        homeButton.getStyleClass().add("button");
+        homeButton.getStyleClass().add("home");
+
+        //tryAgainButton.setOnAction(e -> {
+        //    App.changeGameScene();
+        //});
+
         homeButton.setOnAction(e -> {
             App.changeMainScene();
         });
 
-        VBox root = new VBox(30);
-        root.getChildren().addAll(header, subheader, homeButton);
-        root.setStyle("-fx-alignment: center;");
+        VBox container = new VBox();
+        container.getStyleClass().add("container");
+        container.getChildren().addAll(message, homeButton,title);
+
+        root.getChildren().addAll(container);
 
         Scene scene = new Scene(root, 900, 700);
-        root.getStyleClass().add("scene");
-        scene.getStylesheets().addAll("./css/style.css");
+        scene.getStylesheets().add("./css/endScreen.css");
 
         return scene;
     }
