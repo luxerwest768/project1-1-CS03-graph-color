@@ -1,48 +1,47 @@
 package page;
 
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class selectGame {
-    public static Scene selectGameScene(){
-        Button toTheBitterEnd = new Button();
-        Button randomColor = new Button();
-        Button iChangeMyMind = new Button();
-        Button moveBack = new Button(); 
+    public static Scene selectGameScene() {
 
-        Text txt = new Text("Select Game Mode");
-        txt.getStyleClass().add("txt");
+        Button toTheBitterEnd = new Button("To the Bitter End");
+        Button randomColor = new Button("Random Color");
+        Button iChangeMyMind = new Button("I Change My Mind");
+        Button moveBack = new Button("Back");
 
-       toTheBitterEnd.setText("To the Bitter End");
-       toTheBitterEnd.getStyleClass().add("to-the-bitter-end");
-       toTheBitterEnd.setOnAction(e -> {
-            App.changeUploadGraphScene(1);
-       });
-        
-       randomColor.setText("Random Color");
-       randomColor.getStyleClass().add("random-color");
-       randomColor.setOnAction(e -> {
-            App.changeUploadGraphScene(2);
-        }); 
+        toTheBitterEnd.getStyleClass().add("button");
+        randomColor.getStyleClass().add("button");
+        iChangeMyMind.getStyleClass().add("button");
+        moveBack.getStyleClass().add("button");
 
-       iChangeMyMind.setText("I Change My Mind");
-       iChangeMyMind.getStyleClass().add("i-change-my-mind");
-       iChangeMyMind.setOnAction(e -> {
-            App.changeUploadGraphScene(3);
-        });
+        //button size here
+        double buttonWidth = 400;
+        double buttonHeight = 50;
+        toTheBitterEnd.setPrefSize(buttonWidth, buttonHeight);
+        randomColor.setPrefSize(buttonWidth, buttonHeight);
+        iChangeMyMind.setPrefSize(buttonWidth, buttonHeight);
+        moveBack.setPrefSize(buttonWidth, buttonHeight);
 
-        moveBack.setText("Back");
-        moveBack.getStyleClass().add("back-button");
-        moveBack.setOnAction(e -> {
-            App.changeMainScene();
-        });
+        toTheBitterEnd.setOnAction(e -> App.changeUploadGraphScene(1));
+        randomColor.setOnAction(e -> App.changeUploadGraphScene(2));
+        iChangeMyMind.setOnAction(e -> App.changeUploadGraphScene(3));
+        moveBack.setOnAction(e -> App.changeMainScene());
 
-        StackPane root = new StackPane();
-        root.getChildren().addAll(txt,moveBack,toTheBitterEnd,randomColor,iChangeMyMind);
-        Scene scene = new Scene(root,900,700);
-        scene.getStylesheets().addAll("./css/selectGame.css");
+        Text header = new Text("Select Game Mode");
+        header.getStyleClass().add("header");
+
+        VBox root = new VBox(35); 
+        root.setAlignment(Pos.CENTER); 
+        root.getChildren().addAll(header, toTheBitterEnd, randomColor, iChangeMyMind, moveBack);
+
+        Scene scene = new Scene(root, 900, 700);
+        root.getStyleClass().add("scene");
+        scene.getStylesheets().addAll("./css/style.css");
 
         return scene;
     }

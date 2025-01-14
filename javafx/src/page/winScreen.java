@@ -27,22 +27,25 @@ public class winScreen {
 
         Label gameModeLabel = new Label(gameModeTitle);
         gameModeLabel.setFont(new Font(30));
-        gameModeLabel.getStyleClass().add("title");
+        gameModeLabel.getStyleClass().add("header");
 
         Label winMessage = new Label("You Win!");
-        winMessage.getStyleClass().add("win-message");
+        winMessage.getStyleClass().add("subheader");
 
         Label scoreLabel = new Label("Your score is: " + score);
         scoreLabel.setFont(new Font(20));
         scoreLabel.setStyle("-fx-translate-y: 50");
+        scoreLabel.getStyleClass().add("text");
 
         Label chromaticNumberLabel = new Label("Chromatic number: " + CN);
         chromaticNumberLabel.setFont(new Font(20));
+        chromaticNumberLabel.getStyleClass().add("text");
         chromaticNumberLabel.setLayoutX(350);
         chromaticNumberLabel.setLayoutY(250);
 
         Button homeButton = new Button("Home");
-        homeButton.getStyleClass().add("home-button");
+        homeButton.getStyleClass().add("button");
+        homeButton.setStyle("-fx-translate-y: 20px");
         homeButton.setOnAction(event -> {
             App.changeMainScene();
         });
@@ -51,7 +54,7 @@ public class winScreen {
 
 
         Scene scene = new Scene(pane, 800, 600);
-        scene.getStylesheets().add("./css/winScreen.css");
+        scene.getStylesheets().add("./css/style.css");
 
         return scene;
     }

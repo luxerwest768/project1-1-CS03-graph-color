@@ -2,45 +2,36 @@ package page;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 public class EndScreenBase {
     protected String titleText = "You Lost!";
     protected String messageText = "You actually couldn't color some circles..?";
 
     public Scene createEndScreen() {
-        StackPane root = new StackPane();
+        Text header = new Text(titleText);
+        header.setTextAlignment(TextAlignment.CENTER);
+        header.getStyleClass().add("header");
 
-        Label title = new Label(titleText);
-        title.getStyleClass().add("title");
-
-        Label message = new Label(messageText);
-        message.getStyleClass().add("end-message");
-
-        //Button tryAgainButton = new Button("Try again");
-        //tryAgainButton.getStyleClass().addAll("button", "try-again");
+        Text subheader = new Text(messageText);
+        subheader.setTextAlignment(TextAlignment.CENTER);
+        subheader.getStyleClass().add("subheader");
 
         Button homeButton = new Button("Home");
-        homeButton.getStyleClass().add("home");
-
-        //tryAgainButton.setOnAction(e -> {
-        //    App.changeGameScene();
-        //});
-
+        homeButton.getStyleClass().add("button");
         homeButton.setOnAction(e -> {
             App.changeMainScene();
         });
 
-        VBox container = new VBox();
-        container.getStyleClass().add("container");
-        container.getChildren().addAll(message, homeButton,title);
-
-        root.getChildren().addAll(container);
+        VBox root = new VBox(30);
+        root.getChildren().addAll(header, subheader, homeButton);
+        root.setStyle("-fx-alignment: center;");
 
         Scene scene = new Scene(root, 900, 700);
-        scene.getStylesheets().add("./css/endScreen.css");
+        root.getStyleClass().add("scene");
+        scene.getStylesheets().addAll("./css/style.css");
 
         return scene;
     }
