@@ -26,10 +26,10 @@ public class Solution {
 
         String strCN = "Chromatic Number: " + solution.getChromaticNumber();
         Label CN = new Label(strCN);
-        CN.getStyleClass().add("CN-label");
+        CN.setStyle("-fx-font-size: 16pt; -fx-fill: #3e2974; -fx-font-weight: bold; -fx-translate-y: 20; -fx-translate-x: 10;");
 
         Label algorithm = new Label(solution.getAlgorithm());
-        algorithm.getStyleClass().add("Algorithm-label");
+        algorithm.setStyle(" -fx-font-size: 16pt; -fx-translate-y: 60; -fx-fill: #3e2974; -fx-font-weight: bold; -fx-translate-x: 10;");
         pane.getChildren().addAll(CN,algorithm);
 
         // render nodes
@@ -61,7 +61,8 @@ public class Solution {
         solution.showSolution(nodeSet);
 
         Scene scene = new Scene(pane, width, height);
-        scene.getStylesheets().add("./css/renderGraph.css");
+        pane.getStyleClass().add("pane");
+        scene.getStylesheets().add("./css/style.css");
 
         return scene;
     }

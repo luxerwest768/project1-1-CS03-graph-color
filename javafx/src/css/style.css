@@ -1,0 +1,198 @@
+@font-face {
+    font-family: "Press Start 2P";
+    src: url("resources/fonts/PressStart2P-vaV7.ttf");
+}
+
+.scene {
+    -fx-background-color: linear-gradient(to bottom, #191030, 	#251944);
+}
+
+.pane {
+    -fx-background-color: linear-gradient(to bottom, #251944, 	#463573);
+}
+
+
+.button {
+    -fx-font-family:"Press Start 2P";
+    -fx-padding: 20 25; 
+    -fx-background-color: #191030; 
+    -fx-border-color: #fe54ff; 
+    -fx-border-width: 2; 
+    -fx-text-fill: #EEEEEE; 
+    -fx-fill: #EEEEEE; 
+    -fx-font-weight: bold; 
+    -fx-effect: dropshadow(gaussian, #fe54ff, 0, 0, 5, 5);
+    -fx-translate-y: 0; 
+    -fx-translate-x: 0; 
+    -fx-font-size: 15;
+}
+
+.button:hover {
+    -fx-effect: none; 
+    -fx-translate-y: 5px; 
+    -fx-translate-x: 5px; 
+}
+
+
+.buttonSmall {
+    -fx-font-family:"Press Start 2P";
+    -fx-padding: 15 20; 
+    -fx-background-color: #191030; 
+    -fx-border-color: #fe54ff; 
+    -fx-border-width: 2; 
+    -fx-text-fill: #EEEEEE; 
+    -fx-font-weight: bold; 
+    -fx-effect: dropshadow(gaussian, #fe54ff, 0, 0, 5, 5);
+    -fx-translate-y: 0; 
+    -fx-translate-x: 0; 
+    -fx-font-size: 15;
+}
+
+.buttonSmall:hover {
+    -fx-effect: none; 
+    -fx-translate-y: 5px; 
+    -fx-translate-x: 5px; 
+}
+
+.header {
+    -fx-font-family:"Press Start 2P";
+    -fx-font-weight: bold; 
+    -fx-font-size: 30;
+    -fx-pref-width: 50%;
+    -fx-pref-height: 30em;
+    -fx-fill: #61f1fd;
+    -fx-effect: dropshadow(gaussian, 	#37838a, 0, 0, 3, 1);
+    -fx-border-width: 0 0 0.2em 0;
+}
+
+.subheader {
+    -fx-font-family:"Press Start 2P";
+    -fx-font-size: 20;
+    -fx-pref-width: 50%;
+    -fx-pref-height: 30em;
+    -fx-fill: #FFFDEC;
+}
+
+.text{
+    -fx-font-family:"Press Start 2P";
+    -fx-pref-width: 50%;
+    -fx-font-size: 15;
+    -fx-pref-height: 30em;
+    -fx-fill: #FFFDEC;
+}
+
+
+
+
+/* other buttons that i couldnt figure out a structure for in the java codes so they just use translate y and x */
+.hint-button {
+    -fx-font-family:"Press Start 2P";
+    -fx-translate-y: 610;
+    -fx-translate-x: 850;
+    -fx-font-size: 15pt;
+    -fx-padding: 15 20; 
+    -fx-background-color: #191030; 
+    -fx-border-color: #fe54ff; 
+    -fx-border-width: 2; 
+    -fx-text-fill: #EEEEEE; 
+    -fx-fill: #EEEEEE; 
+    -fx-font-weight: bold; 
+    -fx-effect: dropshadow(gaussian, #fe54ff, 0, 0, 5, 5);
+}
+.hint-button:hover {
+    -fx-effect: none; 
+    -fx-translate-y: 615px; 
+    -fx-translate-x: 855px; 
+}
+.get-result-button {
+    -fx-font-family:"Press Start 2P";
+    -fx-translate-y: 85;
+    -fx-font-size: 15pt;
+    -fx-padding: 15 20; 
+    -fx-background-color: #191030; 
+    -fx-border-color: #fe54ff; 
+    -fx-border-width: 2; 
+    -fx-text-fill: #FFFDEC; 
+    -fx-font-weight: bold; 
+    -fx-effect: dropshadow(gaussian, #fe54ff, 0, 0, 5, 5);
+
+}
+.get-result-button:hover {
+    -fx-effect: none; 
+    -fx-translate-y: 90px; 
+    -fx-translate-x: 5px; 
+}
+
+.redo-button {
+    -fx-font-family:"Press Start 2P";
+    -fx-translate-y: 610;
+    -fx-translate-x: 720;
+    -fx-font-size: 15pt;
+    -fx-padding: 15 20; 
+    -fx-background-color: #191030; 
+    -fx-border-color: #fe54ff; 
+    -fx-border-width: 2; 
+    -fx-text-fill: #FFFDEC; 
+    -fx-font-weight: bold; 
+    -fx-effect: dropshadow(gaussian, #fe54ff, 0, 0, 5, 5);
+
+}
+.redo-button:hover {
+
+    -fx-effect: none; 
+    -fx-translate-y: 615px; 
+    -fx-translate-x: 725px; 
+}
+
+/* color wheel stuff */
+.color-wheel {
+    -fx-translate-x: 800;
+}
+
+.current-color {
+    -fx-translate-y: 90;
+    -fx-translate-x: 890;
+}
+
+.color-status {
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-text-fill: red;
+    -fx-translate-x: 450;
+}
+
+
+.cn-text {
+    -fx-font-family:"Press Start 2P";
+    -fx-translate-y: 120;
+    -fx-font-size: 15;
+}
+
+.unique-color-text {
+    -fx-font-family:"Press Start 2P";
+    -fx-translate-y: 140;
+    -fx-font-size: 15;
+}
+
+.timecon {
+    -fx-pref-width: 150px;
+    -fx-pref-height: 75px;
+    -fx-border-width: 5px;
+    -fx-translate-y: 650px;
+}
+
+.timecon > Text {
+    -fx-font-family: "Press Start 2P";
+    -fx-font-size: 30px; /* Reduced font size */
+    -fx-text-alignment: center;
+    -fx-fill: white; /* Changed text color to white */
+}
+
+
+
+.hint-text {
+    -fx-font-family:"Press Start 2P";
+    -fx-translate-y: 630;
+    -fx-translate-x: 850;
+    -fx-font-size: 15;
+}

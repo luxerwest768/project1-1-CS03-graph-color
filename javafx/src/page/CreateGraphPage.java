@@ -7,15 +7,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.SplitPane.Divider;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import java.util.Random;
 import components.convertTextGraph.ReadGraph;
 
 public class CreateGraphPage {
-    
+
     static Scene CreateGraph(int gamemode) {
         // Declares the headers 
         Text header = new Text("Create Graph");
@@ -23,36 +22,30 @@ public class CreateGraphPage {
 
         header.getStyleClass().add("header");
         subheader.getStyleClass().add("subheader");
-        
+
         // Declares the container and items within for the input of the vertices
-        HBox verticescon = new HBox();
-        verticescon.setMaxWidth(800);
-        verticescon.setMaxHeight(50);
+        HBox verticescon = new HBox(15); // Adjusted spacing
+        verticescon.setAlignment(javafx.geometry.Pos.CENTER);
         Label verticetxt = new Label("Number of vertices");
         TextField verticeinput = new TextField();
-        verticeinput.setText("Type Here");
-        Button randbtn1 = new Button();
-        randbtn1.setText("Randomize");
+        verticeinput.setPromptText("Type Here...");
+        Button randbtn1 = new Button("Randomize");
+        randbtn1.setPrefSize(200, 50); // Increased width for "Randomize"
+        randbtn1.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;"); // Adjusted font size
         verticescon.getChildren().addAll(verticetxt, verticeinput, randbtn1);
-        verticescon.setSpacing(10);
-
-        verticescon.getStyleClass().add("containerV");
 
         // Declares the container and items within for the input of the edges
-        HBox edgescon = new HBox();
-        edgescon.setMaxWidth(800);
-        edgescon.setMaxHeight(50);
+        HBox edgescon = new HBox(15); // Adjusted spacing
+        edgescon.setAlignment(javafx.geometry.Pos.CENTER);
         Label edgestxt = new Label("Number of Edges");
         TextField edgesinput = new TextField();
-        edgesinput.setText("Type Here");
-        Button randbtn2 = new Button();
-        randbtn2.setText("Randomize");
+        edgesinput.setPromptText("Type Here...");
+        Button randbtn2 = new Button("Randomize");
+        randbtn2.setPrefSize(200, 50); // Increased width for "Randomize"
+        randbtn2.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;"); // Adjusted font size
         edgescon.getChildren().addAll(edgestxt, edgesinput, randbtn2);
-        edgescon.setSpacing(10);
 
-        edgescon.getStyleClass().add("containerE");
-
-        //Sets the function for the random buttons
+        // Sets the function for the random buttons
         randbtn1.setOnAction(e -> {
             String number = Integer.toString(randomNumber());
             verticeinput.setText(number);
@@ -64,67 +57,66 @@ public class CreateGraphPage {
         });
 
         // Declares the back and create button
-        Button createbtn = new Button();
-        Button backbtn = new Button();
+        Button createbtn = new Button("Create");
+        createbtn.setPrefSize(200, 50);
+        createbtn.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
 
-        createbtn.getStyleClass().add("crbutton");
-        backbtn.getStyleClass().add("backbutton");
+        Button backbtn = new Button("Back");
+        backbtn.setPrefSize(200, 50);
+        backbtn.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
 
-        EventHandler<ActionEvent> changeScene = new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e){
-                try {
-                    ReadGraph readGraph = new ReadGraph();
-                    ModelDetection modelDetection = new ModelDetection();
-                    if (Integer.valueOf(verticeinput.getText()) < 50 && Integer.valueOf(edgesinput.getText()) < 50){
-                        int[][] graph = readGraph.createGraph(Integer.valueOf(verticeinput.getText()), Integer.valueOf(edgesinput.getText()));
-                        int CN = 0;
-                        if (modelDetection.detectModel(graph)){
-                            CN = modelDetection.getCN();
-                        } else {
-                            CN = readGraph.getCN();
-                        }
-                        if (graph != null){
-                            switch (gamemode) {
-                                case 1: App.changeToTheBitterEndScene(graph,CN); break;
-                                case 2: App.changeRandomOrderScene(graph,CN); break;
-                                case 3: App.changeIChangeMyMindScene(graph,CN); break;
-                            }
-                        } else {
-                            subheader.setText("Invalid Input!");
+        // Event handler for the "Create" button
+        EventHandler<ActionEvent> changeScene = e -> {
+            try {
+                ReadGraph readGraph = new ReadGraph();
+                ModelDetection modelDetection = new ModelDetection();
+                if (Integer.valueOf(verticeinput.getText()) < 50 && Integer.valueOf(edgesinput.getText()) < 50) {
+                    int[][] graph = readGraph.createGraph(
+                            Integer.valueOf(verticeinput.getText()), 
+                            Integer.valueOf(edgesinput.getText())
+                    );
+                    int CN = modelDetection.detectModel(graph) 
+                            ? modelDetection.getCN() 
+                            : readGraph.getCN();
+                    if (graph != null) {
+                        switch (gamemode) {
+                            case 1 -> App.changeToTheBitterEndScene(graph, CN);
+                            case 2 -> App.changeRandomOrderScene(graph, CN);
+                            case 3 -> App.changeIChangeMyMindScene(graph, CN);
                         }
                     } else {
-                        subheader.setText("Invalid Input!: edges and vertices are over 50");
+                        subheader.setText("Invalid Input!");
                     }
-                } catch (NumberFormatException error){
-                    subheader.setText("Invalid Input!");
-                } catch (IllegalArgumentException error){
-                    subheader.setText("There has to be at least 1 vertex!");
+                } else {
+                    subheader.setText("Invalid Input!: edges and vertices must be under 50");
                 }
-                
+            } catch (NumberFormatException error) {
+                subheader.setText("Invalid Input!");
+            } catch (IllegalArgumentException error) {
+                subheader.setText("There must be at least 1 vertex!");
             }
         };
 
-        // Sets the text and the function of the create button
-        createbtn.setText("Create");
+        // Assign event handlers
         createbtn.setOnAction(changeScene);
+        backbtn.setOnAction(e -> App.changeUploadGraphScene(gamemode));
 
-        // Sets the text and the function of the back button
-        backbtn.setText("Back");
-        backbtn.setOnAction(e -> {
-            App.changeUploadGraphScene(gamemode);
-        });
-
-        StackPane root = new StackPane();
+        // Add components to the root layout
+        VBox root = new VBox(20);
+        root.setAlignment(javafx.geometry.Pos.CENTER);
         root.getChildren().addAll(header, subheader, verticescon, edgescon, createbtn, backbtn);
-        Scene scene = new Scene(root,900,700);
-        scene.getStylesheets().addAll("./css/creategraphPage.css");
+        root.setStyle("-fx-padding: 30;");
+
+        // Create the scene
+        Scene scene = new Scene(root, 900, 700);
+        root.getStyleClass().add("scene");
+        scene.getStylesheets().add("./css/style.css");
 
         return scene;
     }
 
     static int randomNumber() {
         Random rand = new Random();
-        int randnbr = rand.nextInt(50);
-        return randnbr;
+        return rand.nextInt(50);
     }
 }

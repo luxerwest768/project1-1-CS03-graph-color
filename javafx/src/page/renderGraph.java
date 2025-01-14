@@ -47,7 +47,7 @@ public class renderGraph {
         });
 
         Button renderButton = new Button("Render");
-        renderButton.getStyleClass().add("render-button");
+        renderButton.getStyleClass().add("button");
 
         pane.getChildren().addAll(renderButton,colorWheel.getCanvas(),currentColor);
 
@@ -117,7 +117,8 @@ public class renderGraph {
         }
 
         Scene scene = new Scene(pane, width, height);
-        scene.getStylesheets().add("./css/renderGraph.css");
+        pane.getStyleClass().add("pane");
+        scene.getStylesheets().add("./css/style.css");
 
         return scene;
     }

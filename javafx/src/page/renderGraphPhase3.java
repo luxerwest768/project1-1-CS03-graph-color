@@ -48,10 +48,10 @@ public class renderGraphPhase3 {
         });
 
         Button renderButton = new Button("Render");
-        renderButton.getStyleClass().add("render-button");
+        renderButton.getStyleClass().add("button");
 
         Button solutionButton = new Button("Solve");
-        solutionButton.getStyleClass().add("solution-button");
+        solutionButton.getStyleClass().add("hint-button");
 
         EventHandler<ActionEvent> solve = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
@@ -126,7 +126,8 @@ public class renderGraphPhase3 {
         }
 
         Scene scene = new Scene(pane, width, height);
-        scene.getStylesheets().add("./css/renderGraph.css");
+        pane.getStyleClass().add("pane");
+        scene.getStylesheets().add("./css/style.css");
 
         return scene;
     }

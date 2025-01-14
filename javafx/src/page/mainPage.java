@@ -1,33 +1,41 @@
 package page;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
-public class mainPage  {
 
-    static Scene mainScene(){
-        Button btn = new Button();
-        Text txt = new Text("                            Welcome to \n Two-Three Musketeers - Graph Coloring Game");
-        btn.getStyleClass().add("play-button");
-        txt.getStyleClass().add("txt");
-        btn.setText("Play Phase 2");
+public class mainPage {
+    static Scene mainScene() {
+        Button buttonphase2 = new Button();
+        Text header = new Text("Welcome to \nTwo-Three Musketeers\n Graph Coloring Game");
+        header.setTextAlignment(TextAlignment.CENTER);
+        buttonphase2.getStyleClass().add("button");
+        header.getStyleClass().add("header");
+        buttonphase2.setText("Play Phase 2");
+        
 
-        Button newBtn = new Button();
-        newBtn.getStyleClass().add("clickHere-button");
-        newBtn.setText(" Play Phase 3");
+        Button buttonPhase3 = new Button();
+        buttonPhase3.getStyleClass().add("button");
+        buttonPhase3.setText("Play Phase 3");
 
-        newBtn.setOnAction(e -> {
+        buttonPhase3.setOnAction(e -> {
             App.changeUploadGraphScenePhase3();
         });
-        btn.setOnAction(e -> {
+        buttonphase2.setOnAction(e -> {
             App.changeSelectGameScene();
         });
 
-        StackPane root = new StackPane();
-        root.getChildren().addAll(txt,btn, newBtn);
-        Scene scene = new Scene(root,900,700);
-        scene.getStylesheets().addAll("./css/homePage.css");
+        // VBox instead of stackPane
+        VBox root = new VBox(50);
+        root.getChildren().addAll(header, buttonphase2, buttonPhase3);
+        root.setStyle("-fx-alignment: center;");
+
+        Scene scene = new Scene(root, 900, 700);
+        root.getStyleClass().add("scene");
+        scene.getStylesheets().addAll("./css/style.css");
 
         return scene;
     }
