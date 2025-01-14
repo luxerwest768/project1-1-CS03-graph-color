@@ -46,10 +46,10 @@ public class createGraphPagePhase3 {
         Label edgestxt = new Label("Number of Edges");
         TextField edgesinput = new TextField();
         edgesinput.setPromptText("Type Here...");
-        randbtn2.getStyleClass().add("button");
+
         Button randbtn2 = new Button("Randomize");
                 randbtn2.setPrefSize(200, 50);
-
+        randbtn2.getStyleClass().add("button");
 
         edgescon.getChildren().addAll(edgestxt, edgesinput, randbtn2);
 

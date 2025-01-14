@@ -28,9 +28,11 @@
 
 .CN-label {
     -fx-font-size: 16pt;
+    -fx-fill: #69247C;
 }
 
 .Algorithm-label {
     -fx-font-size: 16pt;
     -fx-translate-y: 50;
+    -fx-fill: #69247C;
 }
